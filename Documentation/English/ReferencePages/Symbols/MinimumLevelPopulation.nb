@@ -1,0 +1,488 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     15443,        478]
+NotebookOptionsPosition[     12140,        371]
+NotebookOutlinePosition[     13825,        418]
+CellTagsIndexPosition[     13740,        413]
+WindowTitle->MinimumLevelPopulation - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[" ", "SymbolColorBar",
+ CellMargins->{{Inherited, Inherited}, {-5, 0}}],
+
+Cell[TextData[{
+ ButtonBox["Mathematica",
+  BaseStyle->{"Link", "LinkTrail"},
+  ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"],
+ StyleBox[" > ", "LinkTrailSeparator"]
+}], "LinkTrail"],
+
+Cell[BoxData[GridBox[{
+   {Cell["ESCAPEPROBABILITY PACKAGE PACLET SYMBOL", "PacletNameCell"], Cell[
+    TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Escape Probability\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/tutorial/EscapeProbability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"EscapeProbabilityRun\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/EscapeProbabilityRun"], \
+"\<\"SameTest\"\>":>Documentation`HelpLookup["paclet:ref/SameTest"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Escape Probability\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/guide/EscapeProbability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->
+         False], {"\<\"EscapeProbability/ref/MinimumLevelPopulation\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["EscapeProbability/ref/MinimumLevelPopulation"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/EscapeProbability/\
+ref/MinimumLevelPopulation.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "EscapeProbability/ref/MinimumLevelPopulation", ".html"]], 
+           None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["MinimumLevelPopulation", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["MinimumLevelPopulation"], "InlineFormula"],
+     "\[LineSeparator]is an option that specifies the lowest level \
+population. Default is 10^-30."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->193911468],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection",
+ CellID->159977038],
+
+Cell["\<\
+MinimumLevelPopulation is a purely numerical option which controls how small \
+level populations are allowed to become. Usually, the user should not change \
+this setting.\
+\>", "ExampleText",
+ CellID->530018086],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EscapeProbability`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->278807738],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pop1", "=", 
+  RowBox[{"EscapeProbabilityRun", "[", 
+   RowBox[{"\"\<CO\>\"", ",", 
+    SuperscriptBox["10", "15"], ",", "1", ",", 
+    SuperscriptBox["10", "4"], ",", "50", ",", 
+    RowBox[{"ShowLevelPopulation", "\[Rule]", "True"}], ",", 
+    RowBox[{"MaximumIterations", "\[Rule]", "100"}]}], "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->35411642],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "100"}],
+  SequenceForm["Number of Iterations:", 100],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[37]:=",
+ CellID->171505194],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.09204404775430296`", ",", "0.27223945941850713`", ",", 
+   "0.32715326740037404`", ",", "0.2051782154017599`", ",", 
+   "0.0773014036650367`", ",", "0.0205904453800693`", ",", 
+   "0.004465062740309196`", ",", "0.0008525915832280208`", ",", 
+   "0.00014826820833833122`", ",", "0.000023398865807093763`", ",", 
+   "3.349270094061021`*^-6", ",", "4.3216079310217424`*^-7", ",", 
+   "5.1553611173507153`*^-8", ",", "5.950227197165435`*^-9", ",", 
+   "5.944122682697521`*^-10", ",", "4.8875724281440924`*^-11", ",", 
+   "3.9567949761136216`*^-12", ",", "2.7849885826739236`*^-13"}], 
+  "}"}]], "Output",
+ ImageSize->{542, 79},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->340711126]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pop2", "=", 
+  RowBox[{"EscapeProbabilityRun", "[", 
+   RowBox[{"\"\<CO\>\"", ",", 
+    SuperscriptBox["10", "15"], ",", "1", ",", 
+    SuperscriptBox["10", "4"], ",", "50", ",", 
+    RowBox[{"ShowLevelPopulation", "\[Rule]", "True"}], ",", 
+    RowBox[{"MaximumIterations", "\[Rule]", "100"}], ",", 
+    RowBox[{"MinimumLevelPopulation", "\[Rule]", 
+     SuperscriptBox["10", 
+      RowBox[{"-", "10"}]]}]}], "]"}]}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->410124491],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "100"}],
+  SequenceForm["Number of Iterations:", 100],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[38]:=",
+ CellID->208376522],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.09204404751987875`", ",", "0.2722394587251487`", ",", 
+   "0.32715326656715726`", ",", "0.2051782148791977`", ",", 
+   "0.07730140346816008`", ",", "0.020590445327628118`", ",", 
+   "0.004465062728937263`", ",", "0.0008525915810565811`", ",", 
+   "0.0001482682079607114`", ",", "0.0000233988657474999`", ",", 
+   "3.3492700855308665`*^-6", ",", "4.3216079200151697`*^-7", ",", 
+   "5.155361104220681`*^-8", ",", "5.950227182010949`*^-9", ",", 
+   "5.94412266755824`*^-10", ",", "9.999999974531308`*^-11", ",", 
+   "9.999999974531308`*^-11", ",", "9.999999974531308`*^-11"}], 
+  "}"}]], "Output",
+ ImageSize->{527, 79},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->107274142]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pop2", "-", "pop1"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->451408299],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "2.3442420227226535`*^-10"}], ",", 
+   RowBox[{"-", "6.933584262291959`*^-10"}], ",", 
+   RowBox[{"-", "8.332167733549056`*^-10"}], ",", 
+   RowBox[{"-", "5.225621879656472`*^-10"}], ",", 
+   RowBox[{"-", "1.9687661223510844`*^-10"}], ",", 
+   RowBox[{"-", "5.2441183340246056`*^-11"}], ",", 
+   RowBox[{"-", "1.1371932909232108`*^-11"}], ",", 
+   RowBox[{"-", "2.1714396773730993`*^-12"}], ",", 
+   RowBox[{"-", "3.776198104210593`*^-13"}], ",", 
+   RowBox[{"-", "5.959386358955071`*^-14"}], ",", 
+   RowBox[{"-", "8.530154562574627`*^-15"}], ",", 
+   RowBox[{"-", "1.100657269793577`*^-15"}], ",", 
+   RowBox[{"-", "1.313003440116775`*^-16"}], ",", 
+   RowBox[{"-", "1.5154485662189014`*^-17"}], ",", 
+   RowBox[{"-", "1.513928084175937`*^-18"}], ",", "5.112427546387216`*^-11", 
+   ",", "9.604320476919947`*^-11", ",", "9.97215008870457`*^-11"}], 
+  "}"}]], "Output",
+ ImageSize->{435, 117},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->287152703]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["EscapeProbabilityRun",
+    BaseStyle->"Link",
+    ButtonData->"paclet:EscapeProbability/ref/EscapeProbabilityRun"],
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["SameTest",
+    BaseStyle->"Link",
+    ButtonData->"paclet:ref/SameTest"],
+   FontFamily->"Verdana"]], "InlineFormula"]
+}], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["TUTORIALS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "TutorialsSection",
+ CellID->250839057],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:EscapeProbability/tutorial/EscapeProbability"]], "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"]], "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"MinimumLevelPopulation - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "built" -> "{2011, 1, 14, 16, 54, 29.8679390}", "context" -> 
+    "EscapeProbability`", "keywords" -> {}, "index" -> True, "label" -> 
+    "EscapeProbability Package Paclet Symbol", "language" -> "en", "paclet" -> 
+    "EscapeProbability Package", "status" -> "None", "summary" -> 
+    "MinimumLevelPopulation is an option that specifies the lowest level \
+population. Default is 10^-30.", "synonyms" -> {}, "title" -> 
+    "MinimumLevelPopulation", "type" -> "Symbol", "uri" -> 
+    "EscapeProbability/ref/MinimumLevelPopulation"}, "LinkTrails" -> "", 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "8.0 for Microsoft Windows (64-bit) (November 7, 2010)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4655, 130, 461, 13, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->193911468]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 13597, 406}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[615, 21, 76, 1, 70, "SymbolColorBar"],
+Cell[694, 24, 200, 5, 70, "LinkTrail"],
+Cell[897, 31, 3256, 77, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4178, 112, 65, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[4246, 115, 372, 10, 70, "Usage"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4655, 130, 461, 13, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->193911468],
+Cell[CellGroupData[{
+Cell[5141, 147, 148, 5, 70, "ExampleSection",
+ CellID->159977038],
+Cell[5292, 154, 222, 5, 70, "ExampleText",
+ CellID->530018086],
+Cell[5517, 161, 126, 3, 70, "Input",
+ CellID->278807738],
+Cell[CellGroupData[{
+Cell[5668, 168, 381, 9, 70, "Input",
+ CellID->35411642],
+Cell[6052, 179, 247, 6, 70, "Print",
+ CellID->171505194],
+Cell[6302, 187, 776, 17, 105, "Output",
+ CellID->340711126]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7115, 209, 495, 12, 70, "Input",
+ CellID->410124491],
+Cell[7613, 223, 247, 6, 70, "Print",
+ CellID->208376522],
+Cell[7863, 231, 771, 17, 105, "Output",
+ CellID->107274142]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8671, 253, 98, 3, 70, "Input",
+ CellID->451408299],
+Cell[8772, 258, 1058, 24, 143, "Output",
+ CellID->287152703]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9891, 289, 417, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[10311, 303, 532, 18, 70, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10880, 326, 419, 12, 70, "TutorialsSection",
+ CellID->250839057],
+Cell[11302, 340, 171, 4, 70, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11510, 349, 419, 12, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[11932, 363, 166, 3, 70, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[12113, 369, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

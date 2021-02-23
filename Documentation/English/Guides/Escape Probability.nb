@@ -1,0 +1,176 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5200,        166]
+NotebookOptionsPosition[      3379,        115]
+NotebookOutlinePosition[      4680,        148]
+CellTagsIndexPosition[      4637,        145]
+WindowTitle->Escape Probability - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[" ", "GuideColorBar",
+ CellMargins->{{Inherited, Inherited}, {-5, 0}}],
+
+Cell[TextData[{
+ ButtonBox["Mathematica",
+  BaseStyle->{"Link", "LinkTrail"},
+  ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"],
+ StyleBox[" > ", "LinkTrailSeparator"]
+}], "LinkTrail"],
+
+Cell[CellGroupData[{
+
+Cell["Escape Probability", "GuideTitle",
+ CellID->942062912],
+
+Cell[TextData[{
+ "Escape Probability is a package that provides functionality to ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " to solve the coupled radiative transfer and statistical balance equations \
+problem. It can be used to estimate radiation temperatures as observed with \
+radio telesopes. "
+}], "GuideAbstract",
+ CellID->2001916300],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["EscapeProbabilityRun",
+  BaseStyle->"Link",
+  ButtonData->"paclet:EscapeProbability/ref/EscapeProbabilityRun"]], 
+  "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " solves the radiative transfer problem iteratively"
+}], "GuideText",
+ CellID->203374175],
+
+Cell["\t", "GuideDelimiter",
+ CellID->311258892],
+
+Cell[TextData[{
+ Cell[TextData[ButtonBox["ShowCollisionPartners",
+  BaseStyle->"Link",
+  ButtonData->"paclet:EscapeProbability/ref/ShowCollisionPartners"]], 
+  "InlineFunctionSans"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[TextData[ButtonBox["ShowCollisionTemperatures",
+  BaseStyle->"Link",
+  ButtonData->"paclet:EscapeProbability/ref/ShowCollisionTemperatures"]], 
+  "InlineFunctionSans"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[TextData[ButtonBox["ShowCollisionRates",
+  BaseStyle->"Link",
+  ButtonData->"paclet:EscapeProbability/ref/ShowCollisionRates"]], 
+  "InlineFunctionSans"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[TextData[ButtonBox["ShowEnergyLevels",
+  BaseStyle->"Link",
+  ButtonData->"paclet:EscapeProbability/ref/ShowEnergyLevels"]], 
+  "InlineFunctionSans"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[TextData[ButtonBox["ShowTransitions",
+  BaseStyle->"Link",
+  ButtonData->"paclet:EscapeProbability/ref/ShowTransitions"]], 
+  "InlineFunctionSans"]
+}], "InlineGuideFunctionListing",
+ CellID->58033752]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["TUTORIALS", "GuideTutorialsSection",
+ CellID->415694126],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:EscapeProbability/tutorial/EscapeProbability"]], "GuideTutorial",
+ CellID->806871991]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Escape Probability - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "built" -> "{2011, 1, 14, 16, 54, 0.4306873}", "context" -> 
+    "EscapeProbability`", "keywords" -> {}, "index" -> True, "label" -> 
+    "Escape Probability Guide", "language" -> "en", "paclet" -> 
+    "EscapeProbability", "status" -> "None", "summary" -> 
+    "Escape Probability is a package that provides functionality to \
+Mathematica to solve the coupled radiative transfer and statistical balance \
+equations problem. It can be used to estimate radiation temperatures as \
+observed with radio telesopes. ", "synonyms" -> {}, "title" -> 
+    "Escape Probability", "type" -> "Guide", "uri" -> 
+    "EscapeProbability/guide/Escape Probability"}, "LinkTrails" -> "", 
+  "SearchTextTranslated" -> ""},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+  CharacterEncoding -> "WindowsANSI"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[611, 21, 75, 1, 70, "GuideColorBar"],
+Cell[689, 24, 200, 5, 70, "LinkTrail"],
+Cell[CellGroupData[{
+Cell[914, 33, 60, 1, 70, "GuideTitle",
+ CellID->942062912],
+Cell[977, 36, 350, 8, 70, "GuideAbstract",
+ CellID->2001916300],
+Cell[1330, 46, 318, 9, 70, "GuideText",
+ CellID->203374175],
+Cell[1651, 57, 48, 1, 70, "GuideDelimiter",
+ CellID->311258892],
+Cell[1702, 60, 1358, 38, 70, "InlineGuideFunctionListing",
+ CellID->58033752]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3097, 103, 62, 1, 70, "GuideTutorialsSection",
+ CellID->415694126],
+Cell[3162, 106, 175, 4, 70, "GuideTutorial",
+ CellID->806871991]
+}, Open  ]],
+Cell[3352, 113, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

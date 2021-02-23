@@ -1,0 +1,5359 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    189248,       5349]
+NotebookOptionsPosition[    168427,       4630]
+NotebookOutlinePosition[    170605,       4685]
+CellTagsIndexPosition[    170518,       4680]
+WindowTitle->EscapeProbabilityRun - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[" ", "SymbolColorBar",
+ CellMargins->{{Inherited, Inherited}, {-5, 0}}],
+
+Cell[TextData[{
+ ButtonBox["Mathematica",
+  BaseStyle->{"Link", "LinkTrail"},
+  ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"],
+ StyleBox[" > ", "LinkTrailSeparator"]
+}], "LinkTrail"],
+
+Cell[BoxData[GridBox[{
+   {Cell["ESCAPEPROBABILITY PACKAGE PACLET SYMBOL", "PacletNameCell"], Cell[
+    TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Escape Probability\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/tutorial/EscapeProbability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"ShowCollisionPartners\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/ShowCollisionPartners"], \
+"\<\"ShowCollisionTemperatures\"\>":>Documentation`HelpLookup[
+       "paclet:ref/ShowCollisionTemperatures"], "\<\"ShowEnergyLevels\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/ShowEnergyLevels"], "\<\"ShowTransitions\"\>":>
+       Documentation`HelpLookup[
+       "paclet:ref/ShowTransitions"], "\<\"ShowCollisionRates\"\>":>
+       Documentation`HelpLookup["paclet:ref/ShowCollisionRates"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Escape Probability\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/guide/Escape Probability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->
+         False], {"\<\"EscapeProbability/ref/EscapeProbabilityRun\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["EscapeProbability/ref/EscapeProbabilityRun"]}, Visible -> 
+            False]]; SelectionMove[
+         DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/EscapeProbability/\
+ref/EscapeProbabilityRun.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "EscapeProbability/ref/EscapeProbabilityRun", ".html"]], 
+           None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["EscapeProbabilityRun", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"EscapeProbabilityRun", "[", 
+       StyleBox[
+        RowBox[{"LAMBDAfile", ",", " ", 
+         ButtonBox["Nc",
+          BaseStyle->"Link",
+          ButtonData->"paclet:ref/Nc"], ",", " ", 
+         ButtonBox["FWHM",
+          BaseStyle->"Link",
+          ButtonData->"paclet:ref/FWHM"], ",", " ", "n", ",", " ", "T"}], 
+        "TI"], "]"}]], "InlineFormula"],
+     "\[LineSeparator]performs a radiative transfer calculation using the \
+escape probability approximation. The input parameters are the column density \
+of the required species ",
+     Cell[BoxData["Nc"], "InlineFormula"],
+     " in \!\(\*SuperscriptBox[\"cm\", RowBox[{\"-\", \"2\"}]]\), the ",
+     Cell[BoxData["FWHM"], "InlineFormula"],
+     " line width in km/sec, the total density ",
+     Cell[BoxData[
+      StyleBox["n", "TI"]], "InlineFormula"],
+     " of any collision partner in \!\(\*SuperscriptBox[\"cm\", \
+RowBox[{\"-\", \"3\"}]]\), and the kinetic gas temperature",
+     Cell[BoxData[
+      RowBox[{" ", 
+       ButtonBox["T",
+        BaseStyle->"Link",
+        ButtonData->"paclet:ref/T"]}]], "InlineFormula"],
+     " in K. The atomic and molecular data is taken from the LAMBDA Leiden \
+Atomic and Molecular Database.   "
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  FrameBox[
+   StyleBox[
+    RowBox[{"MORE", " ", "INFORMATION"}], "NotesFrameText"],
+   StripOnInput->False],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->87224572],
+
+Cell["The following options can be given: ", "Notes"],
+
+Cell[BoxData[GridBox[{
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["Geometry",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/Geometry"], 
+    ButtonBox["Sphere",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Sphere"], Cell["\<\
+Is an options whose setting specifies which escape probability approximation \
+will be applied. Possible choices are: 
+\"Sphere\", \"LVG\", \"PlaneParallel\", \"Turbulent\".\
+\>", "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["MaximumIterations",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/MaximumIterations"], "10000", 
+    Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["MaximumIterations",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/MaximumIterations"]], 
+      "InlineFormula"],
+     " is an option that specifies the maximum number of iterations that \
+should be tried in the escape probability \n calculations. The default is \
+10000."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["MinimumLevelPopulation",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/MinimumLevelPopulation"], 
+    RowBox[{"     ", 
+     RowBox[{
+      RowBox[{"-", "30"}], "\n", 
+      RowBox[{"1.", " ", "10"}]}]}], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["MinimumLevelPopulation",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/MinimumLevelPopulation"]], 
+      "InlineFormula"],
+     " is an option that specifies the lowest level population. ",
+     "Default",
+     " is 10^-30."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["FullOutput",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/FullOutput"], 
+    ButtonBox["True",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/True"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["FullOutput",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/FullOutput"]], 
+      "InlineFormula"],
+     " is an option that specifies what output should be produced by ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     ". FullOutput->True  is the default."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["ShowLevelPopulation",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/ShowLevelPopulation"], 
+    ButtonBox["False",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/False"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["ShowLevelPopulation",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/ShowLevelPopulation"]], 
+      "InlineFormula"],
+     " is an option for ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     " that will set the output to the level population numbers."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["ShowAntennaTemperature",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/ShowAntennaTemperature"], 
+    ButtonBox["False",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/False"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["ShowAntennaTemperature",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/ShowAntennaTemperature"]], 
+      "InlineFormula"],
+     " is an option for ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     ".  It will give the antenna temperatures as output."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["ShowExcitationTemperature",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/ShowExcitationTemperature"], 
+    ButtonBox["False",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/False"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["ShowExcitationTemperature",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/ShowExcitationTemperature"]],
+       "InlineFormula"],
+     " is an option for ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     ".  It will give the excitation temperatures as output."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["ShowOpticalDepth",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/ShowOpticalDepth"], 
+    ButtonBox["False",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/False"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["ShowOpticalDepth",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/ShowOpticalDepth"]], 
+      "InlineFormula"],
+     " is an option for ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     ".  It will give the optical depths as output."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["ShowEscapeProbability",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/ShowEscapeProbability"], 
+    "False", 
+    RowBox[{
+     ButtonBox["ShowEscapeProbability",
+      BaseStyle->"Link",
+      ButtonData->"paclet:EscapeProbability/ref/ShowEscapeProbability"], " ", 
+     "is", " ", "an", " ", "option", " ", "for", " ", 
+     RowBox[{
+      ButtonBox["EscapeProbabilityRun",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/EscapeProbabilityRun"], ".", 
+      "It"}], " ", "will", " ", "give", " ", "the", " ", "escape", " ", 
+     "probabilities", " ", "s", " ", "as", " ", 
+     RowBox[{"output", "."}]}]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["FrequencyRange",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/FrequencyRange"], 
+    RowBox[{"{", 
+     RowBox[{"0", ",", " ", "2000"}], "}"}], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["FrequencyRange",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/FrequencyRange"]], 
+      "InlineFormula"],
+     " is an option for ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     " which specifies \nwhich frequency range should be included in the \
+output."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["TableOutput",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/TableOutput"], 
+    ButtonBox["True",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/True"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["TableOutput",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/TableOutput"]], 
+      "InlineFormula"],
+     " is an option for ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     " which specifies   whether the output should be as formated table/grid."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["BackgroundTemperature",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/BackgroundTemperature"], 
+    "2.73", Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["BackgroundTemperature",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/BackgroundTemperature"]], 
+      "InlineFormula"],
+     " is an option for ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     " which specifies the temperature of the cosmic microwave background. \
+Default is 2.73 K."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["InitialPopulationTemperature",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/InitialPopulationTemperature"],
+     "2.73", Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["InitialPopulationTemperature",
+       BaseStyle->"Link",
+       ButtonData->
+        "paclet:EscapeProbability/ref/InitialPopulationTemperature"]], 
+      "InlineFormula"],
+     " is an option for ",
+     Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+     " which specifies which LTE temperature should be used for the initial \
+level population. Default is 2.73 K."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["SameTest",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/SameTest"], 
+    ButtonBox["Automatic",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/Automatic"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["SameTest",
+       BaseStyle->"Link",
+       ButtonData->"paclet:ref/SameTest"]], "InlineFormula"],
+     " is an option whose setting gives a pairwise comparison function to \
+determine whether expressions should be considered the same."
+    }], "TableText"]},
+   {Cell["      ", "TableRowIcon"], 
+    ButtonBox["CombineOrthoPara",
+     BaseStyle->"Link",
+     ButtonData->"paclet:EscapeProbability/ref/CombineOrthoPara"], 
+    ButtonBox["True",
+     BaseStyle->"Link",
+     ButtonData->"paclet:ref/True"], Cell[TextData[{
+     Cell[BoxData[
+      ButtonBox["CombineOrthoPara",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/CombineOrthoPara"]], 
+      "InlineFormula"],
+     " is an option which specifies whether to combine seperate collision \
+rates for ortho- and para ",
+     Cell[BoxData[
+      SubscriptBox["H", "2"]], "InlineFormula"],
+     " into a single collision rate or not."
+    }], "TableText"]}
+  }]], "3ColumnTableMod",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
+   "Rows" -> {
+    None, None, None, None, None, None, None, None, None, None, None, None, 
+     None, None, {None}}, "RowsIndexed" -> {}},
+ GridBoxDividers->{
+  "Rows" -> {{
+     True, True, True, True, True, True, True, True, True, True, True, True, 
+      True, True, True, True}}}},
+ CellID->105759801]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->465605168],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection",
+ CellID->94179877],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EscapeProbability`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->233470092],
+
+Cell[TextData[{
+ Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+ " uses input data files in the form of the LAMBDA database. The following \
+example contains the 4 lowest transitions of para water."
+}], "ExampleText",
+ CellID->76706148],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"file", "=", 
+   RowBox[{
+   "$UserBaseDirectory", "<>", 
+    "\"\<\\\\Applications\\\\EscapeProbability\\\\EscapeProbability\\\\\
+LambdaDataFiles\\\\p-h2o@lowT.dat\>\""}]}], ";"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->361835800],
+
+Cell[TextData[{
+ "We need to provide the total column density of the wanted species (in ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["cm", 
+    RowBox[{"-", "2"}]], ")"}]], "InlineFormula"],
+ ", the FWHM (full width half maximum) line width in km/sec, the density of \
+the collisional partner (in ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["cm", 
+    RowBox[{"-", "3"}]], ")"}]], "InlineFormula"],
+ ", and the kinetic gas temperature."
+}], "ExampleText",
+ CellID->161724614],
+
+Cell["\<\
+We wrap the function into style to fit the output table in the line.\
+\>", "ExampleText",
+ CellID->378248940],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"file", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "14"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50."}], "]"}], ",", "7"}], 
+  "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->2563574],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "178"}],
+  SequenceForm["Number of Iterations:", 178],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[39]:=",
+ CellID->127730889],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_1\"\>", "\<\"0_0_0\"\>", "53.4`", "1113.34306`", 
+      "269.27230857306466`", "5.971539431412816`", "8.584594320517889`", 
+      "0.006947015097312485`", "0.03697548785544571`", 
+      "6.571465446246772`*^-7"},
+     {"\<\"2_0_2\"\>", "\<\"1_1_1\"\>", "100.8`", "987.9267`", 
+      "303.45617341853404`", "15.65503752233175`", "0.0008027561164809927`", 
+      "0.00193435830984603`", "0.010295622104155496`", 
+      "1.278462681280038`*^-7"},
+     {"\<\"2_1_1\"\>", "\<\"2_0_2\"\>", "136.9`", "752.03323`", 
+      "398.6425653025998`", "14.18555522445774`", "0.0001031918662508487`", 
+      "0.0003173806881538846`", "0.001689258712699051`", 
+      "9.252701650090408`*^-9"},
+     {"\<\"2_2_0\"\>", "\<\"2_1_1\"\>", "195.9`", "1228.78902`", 
+      "243.9739053006838`", "12.67182719651471`", "5.2901944967562735`*^-6", 
+      "3.0001643348666444`*^-6", "0.000015968374672327716`", 
+      "3.8155220776580767`*^-10"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->7]], "Output",
+ ImageSize->{550, 111},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->562195886]
+}, Open  ]],
+
+Cell["\<\
+The number of iterations to converge depends on the species and on the given \
+parameters. CO for instance converges much faster since the given density is \
+comparable to the critical density of the lower transitions. Hence, large \
+parts of the level population vector are dominated by collisions which \
+ensures quick convergence.  \
+\>", "ExampleText",
+ CellID->37093321],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"file2", "=", 
+   RowBox[{
+   "$UserBaseDirectory", "<>", 
+    "\"\<\\\\Applications\\\\EscapeProbability\\\\EscapeProbability\\\\\
+LambdaDataFiles\\\\co.dat\>\""}]}], ";"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->119651767],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"file", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "14"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50."}], "]"}], ",", "7"}], 
+  "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->342732254],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "7"}],
+  SequenceForm["Number of Iterations:", 7],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[44]:=",
+ CellID->843898732],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "5.53`", "115.2712018`", "2600.7576161143143`", 
+      "520.7242913785473`", "0.00006055323742861938`", 
+      "0.031312538967805344`", "0.16666098865614395`", 
+      "3.287440422407559`*^-9"},
+     {"2", "1", "16.6`", "230.538`", "1300.4036471210823`", 
+      "33.66650144572843`", "0.003173965578765109`", "0.08949487862638093`", 
+      "0.47633649148891255`", "7.516180999294091`*^-8"},
+     {"3", "2", "33.19`", "345.7959899`", "866.9633678710281`", 
+      "19.878491570704153`", "0.0069224342540099145`", "0.08750054044621677`",
+       "0.46572162652498883`", "2.4800291218911125`*^-7"},
+     {"4", "3", "55.32`", "461.0407682`", "650.2515106645617`", 
+      "17.809647192334744`", "0.0050237855553420625`", "0.0449688807670897`", 
+      "0.23934686788283496`", "3.0206898867248485`*^-7"},
+     {"5", "4", "82.97`", "576.2679305`", "520.2310247247049`", 
+      "18.217822555216674`", "0.001986235733827386`", "0.015397630011770459`",
+       "0.08195388573764828`", "2.0197610623670452`*^-7"},
+     {"6", "5", "116.16`", "691.4730763`", "433.5562240603178`", 
+      "19.653394348917534`", "0.0005440015905905615`", 
+      "0.004090980553946497`", "0.021774243998380235`", 
+      "9.27116668809624`*^-8"},
+     {"7", "6", "154.87`", "806.651806`", "371.6503871560166`", 
+      "21.560460778697557`", "0.00011968850212028176`", 
+      "0.0009224304743435767`", "0.004909636199693688`", 
+      "3.3186867076797233`*^-8"},
+     {"8", "7", "199.11`", "921.7997`", "325.22516117113076`", 
+      "23.607791393440888`", "0.00002298267259063897`", 
+      "0.00018439515339607559`", "0.0009814432039506125`", 
+      "9.900018249709785`*^-9"},
+     {"9", "8", "248.88`", "1036.912393`", "289.1203326566857`", 
+      "25.421009432887868`", "4.0130298307789505`*^-6", 
+      "0.0000328338445170549`", "0.00017475813744202473`", 
+      "2.509156663194202`*^-9"},
+     {"10", "9", "304.16`", "1151.985452`", "260.23979337544625`", 
+      "27.041591839909728`", "6.354092764996201`*^-7", 
+      "5.223514158923416`*^-6", "0.000027802154110869884`", 
+      "5.473667101262605`*^-10"},
+     {"11", "10", "364.97`", "1267.014486`", "236.61328209944398`", 
+      "28.427218734187875`", "9.132977514529838`*^-8", 
+      "7.413251246133613`*^-7", "3.945702975754616`*^-6", 
+      "1.0335479989499422`*^-10"},
+     {"12", "11", "431.29`", "1381.995105`", "216.92729222799963`", 
+      "30.01282455217885`", "1.1779872338234673`*^-8", 
+      "9.628141835847854`*^-8", "5.124578492130021`*^-7", 
+      "1.7419690565060943`*^-11"},
+     {"13", "12", "503.13`", "1496.922909`", "200.27247508709218`", 
+      "32.12701290417034`", "1.3971654716830525`*^-9", 
+      "1.2010353730538633`*^-8", "6.392510773079188`*^-8", 
+      "2.761413134218594`*^-12"},
+     {"14", "13", "580.49`", "1611.793518`", "185.99929373831867`", 
+      "32.569079020882484`", "1.6242876421445814`*^-10", 
+      "1.288436095385879`*^-9", "6.857701117691342`*^-9", 
+      "3.6979961853309236`*^-13"},
+     {"15", "14", "663.35`", "1726.6025057`", "173.63142646341643`", 
+      "32.30170695253168`", "1.6372522498089`*^-11", 
+      "1.1301389045919285`*^-10", "6.01516431969054`*^-10", 
+      "3.987377210461881`*^-14"},
+     {"16", "15", "751.72`", "1841.345506`", "162.81162607621997`", 
+      "34.30116525121928`", "1.3354514946064908`*^-12", 
+      "9.714525012915292`*^-12", "5.170555938124165`*^-11", 
+      "4.1572430559254955`*^-15"},
+     {"17", "16", "845.59`", "1956.018139`", "153.26670546790876`", 
+      "34.60514412079331`", "1.0827521846650731`*^-13", 
+      "7.222072239997504`*^-13", "3.843947949738672`*^-12", 
+      "3.704726167623237`*^-16"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->7]], "Output",
+ ImageSize->{541, 358},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->751293543]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Scope",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(4)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1293636265],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Temperature Range",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->438807726],
+
+Cell["\<\
+The collision rates are provided on a temperature grid. To compute the \
+collision rates for the given kinetic temperature the rates are interpolated. \
+A warning is issued when the recommended temperature range is left. \
+\>", "ExampleText",
+ CellID->46890917],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EscapeProbability`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->17913139],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"file", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "14"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "200."}], "]"}], ",", "7"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->183267014],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"InterpolatingFunction", "::", "\<\"dmval\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Input value \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\({200.`}\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" lies outside the range of data in \
+the interpolating function. Extrapolation will be used.\\\\\\\"\\\", \\\"MT\\\
+\"]\\) \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/InterpolatingFunction/dmval\\\", \
+ButtonNote -> \\\"InterpolatingFunction::dmval\\\"]\\)\"\>"}]], "Message", \
+"MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->394661657],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"InterpolatingFunction", "::", "\<\"dmval\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Input value \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\({200.`}\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" lies outside the range of data in \
+the interpolating function. Extrapolation will be used.\\\\\\\"\\\", \\\"MT\\\
+\"]\\) \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/InterpolatingFunction/dmval\\\", \
+ButtonNote -> \\\"InterpolatingFunction::dmval\\\"]\\)\"\>"}]], "Message", \
+"MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->19588632],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"InterpolatingFunction", "::", "\<\"dmval\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Input value \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\({200.`}\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" lies outside the range of data in \
+the interpolating function. Extrapolation will be used.\\\\\\\"\\\", \\\"MT\\\
+\"]\\) \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/InterpolatingFunction/dmval\\\", \
+ButtonNote -> \\\"InterpolatingFunction::dmval\\\"]\\)\"\>"}]], "Message", \
+"MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->51193841],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stop\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Further output of \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(InterpolatingFunction :: \
+\\\"dmval\\\"\\), \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" will \
+be suppressed during this calculation.\\\\\\\"\\\", \\\"MT\\\"]\\) \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->234711710],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "174"}],
+  SequenceForm["Number of Iterations:", 174],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[52]:=",
+ CellID->458480799],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_1\"\>", "\<\"0_0_0\"\>", "53.4`", "1113.34306`", 
+      "269.27230857306466`", "6.5461927693525945`", "8.583259505659967`", 
+      "0.015240473751797075`", "0.08111742154393994`", 
+      "1.4416586870972854`*^-6"},
+     {"\<\"2_0_2\"\>", "\<\"1_1_1\"\>", "100.8`", "987.9267`", 
+      "303.45617341853404`", "5.6398778191880945`", "0.0018499137836014686`", 
+      "0.000019574504527921316`", "0.00010418530034986121`", 
+      "1.2937248190324406`*^-9"},
+     {"\<\"2_1_1\"\>", "\<\"2_0_2\"\>", "136.9`", "752.03323`", 
+      "398.6425653025998`", 
+      RowBox[{"-", "11.0276776272168`"}], 
+      RowBox[{"-", "0.000028787211839729458`"}], "0.0010799283341891637`", 
+      "0.005747918558721824`", "3.1483499320181175`*^-8"},
+     {"\<\"2_2_0\"\>", "\<\"2_1_1\"\>", "195.9`", "1228.78902`", 
+      "243.9739053006838`", "23.20894491364702`", "0.000016740230266594277`", 
+      "0.00008443730881249313`", "0.00044941757615449474`", 
+      "1.0738492295503565`*^-8"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->7]], "Output",
+ ImageSize->{542, 111},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->631413682]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Ortho to Para ratio",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(2)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->29128282],
+
+Cell[TextData[{
+ "For some species collision rates are provided for ortho- and ",
+ Cell[BoxData[
+  RowBox[{"para", "-", 
+   SubscriptBox["H", "2"]}]], "InlineFormula"],
+ " separately. Both rates are combined according to the proper ortho/para \
+ratio for the given temperature. This is especially the case for CO."
+}], "ExampleText",
+ CellID->63245305],
+
+Cell["\<\
+The following function is used to combine ortho and para rates:\
+\>", "ExampleText",
+ CellID->20275293],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"combineOrthoPara", "[", 
+   RowBox[{"orthoRate_", ",", "paraRate_", ",", "temperature_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"op1", ",", "op2", ",", 
+      RowBox[{"T1", "=", "18.73"}], ",", 
+      RowBox[{"T2", "=", "155.2"}]}], "}"}], ",", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{
+      "calculate", " ", "a", " ", "combined", " ", "collision", " ", "rates", 
+       " ", "for", " ", "cases", " ", "where", " ", "ortho", " ", "and", " ", 
+       "para"}], "-", 
+      RowBox[{
+      "H2", " ", "collision", " ", "rates", " ", "are", " ", "given"}]}], 
+     "*)"}], 
+    RowBox[{
+     RowBox[{"Which", "[", 
+      RowBox[{
+       RowBox[{"temperature", "<", "T1"}], ",", 
+       RowBox[{"op1", "=", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "3"}]}]}], ",", 
+       RowBox[{"T1", "\[LessEqual]", "temperature", "\[LessEqual]", "T2"}], 
+       ",", 
+       RowBox[{"op1", "=", 
+        RowBox[{"9.0", " ", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", "170.5"}], "/", "temperature"}], "]"}]}]}], ",", 
+       "True", ",", 
+       RowBox[{"op1", "=", "3.0"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"op1", "=", 
+      RowBox[{"op1", "/", 
+       RowBox[{"(", 
+        RowBox[{"1", "+", "op1"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"op2", "=", 
+      RowBox[{"1.0", "-", "op1"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"op2", " ", "paraRate"}], "+", 
+      RowBox[{"op1", " ", "orthoRate"}]}]}]}], "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1158342],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"combineOrthoPara", "[", 
+    RowBox[{"1", ",", "0", ",", "T"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"T", ",", "15", ",", "150"}], "}"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", "Automatic"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->2843165],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {Hue[0.67, 0.6, 0.6], LineBox[CompressedData["
+1:eJxF0Xk41AsXB3BZKpGtbnVJttB1myyDIdOcY82SJUv27RdChRklSpYbUZE1
+15adSJYsCXWV7UZRkmKKEAYpSYoWvfP+0/3jPOf5PM/5Puc8z5Ei/C09OTk4
+OLLZ9f8eJMtw4uDYg9nvC+XFXSwgPihzjaKV0i+7Mr89cy5R/uUTKBdiwqny
+yxdLLMQ1Xf7zlSHPecW4/5zHf+a+XNN/PmzPEVTUoYJNwzuls+5YgFxJtIJ0
+nwo2ECIkB9GDUA6JKeLTKmj+yjAqj3kQbjGKPTdvIeM18XWFj/2sIKRFQTRZ
+iowFJjn3Nw5aAZW/uleQREZ9u02rnLrWcL+4icKnR8bL/HfqZHfYwKPBx7yc
+DDI+0J1T6Zs5BAmyNv+En2XPT3+lmrrbgiWDyfgRS8Y9D/cllTBt4QXf5Mvl
+XDJGbHQJ5O63g3Ha14r5HjKyFLktl5gOUHwpnDg+RMZ4v58P3rg7gvcg99a3
+E2SsdEpIfj7rCO/oghFT38iopOU59IrTGZaLdloO/6GKY3a3Zz6buIIAn/nn
+7mhVLJheEHWVIeCHa2NjdKIqbuG9Kh3KIGCuTuYsZqmiQpHGYnYrAV0uy1y3
+qlWxJK9R4aPnYYiqyRfOf6mKmpHD5TsbPeCr/afdp5TVMHH/GDM45QjMVLp8
+UKaq4a6FLQrdi0dgkKurds5ADd0EhGzQxhvqK67uJZzUkGlJii0U84GANfsN
+TWPUUOmzhUf4LV+YKs04LDOshmelU/2c5Pxg4AeX/AhLDbMic58tZvhBu6Xf
+bPpHNTRPH5TvE/CH/O86dIH16lhdWNLj+d0fnCzmwlZU1HHgdActfTEAnn6h
+ZT6OVcdrz/T2XlxlQIvBxJMzqhR026Ql8nv2KbDjH63hAAqWHe8rLp49BR/6
+XqZGG1FQQ1yg7J1mMEg699sluFCwSlQov5YZDBGBraMFsRTcL1FaoCR7GnTy
+8j50vaLgbEnTm1sjocD0zH5qxqKgszsvp5fmWWD8mV7Xv0BBnobv7SOpZ6Hg
+VkLw8FoN1D4qdV3JLAy4esI4FpQ0MPJH3NDx7nBoX3ES2hatgS9KB9fznIwE
+pxa7j9kJGjjt+pr+qjQSPkVZP5PK1MDxv6ocJIYjYafQgfQ/qzTQbCOPwYzB
+XxAtpyUJQxrIu+NRTrrEOTCw+l3Ji6SJV8aYAXcmo6DrxoB53YAmMobsmmv/
+jYW1dc3+4mOaKNWydMhG8ALoNOcnnJ/TRFf7UNNzthegqev4YzuuvcibM/w5
+euYC3JjiMf+htBcrNCwalTdfgsuS6mYGcXtxNYc2cyYqHqxT0w4M6mgh5VOv
++m2fJEjMCj2mbaaFJxa5fCrSkqCngIi7bq+FdWn5Ce/bksDg5p5HoQFaaGp/
+96CNRDJQejtNpHK0MObntprbQ8kguv6Lse+KFpa+lApcckqF12dsjb5XUTFo
+l3ybRM7fYHhJOrigiYpnKvpEFPr+hurMdyWGHVRM72V2hXCnQ0TjOe4rTCoy
+3mvWzBxNB+kvVS0knn1IOXZaZSMtAzwY69VdHfbhQ5n8Lv/5TJj1bpRu5aZh
+Q0188KfzOWAZHHXQW5CG0jLyS+2tOdAcYx4hIErD72LDyq9WcyCuZHLYQZGG
+vBq0byOncoE0IZyxaE/DwkFNkSz1PAhw9RWUraKhJn1hW5pKPny2EfseYw+o
+1+14dYt+IXBee+It4glIBF2jHPAtBMHl6IHsAMBDxVtVyxMKYVfmh8qbMYC7
+499SJ5mF4DjS4f6yHrD5oOW4YWARuJFvH97Ki9i3ZR4flBdDezPR5euJeFu9
+SchbqxTiHjWkCu/Qxqm88jVeTyvgCMmR2SyjjbxCOjOtHJWgc3lVwusPbVQl
+rzmnp1gJy+b65U2q2shlcDy8Pq4SPPqf3j9soo1yRZsDDxhVAZX57n19sDZ2
+hhmp5XhUw1uWjJFDvzYaE7EnOxdugjFX4o+CWB1cTSlSsKfVwwXg1X3O1EXh
+G4RyCPcdMKvu1k8y0kfZF/TtDhtaIUWOJPs+1wCXQ9tsEtZ1Ak/N3eeX5/fj
+J5KHs8rGbvhBT9NvcDTCK783RZvSeyGIIpQUWWWMetUymm20Pjih/DSjX+IA
+Mu8Wjau790Mutp7wuWCK15bJe3w8BsDExmp3PtMMF7nnGfQ9LwDM0yyUdlqg
+PtXYI4N7CNKDrFZGey3wtXTQSlo+E1Rv10UMxBxE1rO4kjm9V+DFTVo4us8S
+O9dkLne3D4N9/5J5/5QldkebdvFueg0Jd4j4sBwrdKtrMXBTGYXoXZKNX42s
+kd5WtSTVMQrCuZ96tn20xqwGvqCTJmMwqnj8/ulSGzRfzRun9o9BgK56YYXl
+IZQ3LfcxNhoHHXrh4Z18tmjb1mAae28cysvkN+67Z4vrAncXnyG9gWce34vk
+fOzwtxJjf/+4N4B7T4pZS9rj7vOu3A1zb+BYMi3C8qE9UoL8PXpwAhSXdvR+
+ZDhgYsglMerlCVBjFH59vssRz07nkrYNT8A3evBvcU8dsczqSyBZehK44xYE
+oi86YelXG5M870no2dX82UzdGUeana3CSiaB9CTr36YRZzx/L1y+8/UkPEmS
+POV7xQUPHXhM8xGdAvLzpc1vwRX1xgQ/bDObgiFV/6SqZVd8OES/ueHcFPA9
+Dv+2wdYNF+cDT8rWTQGvfkBxSbkbSv27li/59RT88aCG5rHOHdeKr3u4j58F
+ZXHi5huc3dFF4sa1ATILTjzfZL3mpjvGyXV099ixwJ3kZCjKTyBVlfvltzAW
+VHY8qhVzJ9Aw2751No8FAkFTen8TBOpK9jWF5bPAT47juYgHgSM8A6kiBSzY
+E0Ne5j1CoMOnoneahey8YSZ1+RiB2UX25JhiFlQ8PNLxLJjAIKvKLduvs+BG
+H+eL+EQCf16SCVGsZQH/X9u9eZPZ+2RHa1vYPqaivhKVQmCpulafeR0Ldqf4
+iIWmETit+b7Wv54F5dZPXH2zCVTwUhatbGDB9RdXpw1KCVTq9KfL3mHBhtiG
+kNYyAg1ergzVsu2r0beBVk5g2WKJrM5dFihkcJPUKgmcn73o5fIPO+9wlC5T
+R2BaiEvClXvsPF80Z249+37dSWGZ++x8c06KaAOBW+HJqWq2FbY/rRduIvC9
+wuK77lYWXHz01iC+mUAfPa1V2zYWzIbyDK6/S2DG2LqPE2wbkyR8ov4hcE7Q
+vYvezv7HsMbXny0EcjDNolbZ/h8RHoFV
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{
+    FormBox["T", TraditionalForm], 
+    FormBox["\"\"", TraditionalForm]},
+  AxesOrigin->{20., 0},
+  PlotRange->{{15, 150}, {0., 0.7427971443310639}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ ImageSize->{229, 162},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->518732]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->218610037],
+
+Cell[TextData[{
+ "The function ",
+ Cell[BoxData[
+  ButtonBox["ShowCollisionPartners",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/ShowCollisionPartners"]], 
+  "InlineFormula"],
+ " can be used to display which collision partners are present in the LAMBDA \
+database. A warning is issued if ortho- and ",
+ Cell[BoxData[
+  RowBox[{"para", "-", 
+   SubscriptBox["H", "2"]}]], "InlineFormula"],
+ " is found. "
+}], "ExampleText",
+ CellID->86141866],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EscapeProbability`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->15629507],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ShowCollisionPartners", "[", "\"\<CO\>\"", "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->260617986],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "::", "\<\"combop\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"If ortho- and para-H2 is given \
+seperately as collision partners   the default behavior is to combine both \
+into a single collision partner. In that case only one   H2 density needs to \
+be given.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->128015747],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "\<\"CO-pH2\"\>", ",", "\<\"from\"\>", ",", "\<\"Yang\"\>", 
+     ",", "\<\"et\"\>", ",", "\<\"al.\"\>", ",", "\<\"(2010)\"\>"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "3", ",", "\<\"CO-oH2\"\>", ",", "\<\"from\"\>", ",", "\<\"Yang\"\>", 
+     ",", "\<\"et\"\>", ",", "\<\"al.\"\>", ",", "\<\"(2010).\"\>"}], "}"}]}],
+   "}"}]], "Output",
+ ImageSize->{368, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->138900862]
+}, Open  ]],
+
+Cell[TextData[{
+ "Collisions with ortho- and ",
+ Cell[BoxData[
+  RowBox[{"para", "-", 
+   SubscriptBox["H", "2"]}]], "InlineFormula"],
+ " are combined into a single collision. ",
+ StyleBox["This means, you don't have to give densities for para- and ", 
+  "ExampleText"],
+ Cell[BoxData[
+  RowBox[{"ortho", "-", 
+   SubscriptBox["H", "2"]}]], "InlineFormula"],
+ " separately,"
+}], "ExampleText",
+ CellID->99952695],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<CO\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "15"]}], ",", "5", ",", 
+     SuperscriptBox["10", "4"], ",", "50.", ",", 
+     RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}]}], "]"}], ",", "8"}], 
+  "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->328949952],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "9"}],
+  SequenceForm["Number of Iterations:", 9],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[30]:=",
+ CellID->53336021],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "5.53`", "115.2712018`", "2600.7576161143143`", 
+      "489.795099356356`", "0.000643041626356491`", "0.3125427177159807`", 
+      "1.6635086150433074`", "3.2813230667913594`*^-8"},
+     {"2", "1", "16.6`", "230.538`", "1300.4036471210823`", 
+      "33.69529389307387`", "0.031670212080039846`", "0.8812834544630596`", 
+      "4.690631186379635`", "7.401413418393023`*^-7"},
+     {"3", "2", "33.19`", "345.7959899`", "866.9633678710281`", 
+      "20.02707118011626`", "0.06881288709455673`", "0.8527950708861121`", 
+      "4.539001764791332`", "2.4170783403363508`*^-6"},
+     {"4", "3", "55.32`", "461.0407682`", "650.2515106645617`", 
+      "17.845797265888173`", "0.050438358386925355`", "0.4429598624453654`", 
+      "2.3576538678654577`", "2.9754896139042624`*^-6"},
+     {"5", "4", "82.97`", "576.2679305`", "520.2310247247049`", 
+      "18.205249526567307`", "0.02001823141536479`", "0.1535879959848098`", 
+      "0.8174721086291502`", "2.0146675410434547`*^-6"},
+     {"6", "5", "116.16`", "691.4730763`", "433.5562240603178`", 
+      "19.638392905097632`", "0.005476952094269203`", "0.04102121138786976`", 
+      "0.21833539761193682`", "9.296413989494265`*^-7"},
+     {"7", "6", "154.87`", "806.651806`", "371.6503871560166`", 
+      "21.55340301568386`", "0.0012032475136564014`", "0.009261786107493963`",
+       "0.04929585655713662`", "3.3321716160977975`*^-7"},
+     {"8", "7", "199.11`", "921.7997`", "325.22516117113076`", 
+      "23.606760346233145`", "0.00023088905604034204`", 
+      "0.0018521032051059762`", "0.00985781930917656`", 
+      "9.943783875658733`*^-8"},
+     {"9", "8", "248.88`", "1036.912393`", "289.1203326566857`", 
+      "25.420998947539236`", "0.00004031190040886551`", 
+      "0.00032981798277841213`", "0.0017554562133380988`", 
+      "2.5204632637517083`*^-8"},
+     {"10", "9", "304.16`", "1151.985452`", "260.23979337544625`", 
+      "27.042868348157235`", "6.38274941565731`*^-6", 
+      "0.000052476385835121994`", "0.00027930556360743685`", 
+      "5.4989468392303745`*^-9"},
+     {"11", "10", "364.97`", "1267.014486`", "236.61328209944398`", 
+      "28.428016681868066`", "9.175110341236903`*^-7", 
+      "7.447954308120781`*^-6", "0.000039641736804972864`", 
+      "1.0383862647908552`*^-9"},
+     {"12", "11", "431.29`", "1381.995105`", "216.92729222799963`", 
+      "30.013770464499046`", "1.1834919822477887`*^-7", 
+      "9.67389047692475`*^-7", "5.148928206343199`*^-6", 
+      "1.7502461174896002`*^-10"},
+     {"13", "12", "503.13`", "1496.922909`", "200.27247508709218`", 
+      "32.12692927312755`", "1.4038052358600588`*^-8", 
+      "1.206735174402792`*^-7", "6.422847965758861`*^-7", 
+      "2.7745180823829`*^-11"},
+     {"14", "13", "580.49`", "1611.793518`", "185.99929373831867`", 
+      "32.56910669971373`", "1.6319957869563823`*^-9", 
+      "1.29455351456409`*^-8", "6.89026108126737`*^-8", 
+      "3.715554054802377`*^-12"},
+     {"15", "14", "663.35`", "1726.6025057`", "173.63142646341643`", 
+      "32.302431601173375`", "1.6450176935708095`*^-10", 
+      "1.1355664583792033`*^-9", "6.0440524747233106`*^-9", 
+      "4.006526807199062`*^-13"},
+     {"16", "15", "751.72`", "1841.345506`", "162.81162607621997`", 
+      "34.30104510888434`", "1.3418701545847467`*^-11", 
+      "9.760866226589287`*^-11", "5.195221049102149`*^-10", 
+      "4.177074358896382`*^-14"},
+     {"17", "16", "845.59`", "1956.018139`", "153.26670546790876`", 
+      "34.60532217693012`", "1.0879445761254088`*^-12", 
+      "7.258476294931193`*^-12", "3.8633240079771285`*^-11", 
+      "3.723400455339927`*^-15"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->8]], "Output",
+ ImageSize->{543, 678},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->261901686]
+}, Open  ]]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "LAMBDA input",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->351075886],
+
+Cell["\<\
+Instead of local files we can directly import the data files from the Leiden \
+database.\
+\>", "ExampleText",
+ CellID->184049945],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EscapeProbability`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->13085077],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{
+    "\"\<http://www.strw.leidenuniv.nl/~moldata/datafiles/hco+@xpol.dat\>\"", 
+     ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "14"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50."}], "]"}], ",", "7"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->517365320],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "181"}],
+  SequenceForm["Number of Iterations:", 181],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[93]:=",
+ CellID->40855191],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "4.28`", "89.188523`", "3361.334462282776`", 
+      "6.725352851200349`", "9.263543187454943`", "3.682892842754145`", 
+      "19.60219715555894`", "1.790973854603954`*^-7"},
+     {"2", "1", "12.84`", "178.375065`", "1680.685896316282`", 
+      "5.520572576164798`", "16.405435481848674`", "1.9155257931148582`", 
+      "10.195386033853834`", "7.452091081146302`*^-7"},
+     {"3", "2", "25.68`", "267.557619`", "1120.4781127910994`", 
+      "4.781638493271331`", "6.17326783760529`", "0.8205764083703107`", 
+      "4.367517933550979`", "1.0773061990704653`*^-6"},
+     {"4", "3", "42.8`", "356.734288`", "840.380266446381`", 
+      "6.397826644145259`", "0.5608485349698755`", "0.5294078949370017`", 
+      "2.817773520802192`", "1.6474219847525776`*^-6"},
+     {"5", "4", "64.2`", "445.902996`", "672.3266241521285`", 
+      "13.028796276100147`", "0.0418044665215031`", "0.20986218001112908`", 
+      "1.1169914531092346`", "1.275353227503032`*^-6"},
+     {"6", "5", "89.88`", "535.0617755`", "560.2950345683964`", 
+      "18.50589997969193`", "0.009030986621299619`", "0.07680031837333202`", 
+      "0.40876969454205975`", "8.064108180388666`*^-7"},
+     {"7", "6", "119.84`", "624.2086733`", "480.2760179782334`", 
+      "22.132712181402514`", "0.0025997738169921776`", 
+      "0.027090093939421925`", "0.14418702499257322`", 
+      "4.5162012732306086`*^-7"},
+     {"8", "7", "154.07`", "713.34209`", "420.26463908781835`", 
+      "24.350325903332305`", "0.0007813321068988132`", "0.00868308731716079`",
+       "0.04621573224558831`", "2.1604447830592912`*^-7"},
+     {"9", "8", "192.58`", "802.458329`", "373.59255324023184`", 
+      "25.042523079471316`", "0.0002241202042604528`", 
+      "0.002361473187262769`", "0.012568941039206088`", 
+      "8.364328933713167`*^-8"},
+     {"10", "9", "235.37`", "891.5579242`", "336.2568464286888`", 
+      "26.81916724494171`", "0.00005431545759534878`", 
+      "0.0005912819036712362`", "0.003147097932290155`", 
+      "2.8722173687143305`*^-8"},
+     {"11", "10", "282.43`", "980.6374`", "305.7118319166697`", 
+      "30.12419320355298`", "0.00001201263602570987`", 
+      "0.00014996781465998914`", "0.0007982036935277923`", 
+      "9.693996236363848`*^-9"},
+     {"12", "11", "333.77`", "1069.6938`", "280.26006694626074`", 
+      "33.61936127406071`", "2.7216222813122724`*^-6", 
+      "0.00003876386654114869`", "0.00020632067966526395`", 
+      "3.2522284632185137`*^-9"},
+     {"13", "12", "389.38`", "1158.7276478`", "258.7255569237484`", 
+      "35.0709242218462`", "6.504973140982238`*^-7", "9.317370164734826`*^-6",
+       "0.00004959170270180112`", "9.936073756463412`*^-10"},
+     {"14", "13", "449.26`", "1247.7348251`", "240.269366510607`", 
+      "35.66251244018856`", "1.4678257548038358`*^-7", 
+      "2.0155655770435042`*^-6", "0.000010727847783814053`", 
+      "2.6837521978329126`*^-10"},
+     {"15", "14", "513.41`", "1336.7138728`", "224.27571232729713`", 
+      "36.135076550105246`", "2.9951718201729696`*^-8", 
+      "3.91952112201673`*^-7", "2.0861651171934047`*^-6", 
+      "6.41691430312322`*^-11"},
+     {"16", "15", "581.83`", "1425.6627131`", "210.28287633904876`", 
+      "37.335115541901715`", "5.473769245905919`*^-9", 
+      "7.133425514934939`*^-8", "3.7967657303241217`*^-7", 
+      "1.4168567441144167`*^-11"},
+     {"17", "16", "654.52`", "1514.5792539`", "197.937780560537`", 
+      "36.484754919364825`", "9.567518998305496`*^-10", 
+      "1.0982505667973`*^-8", "5.84543864177863`*^-8", 
+      "2.6154951852144793`*^-12"},
+     {"18", "17", "731.48`", "1603.4613882`", "186.96580922134862`", 
+      "39.6386860728213`", "1.3699802848047938`*^-10", 
+      "1.7663964903791191`*^-9", "9.401645320042862`*^-9", 
+      "4.991608299919049`*^-13"},
+     {"19", "18", "812.69`", "1692.3069926`", "177.15016088151333`", 
+      "40.345669881020186`", "2.099408055540609`*^-11", 
+      "2.628839088689913`*^-10", "1.3991996049552064`*^-9", 
+      "8.733311262773334`*^-14"},
+     {"20", "19", "898.17`", "1781.1139268`", "168.3173947994532`", 
+      "34.05372152396567`", "3.130447742782854`*^-12", 
+      "2.366675625441414`*^-11", "1.2596631016411928`*^-10", 
+      "9.166250803717954`*^-15"},
+     {"21", "20", "987.91`", "1869.8800326`", "160.32710696586753`", 
+      "40.5921737716055`", "2.5886945056089855`*^-13", 
+      "2.8603746154448806`*^-12", "1.522434389070538`*^-11", 
+      "1.2818568669676071`*^-15"},
+     {"22", "21", "1081.91`", "1958.6031327`", "153.0644217783549`", 
+      "40.65185579641055`", "3.0077957770208325`*^-14", 
+      "3.1087446564892944`*^-13", "1.6546293434164271`*^-12", 
+      "1.601039935331174`*^-16"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->7]], "Output",
+ ImageSize->{546, 453},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->71123482]
+}, Open  ]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Options",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(14)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Geometry",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell["The default \"Sphere\" calculates a uniform sphere.", "ExampleText",
+ CellID->156894068],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"file", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "50.", ",", 
+   RowBox[{"ShowAntennaTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->333266038],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "1558"}],
+  SequenceForm["Number of Iterations:", 1558],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[96]:=",
+ CellID->41024438],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.6344234014164467`", ",", "0.21160417729531986`", ",", 
+   "0.0007274028424298994`", ",", "0.051376305350528596`", ",", 
+   "0.0005341789376214935`"}], "}"}]], "Output",
+ ImageSize->{501, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->58430302]
+}, Open  ]],
+
+Cell["\<\
+\"LVG\" uses the Sobolev approximation to compute an expanding sphere.\
+\>", "ExampleText",
+ CellID->31000899],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"file", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "50.", ",", 
+   RowBox[{"Geometry", "\[Rule]", "\"\<LVG\>\""}], ",", 
+   RowBox[{"ShowAntennaTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->64676816],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "2203"}],
+  SequenceForm["Number of Iterations:", 2203],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[97]:=",
+ CellID->678343574],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.924341582086939`", ",", "0.24554588205077554`", ",", 
+   "0.0008524339915180073`", ",", "0.06074290631508245`", ",", 
+   "0.0007735528212684306`"}], "}"}]], "Output",
+ ImageSize->{501, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->2586754]
+}, Open  ]],
+
+Cell["\<\
+\"PlaneParallel\" assumes an semi-infinite plane-parallel slab of gas.\
+\>", "ExampleText",
+ CellID->116677129],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"file", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "50.", ",", 
+   RowBox[{"Geometry", "\[Rule]", "\"\<PlaneParallel\>\""}], ",", 
+   RowBox[{"ShowAntennaTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->139603311],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "5209"}],
+  SequenceForm["Number of Iterations:", 5209],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[98]:=",
+ CellID->177569116],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2.400255566556288`", ",", "0.8411406553037233`", ",", 
+   "0.0019630527162824694`", ",", "0.12815430331827726`", ",", 
+   "0.003780831706666775`"}], "}"}]], "Output",
+ ImageSize->{465, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->65071858]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "MaximumIterations",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell["You can provide a maximum number of allowed iterations.", "ExampleText",
+ CellID->1096877],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<o-h2o@lowT\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "15"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50.", ",", 
+     RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}]}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->106396552],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "856"}],
+  SequenceForm["Number of Iterations:", 856],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[12]:=",
+ CellID->49545309],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_0\"\>", "\<\"1_0_1\"\>", "61.`", "556.93607`", 
+      "538.2888129332331`", "5.906947574464986`", "42.45262416350779`", 
+      "0.29128656912252554`", "1.5503727641546423`", "3.449160928409387`*^-6"},
+     {"\<\"2_1_2\"\>", "\<\"1_0_1\"\>", "114.4`", "1669.90496`", 
+      "179.5266576128979`", "8.726167832692427`", "42.9141632345002`", 
+      "0.008227541246994659`", "0.043791088287129076`", 
+      "2.626166735819118`*^-6"},
+     {"\<\"2_2_1\"\>", "\<\"2_1_2\"\>", "194.1`", "1661.00802`", 
+      "180.4882651921211`", "9.949015554811282`", "0.002446896624831698`", 
+      "0.00006456866155749987`", "0.0003436667011397931`", 
+      "2.02821473945208`*^-8"},
+     {"\<\"3_0_3\"\>", "\<\"2_1_2\"\>", "196.8`", "1716.76979`", 
+      "174.62589203646226`", "12.333136299372011`", "0.005116853818402292`", 
+      "0.0005284528098067125`", "0.0028126900801962273`", 
+      "1.8328180654928038`*^-7"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{550, 367},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->267989583]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<o-h2o@lowT\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "15"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50.", ",", 
+     RowBox[{"MaximumIterations", "\[Rule]", "100"}], ",", 
+     RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}]}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->11262765],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "100"}],
+  SequenceForm["Number of Iterations:", 100],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[13]:=",
+ CellID->580253335],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_0\"\>", "\<\"1_0_1\"\>", "61.`", "556.93607`", 
+      "538.2888129332331`", "5.875990254024023`", "42.46369499597326`", 
+      "0.28431557262300566`", "1.5132696352859478`", "3.366616481438649`*^-6"},
+     {"\<\"2_1_2\"\>", "\<\"1_0_1\"\>", "114.4`", "1669.90496`", 
+      "179.5266576128979`", "8.699143677245646`", "42.91440446576435`", 
+      "0.007996095769385517`", "0.04255921973255442`", 
+      "2.55229115182555`*^-6"},
+     {"\<\"2_2_1\"\>", "\<\"2_1_2\"\>", "194.1`", "1661.00802`", 
+      "180.4882651921211`", "9.97901943419058`", "0.002378058161921101`", 
+      "0.00006428499854563748`", "0.0003421569047591555`", 
+      "2.0193043874667852`*^-8"},
+     {"\<\"3_0_3\"\>", "\<\"2_1_2\"\>", "196.8`", "1716.76979`", 
+      "174.62589203646226`", "12.385170721448551`", "0.004972763835454179`", 
+      "0.0005282472850740687`", "0.0028115961748067307`", 
+      "1.8321052498242998`*^-7"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{550, 367},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->329054288]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "ShowLevelPopulation",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell["\<\
+Instead of the full output we can ask EscapeProbabilityRun to give the final \
+level population out.\
+\>", "ExampleText",
+ CellID->394208816],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"file", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+   RowBox[{"ShowLevelPopulation", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->323341196],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "1535"}],
+  SequenceForm["Number of Iterations:", 1535],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[119]:=",
+ CellID->362571988],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.9989649056267527`", ",", "0.045473977898767184`", ",", 
+   "0.0011073857557840142`", ",", "0.00009138818881469606`", ",", 
+   "2.2764720135223637`*^-6"}], "}"}]], "Output",
+ ImageSize->{531, 20},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->23443628]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "ShowLevelPopulation",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->10611076],
+
+Cell[TextData[{
+ "You can ask ",
+ Cell[BoxData["EscapeProbabilityRun"], "InlineFormula"],
+ "  to print the final level populations of all involved energy levels. "
+}], "ExampleText",
+ CellID->241000206],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"population", "=", 
+  RowBox[{"EscapeProbabilityRun", "[", 
+   RowBox[{"\"\<CO\>\"", ",", 
+    RowBox[{"1.", " ", 
+     SuperscriptBox["10", "15"]}], ",", "5", ",", 
+    RowBox[{"1", " ", 
+     SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+    RowBox[{"ShowLevelPopulation", "\[Rule]", "True"}]}], "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->36543338],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "9"}],
+  SequenceForm["Number of Iterations:", 9],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[1]:=",
+ CellID->422864300],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.03623200998561452`", ",", "0.1041313475219837`", ",", 
+   "0.15744544915773678`", ",", "0.18539037063170147`", ",", 
+   "0.18019630824930807`", ",", "0.14501200869355893`", ",", 
+   "0.09651408122864322`", ",", "0.05364853354130228`", ",", 
+   "0.025371804288938878`", ",", "0.010441799191960657`", ",", 
+   "0.0038144980575021176`", ",", "0.0012605149162875685`", ",", 
+   "0.0003885593129973274`", ",", "0.00011293028412943412`", ",", 
+   "0.000030229080084535935`", ",", "7.314275434107862`*^-6", ",", 
+   "1.7600238481854341`*^-6", ",", "3.8406277052387606`*^-7", ",", 
+   "7.814816570610064`*^-8", ",", "1.5796568163149438`*^-8", ",", 
+   "2.942446154367451`*^-9", ",", "5.099007743428334`*^-10", ",", 
+   "8.388183186326072`*^-11", ",", "1.2992288327143201`*^-11", ",", 
+   "1.9322143616568283`*^-12", ",", "2.706403795373122`*^-13", ",", 
+   "3.5174102789510286`*^-14", ",", "4.2663183298557045`*^-15", ",", 
+   "4.88883763911464`*^-16", ",", "5.614981786094585`*^-17", ",", 
+   "7.971359222539665`*^-18", ",", "2.4544985151207883`*^-18", ",", 
+   "1.783973467476445`*^-18", ",", "1.610099070802031`*^-18", ",", 
+   "1.4953743311614797`*^-18", ",", "1.3967374810319482`*^-18", ",", 
+   "1.3091690278384956`*^-18", ",", "1.2304871649041074`*^-18", ",", 
+   "1.1605374440552864`*^-18", ",", "1.0980309746303237`*^-18", ",", 
+   "1.0421479739412552`*^-18"}], "}"}]], "Output",
+ ImageSize->{537, 193},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->404968008]
+}, Open  ]],
+
+Cell["\<\
+The result is given as relative population numbers, i.e. normalized to 1.\
+\>", "ExampleText",
+ CellID->20918927],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "@", "population"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->231330060],
+
+Cell[BoxData["1.`"], "Output",
+ ImageSize->{22, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->7796868]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "ShowAntennaTemperature",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell["Give out the antenna temperatures only.", "ExampleText",
+ CellID->148246701],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"file", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+   RowBox[{"ShowAntennaTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->388254767],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "1535"}],
+  SequenceForm["Number of Iterations:", 1535],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[120]:=",
+ CellID->125983151],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.8232522102802593`", ",", "0.4362671586229538`", ",", 
+   "0.0034319522716818544`", ",", "0.11532641061313323`", ",", 
+   "0.0028999313670970495`"}], "}"}]], "Output",
+ ImageSize->{474, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->234332475]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "ShowExcitationTemperature",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell["Give out the excitation temperatures only.", "ExampleText",
+ CellID->372825316],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"file", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+   RowBox[{"ShowExcitationTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->110615325],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "1535"}],
+  SequenceForm["Number of Iterations:", 1535],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[121]:=",
+ CellID->71432636],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "12.757765704846761`", ",", "11.219438301036131`", ",", "13.6825120270256`",
+    ",", "14.467754318332476`", ",", "15.970931005257636`"}], "}"}]], "Output",
+ ImageSize->{393, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->610461946]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "ShowOpticalDepth",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ShowOpticalDepth",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/ShowOpticalDepth"]], 
+  "InlineFormula"],
+ "->",
+ Cell[BoxData[
+  ButtonBox["True",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/True"]], "InlineFormula"],
+ " will print the optical depth \[Tau] of each transition."
+}], "ExampleText",
+ CellID->22647309],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+   RowBox[{"ShowOpticalDepth", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->586707395],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "9"}],
+  SequenceForm["Number of Iterations:", 9],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[3]:=",
+ CellID->100957150],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.001240014468857702`", ",", "0.005247235478522338`", ",", 
+   "0.012220680869715709`", ",", "0.021002459743603773`", ",", 
+   "0.027726241345712006`", ",", "0.027951909754631955`", ",", 
+   "0.02173551569432876`", ",", "0.013414709427907156`", ",", 
+   "0.006803858326048262`", ",", "0.002937000835896885`", ",", 
+   "0.001109372637603133`", ",", "0.0003727032899651973`", ",", 
+   "0.00011620444718653909`", ",", "0.00003441034684116152`", ",", 
+   "9.409844689659235`*^-6", ",", "2.2581500361055643`*^-6", ",", 
+   "5.526343082535864`*^-7", ",", "1.2149236867353225`*^-7", ",", 
+   "2.451145313361709`*^-8", ",", "4.9948118415599`*^-9", ",", 
+   "9.34470355840782`*^-10", ",", "1.617336494982528`*^-10", ",", 
+   "2.661142869884422`*^-11", ",", "4.103329008746662`*^-12", ",", 
+   "6.08789873157825`*^-13", ",", "8.515467369428604`*^-14", ",", 
+   "1.1029284584313571`*^-14", ",", "1.330489965995013`*^-15", ",", 
+   "1.5029898921456968`*^-16", ",", "1.6518298663796975`*^-17", ",", 
+   "1.880524734939011`*^-18", ",", "2.4025522140204934`*^-19", ",", 
+   "7.236235365794644`*^-20", ",", "5.070284293643333`*^-20", ",", 
+   "4.3520667506075113`*^-20", ",", "3.825903707388241`*^-20", ",", 
+   "3.395276833976467`*^-20", ",", "2.9914901199843964`*^-20", ",", 
+   "2.647189737006878`*^-20", ",", "2.3455146040768992`*^-20"}], 
+  "}"}]], "Output",
+ ImageSize->{537, 193},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->194504288]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "ShowEscapeProbability",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->95201145],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ShowEscapeProbability",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/ShowEscapeProbability"]], 
+  "InlineFormula"],
+ "->",
+ Cell[BoxData[
+  ButtonBox["True",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/True"]], "InlineFormula"],
+ " will print the final escape probabilities \[Beta] of each transition."
+}], "ExampleText",
+ CellID->561596985],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "16"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "20.", ",", 
+   RowBox[{"ShowEscapeProbability", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->27611756],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "10000"}],
+  SequenceForm["Number of Iterations:", 10000],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[80]:=",
+ CellID->118215502],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.9285589962731464`", ",", "0.8183749308824011`", ",", 
+   "0.7936831409860658`", ",", "0.8552275292964152`", ",", 
+   "0.9379646029628161`", ",", "0.9842164295273366`", ",", 
+   "0.9975109813093197`", ",", "0.9997425212182539`", ",", 
+   "0.9999816187351798`", ",", "0.9999990776055335`", ",", 
+   "0.9999999668214257`", ",", "0.999999999132064`", ",", 
+   "0.9999999999829713`", ",", "0.9999999999997456`", ",", 
+   "0.9999999999999972`", ",", "1.`", ",", "1.`"}], "}"}]], "Output",
+ ImageSize->{405, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->20678584]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "FrequencyRange",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell["\<\
+You can limit the frequency range for which values should be displayed. \
+Provide a frequency range in units of GHz.\
+\>", "ExampleText",
+ CellID->313789689],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+   RowBox[{"ShowOpticalDepth", "\[Rule]", "True"}], ",", 
+   RowBox[{"FrequencyRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"200", ",", "1000"}], "}"}]}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->942600757],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "9"}],
+  SequenceForm["Number of Iterations:", 9],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->540321396],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.005247235478522338`", ",", "0.012220680869715709`", ",", 
+   "0.021002459743603773`", ",", "0.027726241345712006`", ",", 
+   "0.027951909754631955`", ",", "0.02173551569432876`", ",", 
+   "0.013414709427907156`"}], "}"}]], "Output",
+ ImageSize->{389, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->409099465]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "TableOutput",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[TextData[{
+ "By default the result is printed in a formatted way using Grid. To switch \
+the formatting off use ",
+ Cell[BoxData[
+  ButtonBox["TableOutput",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/TableOutput"]], "InlineFormula"],
+ "->",
+ Cell[BoxData[
+  ButtonBox["False",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/False"]], "InlineFormula"]
+}], "ExampleText",
+ CellID->80403428],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "15"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+   RowBox[{"TableOutput", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->336120145],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "9"}],
+  SequenceForm["Number of Iterations:", 9],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[4]:=",
+ CellID->230592858],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "5.53`", ",", "115.2712018`", ",", 
+     "2600.7576161143143`", ",", "128.94763137208915`", ",", 
+     "0.001240014468857702`", ",", "0.15535369798288223`", ",", 
+     "0.8268700575138908`", ",", "1.6310271966272878`*^-8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "16.6`", ",", "230.538`", ",", "1300.4036471210823`", 
+     ",", "113.5940309987533`", ",", "0.005247235478522338`", ",", 
+     "0.564987890485973`", ",", "3.0071480471115914`", ",", 
+     "4.7450215168515133`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "3", ",", "2", ",", "33.19`", ",", "345.7959899`", ",", 
+     "866.9633678710281`", ",", "95.88028569682503`", ",", 
+     "0.012220680869715709`", ",", "1.06624696232478`", ",", 
+     "5.6750994569736415`", ",", "3.022065354349159`*^-6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "4", ",", "3", ",", "55.32`", ",", "461.0407682`", ",", 
+     "650.2515106645617`", ",", "79.0988482991044`", ",", 
+     "0.021002459743603773`", ",", "1.4245818044492264`", ",", 
+     "7.582336654181009`", ",", "9.569328335743924`*^-6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "5", ",", "4", ",", "82.97`", ",", "576.2679305`", ",", 
+     "520.2310247247049`", ",", "66.17924525332846`", ",", 
+     "0.027726241345712006`", ",", "1.4577913385005914`", ",", 
+     "7.759094399169399`", ",", "0.000019122359611892494`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "6", ",", "5", ",", "116.16`", ",", "691.4730763`", ",", 
+     "433.5562240603178`", ",", "57.79622456053253`", ",", 
+     "0.027951909754631955`", ",", "1.1792941041184535`", ",", 
+     "6.276792869170469`", ",", "0.000026725700768790045`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "7", ",", "6", ",", "154.87`", ",", "806.651806`", ",", 
+     "371.6503871560166`", ",", "53.007203875796`", ",", 
+     "0.02173551569432876`", ",", "0.773737101658557`", ",", 
+     "4.11821572357767`", ",", "0.00002783723116194951`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "8", ",", "7", ",", "199.11`", ",", "921.7997`", ",", 
+     "325.22516117113076`", ",", "50.61832654104272`", ",", 
+     "0.013414709427907156`", ",", "0.4221453489917888`", ",", 
+     "2.246868620008796`", ",", "0.000022664623131779993`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "9", ",", "8", ",", "248.88`", ",", "1036.912393`", ",", 
+     "289.1203326566857`", ",", "49.811448937752296`", ",", 
+     "0.006803858326048262`", ",", "0.19667729545771817`", ",", 
+     "1.046814905073705`", ",", "0.00001503004456698369`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "10", ",", "9", ",", "304.16`", ",", "1151.985452`", ",", 
+     "260.23979337544625`", ",", "49.93843752453222`", ",", 
+     "0.002937000835896885`", ",", "0.08004660598384673`", ",", 
+     "0.4260480603490243`", ",", "8.388002031027637`*^-6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "11", ",", "10", ",", "364.97`", ",", "1267.014486`", ",", 
+     "236.61328209944398`", ",", "50.74608649127392`", ",", 
+     "0.001109372637603133`", ",", "0.02913144029426434`", ",", 
+     "0.15505209096622197`", ",", "4.0614759736316595`*^-6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "12", ",", "11", ",", "431.29`", ",", "1381.995105`", ",", 
+     "216.92729222799963`", ",", "52.630291223144894`", ",", 
+     "0.0003727032899651973`", ",", "0.009783617273256115`", ",", 
+     "0.05207330293690568`", ",", "1.7700984095660548`*^-6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "13", ",", "12", ",", "503.13`", ",", "1496.922909`", ",", 
+     "200.27247508709218`", ",", "54.73023720955974`", ",", 
+     "0.00011620444718653909`", ",", "0.003073593036016061`", ",", 
+     "0.016359198934195487`", ",", "7.066786182422385`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "14", ",", "13", ",", "580.49`", ",", "1611.793518`", ",", 
+     "185.99929373831867`", ",", "55.67315659346449`", ",", 
+     "0.00003441034684116152`", ",", "0.0008835463308258346`", ",", 
+     "0.004702675345820506`", ",", "2.5359045533247954`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "15", ",", "14", ",", "663.35`", ",", "1726.6025057`", ",", 
+     "173.63142646341643`", ",", "55.775478707327515`", ",", 
+     "9.409844689659235`*^-6", ",", "0.00022813095292502163`", ",", 
+     "0.0012142269969434279`", ",", "8.0489589288375`*^-8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "16", ",", "15", ",", "751.72`", ",", "1841.345506`", ",", 
+     "162.81162607621997`", ",", "59.42794299840913`", ",", 
+     "2.2581500361055643`*^-6", ",", "0.00005828266588538345`", ",", 
+     "0.00031020948917495346`", ",", "2.494153936612535`*^-8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "17", ",", "16", ",", "845.59`", ",", "1956.018139`", ",", 
+     "153.26670546790876`", ",", "59.37184715092297`", ",", 
+     "5.526343082535864`*^-7", ",", "0.000013438537049275293`", ",", 
+     "0.00007152661344476775`", ",", "6.893603138625174`*^-9"}], "}"}]}], 
+  "}"}]], "Output",
+ ImageSize->{526, 653},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->59295183]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "BackgroundTemperature",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[TextData[{
+ "By default the code assumes a cosmic microwave background (CMB) temperature \
+of 2,73 Kelvin. You can choose different temperatures using the option ",
+ Cell[BoxData[
+  ButtonBox["BackgroundTemperature",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/BackgroundTemperature"]], 
+  "InlineFormula"],
+ ". "
+}], "ExampleText",
+ CellID->34368165],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<CO\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "15"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+     RowBox[{"BackgroundTemperature", "\[Rule]", "50"}]}], "]"}], ",", "7"}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->57294360],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "7"}],
+  SequenceForm["Number of Iterations:", 7],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[12]:=",
+ CellID->754644251],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "5.53`", "115.2712018`", "2600.7576161143143`", 
+      "113.78010991324241`", "0.0013222254299090342`", "0.08423818675725984`",
+       "0.44835774901551556`", "8.843997624749067`*^-9"},
+     {"2", "1", "16.6`", "230.538`", "1300.4036471210823`", 
+      "105.71723653589518`", "0.005270736622311735`", "0.2923338313273771`", 
+      "1.5559468172399649`", "2.455150531737784`*^-7"},
+     {"3", "2", "33.19`", "345.7959899`", "866.9633678710281`", 
+      "96.90777055416869`", "0.011271503981647455`", "0.523270311877444`", 
+      "2.785106234967696`", "1.4831058247860402`*^-6"},
+     {"4", "3", "55.32`", "461.0407682`", "650.2515106645617`", 
+      "88.81346338066992`", "0.017710829861469036`", "0.6751452657415978`", 
+      "3.593460676909655`", "4.535146175548882`*^-6"},
+     {"5", "4", "82.97`", "576.2679305`", "520.2310247247049`", 
+      "82.09035985967894`", "0.022336741863370476`", "0.6979503385795996`", 
+      "3.7148406770899194`", "9.155259064228426`*^-6"},
+     {"6", "5", "116.16`", "691.4730763`", "433.5562240603178`", 
+      "76.79560688183587`", "0.023422707954659606`", "0.6057290363716755`", 
+      "3.2239927960882433`", "0.000013727307646584226`"},
+     {"7", "6", "154.87`", "806.651806`", "371.6503871560166`", 
+      "72.73594662747962`", "0.020814254650165058`", "0.4525984283773647`", 
+      "2.408955135038524`", "0.00001628342113525223`"},
+     {"8", "7", "199.11`", "921.7997`", "325.22516117113076`", 
+      "69.63862776549148`", "0.01586840189458274`", "0.29510454844728035`", 
+      "1.57069395911065`", "0.000015843911086562318`"},
+     {"9", "8", "248.88`", "1036.912393`", "289.1203326566857`", 
+      "67.29970968137025`", "0.010475308085571327`", "0.16962419736353213`", 
+      "0.9028247904673998`", "0.00001296265153575294`"},
+     {"10", "9", "304.16`", "1151.985452`", "260.23979337544625`", 
+      "65.52236284873253`", "0.006032687491152225`", "0.08643493334503269`", 
+      "0.4600499327289365`", "9.057428326145141`*^-6"},
+     {"11", "10", "364.97`", "1267.014486`", "236.61328209944398`", 
+      "64.26118252561015`", "0.0030517426073872157`", "0.039521540778542974`",
+       "0.210353400793795`", "5.510053285781408`*^-6"},
+     {"12", "11", "431.29`", "1381.995105`", "216.92729222799963`", 
+      "63.536522869470744`", "0.0013616315978133191`", 
+      "0.016435594862708642`", "0.08747845365676676`", 
+      "2.9736057241607717`*^-6"},
+     {"13", "12", "503.13`", "1496.922909`", "200.27247508709218`", 
+      "63.20960674127463`", "0.0005414647106713029`", 
+      "0.0062533024909954245`", "0.03328320250832315`", 
+      "1.4377554581901723`*^-6"},
+     {"14", "13", "580.49`", "1611.793518`", "185.99929373831867`", 
+      "62.80853027468361`", "0.0001941184332205932`", 
+      "0.0021268505182981843`", "0.011320161883642087`", 
+      "6.104365696988825`*^-7"},
+     {"15", "14", "663.35`", "1726.6025057`", "173.63142646341643`", 
+      "62.38152352722582`", "0.00006261540673728857`", 
+      "0.0006476119041451222`", "0.0034469143598124135`", 
+      "2.284916426927621`*^-7"},
+     {"16", "15", "751.72`", "1841.345506`", "162.81162607621997`", 
+      "62.68852799219169`", "0.000018074419377696466`", 
+      "0.00018718859965594564`", "0.0009963113216687708`", 
+      "8.01056670329748`*^-8"},
+     {"17", "16", "845.59`", "1956.018139`", "153.26670546790876`", 
+      "62.808216181063514`", "4.779413535733298`*^-6", 
+      "0.00004873097629253543`", "0.0002593706213170199`", 
+      "2.499766231150936`*^-8"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->7]], "Output",
+ ImageSize->{501, 342},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->101476146]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "InitialPopulationTemperature",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["InitialPopulationTemperature",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/InitialPopulationTemperature"]], 
+  "InlineFormula"],
+ " is an option to define which LTE temperature should be used for the \
+initial level population before iterations start. The default behavior is to \
+start from a 2.73 K population, i.e. only the lowest level(s) are populated. ",
+ StyleBox["This option influences the convergence behavior.", "ExampleText"]
+}], "ExampleText",
+ CellID->410615866],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"population", "=", 
+  RowBox[{"EscapeProbabilityRun", "[", 
+   RowBox[{"\"\<o-H2O\>\"", ",", 
+    RowBox[{"1.", " ", 
+     SuperscriptBox["10", "15"]}], ",", "5", ",", 
+    RowBox[{"1", " ", 
+     SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+    RowBox[{"ShowLevelPopulation", "\[Rule]", "True"}]}], "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->489743615],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "861"}],
+  SequenceForm["Number of Iterations:", 861],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[3]:=",
+ CellID->117403816],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.9822870161726259`", ",", "0.0165828484325838`", ",", 
+   "0.0011227970961873901`", ",", "2.9470758951305406`*^-7", ",", 
+   "5.649127230525725`*^-6", ",", "1.077574108244308`*^-6", ",", 
+   "6.829924479051489`*^-8", ",", "2.3220296880216484`*^-7", ",", 
+   "1.9318236764713767`*^-10", ",", "3.321417748564833`*^-9", ",", 
+   "1.2170261923318268`*^-8", ",", "1.175973123711559`*^-10", ",", 
+   "2.1827526201179501`*^-10", ",", "1.7560729998362244`*^-10", ",", 
+   "1.7207043205669043`*^-10", ",", "7.568380410417679`*^-13", ",", 
+   "8.941366207717421`*^-12", ",", "1.0767063069926414`*^-12", ",", 
+   "6.709998029841151`*^-12", ",", "1.951982383651368`*^-13", ",", 
+   "9.58355276000085`*^-13", ",", "5.5339651817339687`*^-14", ",", 
+   "1.0008704058918`*^-15", ",", "2.9736752798380547`*^-13", ",", 
+   "1.4801412500717537`*^-14", ",", "3.4167253858238234`*^-14", ",", 
+   "5.754328622792237`*^-16", ",", "9.893623908392586`*^-16", ",", 
+   "2.0612429875701568`*^-16", ",", "8.242306080610339`*^-16", ",", 
+   "4.2248540967917095`*^-19", ",", "1.4237897630455066`*^-17", ",", 
+   "1.0415751238459169`*^-17", ",", "2.9729278128643526`*^-18", ",", 
+   "7.57639542711671`*^-18", ",", "1.199777156196527`*^-19", ",", 
+   "6.873619597060326`*^-19", ",", "2.4407648642453465`*^-19", ",", 
+   "9.163198355649655`*^-20"}], "}"}]], "Output",
+ ImageSize->{537, 193},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->265824562]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"population2", "=", 
+  RowBox[{"EscapeProbabilityRun", "[", 
+   RowBox[{"\"\<o-H2O\>\"", ",", 
+    RowBox[{"1.", " ", 
+     SuperscriptBox["10", "15"]}], ",", "5", ",", 
+    RowBox[{"1", " ", 
+     SuperscriptBox["10", "5"]}], ",", "100.", ",", 
+    RowBox[{"ShowLevelPopulation", "\[Rule]", "True"}], ",", 
+    RowBox[{"InitialPopulationTemperature", "\[Rule]", "100"}]}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->50875497],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "1012"}],
+  SequenceForm["Number of Iterations:", 1012],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[4]:=",
+ CellID->473247922],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.9822870161726255`", ",", "0.016582848432584285`", ",", 
+   "0.0011227970961874688`", ",", "2.9470758951300276`*^-7", ",", 
+   "5.649127230525726`*^-6", ",", "1.0775741082442912`*^-6", ",", 
+   "6.829924479050953`*^-8", ",", "2.3220296880216452`*^-7", ",", 
+   "1.9318236763694239`*^-10", ",", "3.3214177485644173`*^-9", ",", 
+   "1.2170261923318238`*^-8", ",", "1.1759731237025396`*^-10", ",", 
+   "2.182752620117359`*^-10", ",", "1.7560729998357056`*^-10", ",", 
+   "1.720704320566896`*^-10", ",", "7.568380370732872`*^-13", ",", 
+   "8.94136620766303`*^-12", ",", "1.076706306990553`*^-12", ",", 
+   "6.7099980298411246`*^-12", ",", "1.9519823814602688`*^-13", ",", 
+   "9.583552759958847`*^-13", ",", "5.533965181722833`*^-14", ",", 
+   "1.000868406575362`*^-15", ",", "2.97367527983805`*^-13", ",", 
+   "1.4801412493229632`*^-14", ",", "3.416725385811671`*^-14", ",", 
+   "5.754328621035725`*^-16", ",", "9.893623908389042`*^-16", ",", 
+   "2.0612424750430682`*^-16", ",", "8.242306074894932`*^-16", ",", 
+   "4.213094817086684`*^-19", ",", "1.4237897630397337`*^-17", ",", 
+   "1.0415751238456964`*^-17", ",", "2.9729277973849526`*^-18", ",", 
+   "7.576395427115755`*^-18", ",", "1.1997771556652802`*^-19", ",", 
+   "6.8736195969878035`*^-19", ",", "2.440764864233682`*^-19", ",", 
+   "9.163198355642231`*^-20"}], "}"}]], "Output",
+ ImageSize->{537, 193},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->144232452]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"population", "-", "population2"}], ",", 
+   RowBox[{"Filling", "\[Rule]", "Axis"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->785335451],
+
+Cell[BoxData[
+ GraphicsBox[GraphicsComplexBox[CompressedData["
+1:eJzt1M9L03Ecx/GP0UEhcOgkkR2WSqTIcJtOt+9Xv59tkEbgpnVUiKLYzeVJ
+uuwLnRNNGBgyJDrs4EHyMHQKs4PmD4SIriEKnkJHHdRQad/v+7Vvft/UPxB9
+YXx48Py+v/uOffjcejw69PSaEGKs9DFWuoqa+LbXOvkmp1i2XU5pt1v+uU/m
+aW1m/fZf5sfxfXdYx3wipdjnI7b79aopuJX610G4jTwcgz2YL4ZobTfcP7P6
+Ht1rdpmMwz56vu867Kd5fQ7zHYYL/okkeqfZCzEnHKDnKWu4v6vk+PGN/bfo
+3eXfgx40vdXQiB6ivvsBXTEd9WzDKnWnCveULM9Ofw5gvtd8v6jrEF2TIpUY
+TAbS6JJ+3/0a6jpZDK8HqYcNuzMt0+hh6o8W0SOG9fMvDvQI9Sf76FF6fjZH
+1sni5nhwWWzuxN6daCJR/6z2wXx+tul8465h7L+XqYvX6ctqWe5T+ezutmH0
+GefYdOBVreW+g0x24mGdZfVH7ujFPZdlbaTozXx3W/70fLOiztEk7fsd+8e6
+2pg9zO3MXmYfs5+5g7mTOcDcxdzNHGQOMSvMKnMPcy+zxizt1plFmHVm2j9X
+OjP2z+/ObJ1PBbX8QnTf2gqxkryQhh3k/iP83/y8qicXPqO7yPElmJ9Xjabn
+az7C/88rc/kHz6tfOjDwGw==
+   "], {{{}, {}, {}, 
+     {Hue[0.67, 0.6, 0.6], Opacity[0.2], LineBox[{3, 5}]}, 
+     {Hue[0.67, 0.6, 0.6], Opacity[0.2], LineBox[{2, 1}], LineBox[{4, 8}], 
+      LineBox[{6, 10}], LineBox[{7, 11}], LineBox[{9, 12}], LineBox[{49, 13}],
+       LineBox[{50, 14}], LineBox[{51, 15}], LineBox[{52, 16}], 
+      LineBox[{53, 17}], LineBox[{54, 18}], LineBox[{55, 19}], 
+      LineBox[{56, 20}], LineBox[{57, 21}], LineBox[{58, 22}], 
+      LineBox[{59, 23}], LineBox[{60, 24}], LineBox[{61, 25}], 
+      LineBox[{62, 26}], LineBox[{63, 27}], LineBox[{64, 28}], 
+      LineBox[{65, 29}], LineBox[{66, 30}], LineBox[{67, 31}], 
+      LineBox[{68, 32}], LineBox[{69, 33}], LineBox[{70, 34}], 
+      LineBox[{71, 35}], LineBox[{72, 36}], LineBox[{73, 37}], 
+      LineBox[{74, 38}], LineBox[{75, 39}]}}, {{}, 
+     {Hue[0.67, 0.6, 0.6], 
+      PointBox[{76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 
+       91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 
+       107, 108, 109, 110, 111, 112, 113, 114}]}, {}}}],
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 0},
+  PlotRange->{{0., 39.}, {-2.998974651278705*^-21, 4.998291091343987*^-21}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ ImageSize->{229, 101},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->103001423]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "SameTest",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection"],
+
+Cell[TextData[{
+ "The iteration is done using ",
+ Cell[BoxData[
+  ButtonBox["FixedPoint",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/FixedPoint"]], "InlineFormula"],
+ " which needs a criterion to decide when a fixed point is reached. This is \
+done using the option ",
+ Cell[BoxData[
+  ButtonBox["SameTest",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/SameTest"]], "InlineFormula"],
+ "."
+}], "ExampleText",
+ CellID->52670405],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<o-h2o@lowT\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "15"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50.", ",", 
+     RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}]}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->223229043],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "856"}],
+  SequenceForm["Number of Iterations:", 856],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[11]:=",
+ CellID->78466563],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_0\"\>", "\<\"1_0_1\"\>", "61.`", "556.93607`", 
+      "538.2888129332331`", "5.906947574464986`", "42.45262416350779`", 
+      "0.29128656912252554`", "1.5503727641546423`", "3.449160928409387`*^-6"},
+     {"\<\"2_1_2\"\>", "\<\"1_0_1\"\>", "114.4`", "1669.90496`", 
+      "179.5266576128979`", "8.726167832692427`", "42.9141632345002`", 
+      "0.008227541246994659`", "0.043791088287129076`", 
+      "2.626166735819118`*^-6"},
+     {"\<\"2_2_1\"\>", "\<\"2_1_2\"\>", "194.1`", "1661.00802`", 
+      "180.4882651921211`", "9.949015554811282`", "0.002446896624831698`", 
+      "0.00006456866155749987`", "0.0003436667011397931`", 
+      "2.02821473945208`*^-8"},
+     {"\<\"3_0_3\"\>", "\<\"2_1_2\"\>", "196.8`", "1716.76979`", 
+      "174.62589203646226`", "12.333136299372011`", "0.005116853818402292`", 
+      "0.0005284528098067125`", "0.0028126900801962273`", 
+      "1.8328180654928038`*^-7"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{550, 367},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->76470893]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can reduce the required accuracy of our solution (and the convergence \
+speed) by defining an different ",
+ Cell[BoxData[
+  ButtonBox["SameTest",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/SameTest"]], "InlineFormula"]
+}], "ExampleText",
+ CellID->405317075],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<o-h2o@lowT\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "15"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50.", ",", 
+     RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}], ",", 
+     RowBox[{"SameTest", "\[Rule]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Norm", "[", 
+          RowBox[{"#1", "-", "#2"}], "]"}], "\[LessEqual]", 
+         SuperscriptBox["10", 
+          RowBox[{"-", "8"}]]}], "&"}], ")"}]}]}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->274881957],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "293"}],
+  SequenceForm["Number of Iterations:", 293],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->813859576],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_0\"\>", "\<\"1_0_1\"\>", "61.`", "556.93607`", 
+      "538.2888129332331`", "5.906925619943059`", "42.452632068050754`", 
+      "0.29128159118129493`", "1.5503462690624426`", "3.449101983980716`*^-6"},
+     {"\<\"2_1_2\"\>", "\<\"1_0_1\"\>", "114.4`", "1669.90496`", 
+      "179.5266576128979`", "8.726141400368238`", "42.91416344181789`", 
+      "0.008227312338413137`", "0.04378986992120393`", 
+      "2.6260936699924884`*^-6"},
+     {"\<\"2_2_1\"\>", "\<\"2_1_2\"\>", "194.1`", "1661.00802`", 
+      "180.4882651921211`", "9.949046148999523`", "0.0024468285385395375`", 
+      "0.00006456845849818947`", "0.0003436656203566135`", 
+      "2.02820836100352`*^-8"},
+     {"\<\"3_0_3\"\>", "\<\"2_1_2\"\>", "196.8`", "1716.76979`", 
+      "174.62589203646226`", "12.333186985736504`", "0.005116711304270681`", 
+      "0.0005284526558824518`", "0.00281268926093435`", 
+      "1.8328175316416056`*^-7"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{550, 367},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->472054540]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "CombineOrthoPara",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->180083823],
+
+Cell[TextData[{
+ "Usually, ",
+ Cell[BoxData[
+  ButtonBox["EscapeProbability",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/EscapeProbability"]], 
+  "InlineFormula"],
+ " combines separate collision rates for ortho- and ",
+ Cell[BoxData[
+  RowBox[{"para", "-", 
+   SubscriptBox["H", "2"], " "}]], "InlineFormula"],
+ "into a single collision rate. This can be deactivated with the option ",
+ Cell[BoxData[
+  ButtonBox["CombineOrthoPara",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/CombineOrthoPara"]], 
+  "InlineFormula"],
+ "->",
+ Cell[BoxData[
+  ButtonBox["False",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/False"]], "InlineFormula"]
+}], "ExampleText",
+ CellID->723338760],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<o-h2o@lowT\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "15"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50.", ",", 
+     RowBox[{"CombineOrthoPara", "\[Rule]", "False"}]}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->10340647],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EscapeProbabilityRun", "::", "\<\"denxmatch\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Too few densities of collisional \
+partners provided, Densities for  \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(2\\), \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" collision partners are \
+needed. Replicating the provided  density(ies) to fill up the list. WARNING! \
+Results is likely to be  unphysical.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], \
+"Message", "MSG",
+ CellLabel->"During evaluation of In[1]:=",
+ CellID->267961832],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "849"}],
+  SequenceForm["Number of Iterations:", 849],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[107]:=",
+ CellID->163312984],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_0\"\>", "\<\"1_0_1\"\>", "61.`", "556.93607`", 
+      "538.2888129332331`", "6.293090455743813`", "42.30196189720851`", 
+      "0.3863438314751697`", "2.056315043026591`", "4.574745936520035`*^-6"},
+     {"\<\"2_1_2\"\>", "\<\"1_0_1\"\>", "114.4`", "1669.90496`", 
+      "179.5266576128979`", "9.10919209651179`", "42.910216030766385`", 
+      "0.012106142198647403`", "0.06443494185230081`", 
+      "3.8641857860994765`*^-6"},
+     {"\<\"2_2_1\"\>", "\<\"2_1_2\"\>", "194.1`", "1661.00802`", 
+      "180.4882651921211`", "10.022760249283289`", "0.0036000011175886617`", 
+      "0.0001007094701971586`", "0.0005360261551243767`", 
+      "3.1634608326887556`*^-8"},
+     {"\<\"3_0_3\"\>", "\<\"2_1_2\"\>", "196.8`", "1716.76979`", 
+      "174.62589203646226`", "12.589895251785872`", "0.007526951118212934`", 
+      "0.0008899154590085395`", "0.004736575030572952`", 
+      "3.08646883839779`*^-7"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{550, 367},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->251157227]
+}, Open  ]],
+
+Cell["\<\
+Since we have two collision partners now, we have to take care to provide two \
+densities, one for each collision partner.\
+\>", "ExampleText",
+ CellID->1123404],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<o-h2o@lowT\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "15"]}], ",", "5", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", " ", 
+        SuperscriptBox["10", "4"]}], ",", 
+       RowBox[{"3", " ", 
+        SuperscriptBox["10", "4"]}]}], "}"}], ",", "50.", ",", 
+     RowBox[{"CombineOrthoPara", "\[Rule]", "False"}]}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->33235157],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "835"}],
+  SequenceForm["Number of Iterations:", 835],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[108]:=",
+ CellID->272769799],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_0\"\>", "\<\"1_0_1\"\>", "61.`", "556.93607`", 
+      "538.2888129332331`", "8.134537918514654`", "41.28564758773366`", 
+      "1.0372747032015999`", "5.520894607790516`", "0.000012282500319489437`"},
+     {"\<\"2_1_2\"\>", "\<\"1_0_1\"\>", "114.4`", "1669.90496`", 
+      "179.5266576128979`", "10.261915494741709`", "42.8736728187009`", 
+      "0.03253281940675514`", "0.17315593129245427`", 
+      "0.000010384221188759051`"},
+     {"\<\"2_2_1\"\>", "\<\"2_1_2\"\>", "194.1`", "1661.00802`", 
+      "180.4882651921211`", "10.472536192708962`", "0.00966465558094935`", 
+      "0.000379358628524682`", "0.00201913630032262`", 
+      "1.1916318897626512`*^-7"},
+     {"\<\"3_0_3\"\>", "\<\"2_1_2\"\>", "196.8`", "1716.76979`", 
+      "174.62589203646226`", "12.424671715556304`", "0.020212365819555527`", 
+      "0.0021764641459610075`", "0.011584230416877464`", 
+      "7.548569581972221`*^-7"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{550, 367},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->114881230]
+}, Open  ]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Applications",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(3)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->258228157],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "LTE",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(2)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->61490351],
+
+Cell["\<\
+The population of a level can be specified by the excitation temperature, \
+which is the temperature that would produce the same level population in the \
+case of thermal equilibrium. Generally, the level population of a species \
+depend on the balance of radiative and collisional processes and each level \
+will have a different excitation temperature. \
+\>", "ExampleText",
+ CellID->666453557],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<co\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "5", ",", 
+   SuperscriptBox["10", "3"], ",", "50", ",", 
+   RowBox[{"ShowExcitationTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->450044509],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "11"}],
+  SequenceForm["Number of Iterations:", 11],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[35]:=",
+ CellID->222660088],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "26.045506080793025`", ",", "7.379027605673877`", ",", "8.57488578334545`", 
+   ",", "10.68172241377526`", ",", "13.943664918551686`", ",", 
+   "16.95488939234437`", ",", "19.72107161563664`", ",", 
+   "22.283896959850725`", ",", "24.03409438953705`", ",", 
+   "25.881572143500197`", ",", "27.20758769266298`", ",", 
+   "28.934741297221667`", ",", "31.759811035673096`", ",", 
+   "32.166058910701004`", ",", "31.073038529442172`", ",", 
+   "33.99488442507153`", ",", "33.87595945509042`"}], "}"}]], "Output",
+ ImageSize->{471, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->620182285]
+}, Open  ]],
+
+Cell["\<\
+The balance between radiative processes and collisions is mainly driven by \
+the density of the collisional partners (neglecting any radiative pumping). \
+The spontaneous decay of a level depends on the Einstein A value, which is a \
+constant for each level. If the density increases, the level population and \
+depopulation by collisions becomes quicker. One can find a critical density \
+for which collisions and spontaneous excitation are equal. If the density is \
+higher than the critical densities the level population will be dominated by \
+collisions. This case is called LTE (Local Thermal Equilibrium). As a result \
+the excitation temperatures of all levels will approach the kinetic \
+temperature:\
+\>", "ExampleText",
+ CellID->115849401],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<co\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "5", ",", 
+   SuperscriptBox["10", "5"], ",", "50", ",", 
+   RowBox[{"ShowExcitationTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->659045277],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "8"}],
+  SequenceForm["Number of Iterations:", 8],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[36]:=",
+ CellID->80926839],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "54.992389507356876`", ",", "50.703572186753135`", ",", 
+   "45.602272992846686`", ",", "40.61012849025448`", ",", 
+   "36.56023055967047`", ",", "33.85115701510462`", ",", "32.36776437099424`",
+    ",", "31.803876726600286`", ",", "31.73504509013802`", ",", 
+   "31.99146397284475`", ",", "32.39219314347839`", ",", "33.35823762802281`",
+    ",", "34.62886223469803`", ",", "34.83491579076588`", ",", 
+   "34.82475662200994`", ",", "36.03025197407384`", ",", 
+   "36.429852803378886`"}], "}"}]], "Output",
+ ImageSize->{471, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->606540696]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<co\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "5", ",", 
+   SuperscriptBox["10", "7"], ",", "50", ",", 
+   RowBox[{"ShowExcitationTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->236681213],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "5"}],
+  SequenceForm["Number of Iterations:", 5],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[37]:=",
+ CellID->143537359],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "50.04562769699334`", ",", "50.00943225718441`", ",", "49.96151421602622`", 
+   ",", "49.90197841712099`", ",", "49.82976212422061`", ",", 
+   "49.74376787464544`", ",", "49.64747975636608`", ",", 
+   "49.541532639607006`", ",", "49.42550383264976`", ",", 
+   "49.29350774354086`", ",", "49.13709231166467`", ",", "49.02014384158603`",
+    ",", "48.953841106324674`", ",", "48.78686442986667`", ",", 
+   "48.54356029364867`", ",", "48.43642912920718`", ",", 
+   "48.25497212430965`"}], "}"}]], "Output",
+ ImageSize->{471, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->734138546]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<co\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "5", ",", 
+   SuperscriptBox["10", "9"], ",", "50", ",", 
+   RowBox[{"ShowExcitationTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->73235456],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "4"}],
+  SequenceForm["Number of Iterations:", 4],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[38]:=",
+ CellID->512116518],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "50.00045585859657`", ",", "50.00009449716108`", ",", "49.99961574322137`", 
+   ",", "49.99901986225272`", ",", "49.99829505859759`", ",", 
+   "49.997427603942135`", ",", "49.996449484313814`", ",", 
+   "49.995361647112894`", ",", "49.994155165173055`", ",", 
+   "49.992759990322305`", ",", "49.99106596448367`", ",", "49.9897404478394`",
+    ",", "49.98894570513887`", ",", "49.98701683301827`", ",", 
+   "49.98409585179838`", ",", "49.98261455525466`", ",", 
+   "49.980169115902555`"}], "}"}]], "Output",
+ ImageSize->{471, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->6532331]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->486703411],
+
+Cell["\<\
+CO is a species with very low critical densities, i.e. with very small \
+Einstein A values. (The inverse of the A value is the life time of an energy \
+state.) Other species have much larger A values which results in a dominance \
+of the radiative transitions and makes the radiative transfer problem much \
+more challenging. One example for such a species is water.\
+\>", "ExampleText",
+ CellID->314056589],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<o-h2o\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "5", ",", 
+   SuperscriptBox["10", "3"], ",", "50", ",", 
+   RowBox[{"ShowExcitationTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->16018993],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "859"}],
+  SequenceForm["Number of Iterations:", 859],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[39]:=",
+ CellID->620548347],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2.9901272062277657`", ",", "6.10628342921062`", ",", "8.15205415313807`", 
+   ",", "12.197385132988671`", ",", 
+   RowBox[{"-", "61.762274231880085`"}], ",", "24.752278237697908`", ",", 
+   "16.283543603832296`", ",", 
+   RowBox[{"-", "17.293684227658332`"}], ",", 
+   RowBox[{"-", "8.056340972598774`"}], ",", "14.667013027246387`", ",", 
+   "161.1089789531646`", ",", 
+   RowBox[{"-", "15.25510693697517`"}], ",", "82.4662963780026`", ",", 
+   "21.958538776765067`", ",", "4.249737184285943`", ",", "21.4760339378628`",
+    ",", 
+   RowBox[{"-", "58.12180983267278`"}], ",", 
+   RowBox[{"-", "9.823260016567799`"}], ",", "31.69815329427759`", ",", 
+   "34.68307703170622`", ",", 
+   RowBox[{"-", "105.50892856687516`"}], ",", "3.2746403228762073`", ",", 
+   "17.08228727601584`", ",", "19.811038348445198`", ",", 
+   "395.0022387839666`", ",", "36.56927982674404`", ",", 
+   RowBox[{"-", "55.77521719644048`"}], ",", "39.72164387890363`", ",", 
+   "23.54665619035208`", ",", "15.644118764428631`"}], "}"}]], "Output",
+ ImageSize->{492, 94},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->271451994]
+}, Open  ]],
+
+Cell["\<\
+Negative excitation temperatures indicate a so called population inversion, \
+i.e. a larger population in the higher level (leaving the statistical weights \
+aside for the moment). Here, LTE is not reached, even for higher densities.\
+\>", "ExampleText",
+ CellID->3740183],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<o-h2o\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "5", ",", 
+   SuperscriptBox["10", "8"], ",", "50", ",", 
+   RowBox[{"ShowExcitationTemperature", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->138484706],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "10000"}],
+  SequenceForm["Number of Iterations:", 10000],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[40]:=",
+ CellID->79351426],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "30.933014286946296`", ",", "33.03313283756943`", ",", 
+   "17.706275463630103`", ",", "22.333671297927143`", ",", 
+   "45.872620680766985`", ",", "26.079641694863827`", ",", 
+   "13.171110663720535`", ",", 
+   RowBox[{"-", "69.09318808579249`"}], ",", 
+   RowBox[{"-", "39.121463776469355`"}], ",", "18.187841230099405`", ",", 
+   "47.86867015388245`", ",", 
+   RowBox[{"-", "29.736107412102353`"}], ",", "32.02487668208782`", ",", 
+   "26.041307256511786`", ",", 
+   RowBox[{"-", "1.124985046179053`"}], ",", "34.32917854050944`", ",", 
+   "138.94181819814517`", ",", 
+   RowBox[{"-", "10.75630807333331`"}], ",", "24.952547978305553`", ",", 
+   "34.8574422637521`", ",", "227.75436858314552`", ",", 
+   RowBox[{"-", "0.9730607401727569`"}], ",", "21.25131694141716`", ",", 
+   "27.207335180004687`", ",", "52.88971690184447`", ",", 
+   "35.53521454108085`", ",", 
+   RowBox[{"-", "72.0193784117178`"}], ",", "32.96427029287205`", ",", 
+   "26.72813276540724`", ",", "19.6593170882915`"}], "}"}]], "Output",
+ ImageSize->{501, 94},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->428510874]
+}, Open  ]]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Molecular Clouds",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(1)", "ExampleCount"]
+  }], "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->101647812],
+
+Cell[TextData[{
+ "Let's calculate the radio emission of an interstellar molecular cloud. We \
+want to calculate the CO J=1-0 emission of a small, spherical cloud of 0.1 \
+parsec (3.08 ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["10", "18"], " ", "cm"}], ")"}]], "InlineFormula"],
+ " radius. We assume a gas temperature of 10 Kelvin, a gas number density of ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"10", "^", "3"}], 
+   SuperscriptBox["cm", 
+    RowBox[{"-", "3"}]]}]], "InlineFormula"],
+ ", a relative CO abundance of 8 ",
+ Cell[BoxData[
+  SuperscriptBox["10", 
+   RowBox[{"-", "5"}]]], "InlineFormula"],
+ " and a FWHM of 1 km/s."
+}], "ExampleText",
+ CellID->265567395],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"codensity", "=", 
+   RowBox[{
+    SuperscriptBox["10", "3"], "8.", " ", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "5"}]]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"column", "=", 
+  RowBox[{"0.1", " ", "3.08", " ", 
+   SuperscriptBox["10", "18"], "*", "codensity"}]}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->152461034],
+
+Cell[BoxData["2.4640000000000004`*^16"], "Output",
+ ImageSize->{97, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->464888122]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<CO\>\"", ",", "column", ",", "1", ",", 
+     SuperscriptBox["10", "3"], ",", "10", ",", 
+     RowBox[{"FrequencyRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"100", ",", "200"}], "}"}]}]}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->333604190],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "115"}],
+  SequenceForm["Number of Iterations:", 115],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[54]:=",
+ CellID->331250560],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "5.53`", "115.2712018`", "2600.7576161143143`", 
+      "8.75273942206702`", "8.869429514434337`", "5.435496113015607`", 
+      "5.786085612305114`", "1.1413235864481594`*^-7"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{556, 138},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->101978393]
+}, Open  ]],
+
+Cell["\<\
+The radiation temperature (Rayleigh-Jeans) after beam switching against the \
+background is 5.44 K, which is what a radio telescope would measure when \
+observing such a cloud (assuming no beam filling effects).\
+\>", "ExampleText",
+ CellID->120545056],
+
+Cell[BoxData[""], "Input",
+ CellLabel->"In[3]:=",
+ CellID->483140313]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Properties & Relations",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(2)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->2123667759],
+
+Cell["\<\
+Most entries in the LAMDA database posses only a single collisional partner. \
+Some species are given with multiple partners. Usually each collision partner \
+has a different density.  \
+\>", "ExampleText",
+ CellID->348119199],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "[", "\"\<C\>\"", "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->317680507],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "::", "\<\"combop\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"If ortho- and para-H2 is given \
+seperately as collision partners   the default behavior is to combine both \
+into a single collision partner. In that case only one   H2 density needs to \
+be given.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[1]:=",
+ CellID->118536040],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {"5", "\<\"C\"\>", "\<\"+\"\>", "\<\"H\"\>", "\<\"!\"\>", \
+"\<\"Launay\"\>", "\<\"&\"\>", "\<\"Roueff\"\>", 
+     "1977", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>"},
+    {"4", "\<\"C\"\>", "\<\"+\"\>", "\<\"e\"\>", "\<\"!\"\>", "\<\"from\"\>", \
+"\<\"Johnson,\"\>", "\<\"Burke,\"\>", "\<\"&\"\>", "\<\"Kingston\"\>", \
+"\<\"1987,\"\>", "\<\"JPhysB,\"\>", "\<\"20,\"\>", "2553", "\<\"\"\>"},
+    {"7", "\<\"C\"\>", "\<\"+\"\>", "\<\"H+\"\>", "\<\"!\"\>", \
+"\<\"Roueff\"\>", "\<\"&\"\>", "\<\"Le\"\>", "\<\"Bourlot\"\>", \
+"\<\"1990,\"\>", "\<\"A&A,\"\>", "\<\"236,\"\>", 
+     "515", "\<\"\"\>", "\<\"\"\>"},
+    {"6", "\<\"C\"\>", "\<\"+\"\>", "\<\"He\"\>", "\<\"!\"\>", \
+"\<\"Staemmler,\"\>", "\<\"V.,\"\>", "\<\"Flower,\"\>", "\<\"D.R.\"\>", \
+"\<\"1991,\"\>", "\<\"J.\"\>", "\<\"Phys.\"\>", "\<\"B,\"\>", "\<\"24,\"\>", 
+     "2343"},
+    {"2", "\<\"C\"\>", "\<\"+\"\>", "\<\"p-H2\"\>", "\<\"!\"\>", \
+"\<\"K.\"\>", "\<\"Schroeder\"\>", "\<\"et\"\>", "\<\"al.\"\>", \
+"\<\"1991,\"\>", "\<\"J.\"\>", "\<\"Phys.\"\>", "\<\"B,\"\>", "\<\"24,\"\>", 
+     "2487"},
+    {"3", "\<\"C\"\>", "\<\"+\"\>", "\<\"o-H2\"\>", "\<\"!\"\>", \
+"\<\"K.\"\>", "\<\"Schroeder\"\>", "\<\"et\"\>", "\<\"al.\"\>", \
+"\<\"1991,\"\>", "\<\"J.\"\>", "\<\"Phys.\"\>", "\<\"B,\"\>", "\<\"24,\"\>", 
+     "2487"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  TableForm[{{5, "C", "+", "H", "!", "Launay", "&", "Roueff", 1977}, {
+    4, "C", "+", "e", "!", "from", "Johnson,", "Burke,", "&", "Kingston", 
+     "1987,", "JPhysB,", "20,", 2553}, {
+    7, "C", "+", "H+", "!", "Roueff", "&", "Le", "Bourlot", "1990,", "A&A,", 
+     "236,", 515}, {
+    6, "C", "+", "He", "!", "Staemmler,", "V.,", "Flower,", "D.R.", "1991,", 
+     "J.", "Phys.", "B,", "24,", 2343}, {
+    2, "C", "+", "p-H2", "!", "K.", "Schroeder", "et", "al.", "1991,", "J.", 
+     "Phys.", "B,", "24,", 2487}, {
+    3, "C", "+", "o-H2", "!", "K.", "Schroeder", "et", "al.", "1991,", "J.", 
+     "Phys.", "B,", "24,", 2487}}]]], "Output",
+ ImageSize->{1086, 105},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]//TableForm=",
+ CellID->293379726]
+}, Open  ]],
+
+Cell[TextData[{
+ "It is important to provide reasonable densities for the different collision \
+partners. The order in which the densities should be given is the same as \
+displayed by ",
+ Cell[BoxData[
+  ButtonBox["ShowCollisionPartners",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/ShowCollisionPartners"]], 
+  "InlineFormula"],
+ "."
+}], "ExampleText",
+ CellID->172828855],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"hden", "=", 
+   SuperscriptBox["10", "4"]}], ";", 
+  RowBox[{"electronden", "=", "1"}], ";", 
+  RowBox[{"hplusden", "=", "0.5"}], ";", 
+  RowBox[{"heden", "=", 
+   SuperscriptBox["10", "4"]}], ";", 
+  RowBox[{"h2den", "=", 
+   SuperscriptBox["10", "5"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"densities", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "hden", ",", "electronden", ",", "hplusden", ",", "heden", ",", "h2den"}],
+     "}"}]}], ";"}]}], "Input",
+ CellLabel->"In[2]:=",
+ CellID->241203588],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Style", "[", 
+   RowBox[{
+    RowBox[{"EscapeProbabilityRun", "[", 
+     RowBox[{"\"\<C\>\"", ",", 
+      RowBox[{"1.", " ", 
+       SuperscriptBox["10", "15"]}], ",", "5", ",", "densities", ",", "50.", 
+      ",", 
+      RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}]}], "]"}], ",", "8"}], 
+   "]"}], "//", "Quiet"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->149067894],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "4"}],
+  SequenceForm["Number of Iterations:", 4],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[21]:=",
+ CellID->110558460],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "23.62`", "492.160651`", "609.1353613720736`", 
+      "49.908796982402684`", "0.0006283007154592795`", 
+      "0.024510331561627397`", "0.13045623973676185`", 
+      "2.0028434060767982`*^-7"},
+     {"2", "1", "62.462`", "809.34197`", "370.415062004013`", 
+      "49.460997836461125`", "0.0007118061306063741`", 
+      "0.023165340945210194`", "0.12329752718088127`", 
+      "8.418060181364466`*^-7"},
+     {"2", "0", "62.462`", "1301.50262`", "230.34333653511973`", 
+      "49.62938418800315`", "2.4697415079647234`*^-11", 
+      "6.12070190298529`*^-10", "3.257743587863921`*^-9", 
+      "9.249398974305093`*^-14"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->8]], "Output",
+ ImageSize->{560, 188},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->420989663]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->129653832],
+
+Cell["\<\
+The FWHM line width determines how fast a transitions becomes optically thick.\
+\>", "ExampleText",
+ CellID->226355556],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EscapeProbabilityRun", "[", 
+   RowBox[{"\"\<O\>\"", ",", 
+    RowBox[{"1.", " ", 
+     SuperscriptBox["10", "18"]}], ",", "5", ",", "densities", ",", "50.", 
+    ",", 
+    RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}], ",", 
+    RowBox[{"ShowOpticalDepth", "\[Rule]", "True"}], ",", 
+    RowBox[{"FrequencyRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "5000"}], "}"}]}]}], "]"}], "//", "Quiet"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->806867182],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "5"}],
+  SequenceForm["Number of Iterations:", 5],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[44]:=",
+ CellID->104394917],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.0725200818721654`", ",", "0.0001306263183202219`"}], 
+  "}"}]], "Output",
+ ImageSize->{198, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->44709961]
+}, Open  ]],
+
+Cell["\<\
+Giving a higher FWHM reduces the \[Tau] accordingly.\
+\>", "ExampleText",
+ CellID->972090838],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EscapeProbabilityRun", "[", 
+   RowBox[{"\"\<O\>\"", ",", 
+    RowBox[{"1.", " ", 
+     SuperscriptBox["10", "18"]}], ",", "10", ",", "densities", ",", "50.", 
+    ",", 
+    RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}], ",", 
+    RowBox[{"ShowOpticalDepth", "\[Rule]", "True"}], ",", 
+    RowBox[{"FrequencyRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "5000"}], "}"}]}]}], "]"}], "//", "Quiet"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->13604314],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "5"}],
+  SequenceForm["Number of Iterations:", 5],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[46]:=",
+ CellID->106842742],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.5362600408578685`", ",", "0.00006531613540631875`"}], 
+  "}"}]], "Output",
+ ImageSize->{207, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->21090384]
+}, Open  ]],
+
+Cell["\<\
+For astrophysical applications FWHM's in the order of a few km/s are common. \
+\>", "ExampleText",
+ CellID->90770612]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Possible Issues",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(2)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->1305812373],
+
+Cell["\<\
+If you provide too few densities for species with more than one collisional \
+partner, a warning will be issued and the given density(ies) will be used to \
+for the missing densities. In many cases this will give unreasonable results!\
+\>", "ExampleText",
+ CellID->63656767],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Quiet", "[", 
+  RowBox[{
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"EscapeProbabilityRun", "[", 
+      RowBox[{"\"\<C\>\"", ",", 
+       RowBox[{"1.", " ", 
+        SuperscriptBox["10", "15"]}], ",", "5", ",", 
+       SuperscriptBox["10", "4"], ",", "50.", ",", 
+       RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}]}], "]"}], ",", "8"}],
+     "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"InterpolatingFunction", "::", "\"\<dmval\>\""}], "}"}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->281313553],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EscapeProbabilityRun", "::", "\<\"denxmatch\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Too few densities of collisional \
+partners provided, Densities for  \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(5\\), \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" collision partners are \
+needed. Replicating the provided  density(ies) to fill up the list. WARNING! \
+Results is likely to be  unphysical.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], \
+"Message", "MSG",
+ CellLabel->"During evaluation of In[1]:=",
+ CellID->286044522],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "4"}],
+  SequenceForm["Number of Iterations:", 4],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[26]:=",
+ CellID->837258110],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "23.62`", "492.160651`", "609.1353613720736`", 
+      "49.71065255279563`", "0.0006311743121585642`", "0.024499689189376853`",
+       "0.1303995957104583`", "2.0019737725904692`*^-7"},
+     {"2", "1", "62.462`", "809.34197`", "370.415062004013`", 
+      "49.489904280129615`", "0.0007112248611157064`", 
+      "0.023165958408788035`", "0.12330081363077433`", 
+      "8.418284561638876`*^-7"},
+     {"2", "0", "62.462`", "1301.50262`", "230.34333653511973`", 
+      "49.5731489044079`", "2.474735366626969`*^-11", 
+      "6.120841085247053`*^-10", "3.2578176676227445`*^-9", 
+      "9.249609301860593`*^-14"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->8]], "Output",
+ ImageSize->{560, 188},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->128073251]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->354299008],
+
+Cell["\<\
+If you gave a list of densities they will be used cyclically until all \
+collision partners are filled up.\
+\>", "ExampleText",
+ CellID->454791538],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Quiet", "[", 
+  RowBox[{
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"EscapeProbabilityRun", "[", 
+      RowBox[{"\"\<C\>\"", ",", 
+       RowBox[{"1.", " ", 
+        SuperscriptBox["10", "15"]}], ",", "5", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         SuperscriptBox["10", "4"], ",", "100"}], "}"}], ",", "50.", ",", 
+       RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}]}], "]"}], ",", "8"}],
+     "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"InterpolatingFunction", "::", "\"\<dmval\>\""}], "}"}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->522624979],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EscapeProbabilityRun", "::", "\<\"denxmatch\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Too few densities of collisional \
+partners provided, Densities for  \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(5\\), \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" collision partners are \
+needed. Replicating the provided  density(ies) to fill up the list. WARNING! \
+Results is likely to be  unphysical.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], \
+"Message", "MSG",
+ CellLabel->"During evaluation of In[1]:=",
+ CellID->995583986],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "4"}],
+  SequenceForm["Number of Iterations:", 4],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[27]:=",
+ CellID->323400080],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "23.62`", "492.160651`", "609.1353613720736`", 
+      "49.569687767579374`", "0.0006338758789521192`", 
+      "0.024516860661900463`", "0.13049099087296523`", 
+      "2.003376926620845`*^-7"},
+     {"2", "1", "62.462`", "809.34197`", "370.415062004013`", 
+      "49.304816300372075`", "0.0007134810580431736`", 
+      "0.023114007808934422`", "0.12302430656305348`", 
+      "8.399406217604999`*^-7"},
+     {"2", "0", "62.462`", "1301.50262`", "230.34333653511973`", 
+      "49.40464343474669`", "2.4840335237952033`*^-11", 
+      "6.107135352437722`*^-10", "3.250522791334978`*^-9", 
+      "9.228897659144109`*^-14"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->8]], "Output",
+ ImageSize->{555, 188},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->11160762]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->25653340]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell[TextData[{
+   "Neat Examples",
+   "\[NonBreakingSpace]\[NonBreakingSpace]",
+   Cell["(2)", "ExampleCount"]
+  }], "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->589267740],
+
+Cell["\<\
+Show the LTE population of a species. The population follows the Boltzmann \
+distribution.\
+\>", "ExampleText",
+ CellID->263441759],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"levels", "=", 
+   RowBox[{"ShowEnergyLevels", "[", "\"\<CO\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", 
+   RowBox[{"6.62606896", " ", 
+    RowBox[{"10", "^", 
+     RowBox[{"-", "27"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"cl", "=", 
+   RowBox[{"2.99792456", " ", 
+    RowBox[{"10", "^", "10"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"kB", "=", 
+   RowBox[{"1.3806504", " ", 
+    RowBox[{"10", "^", 
+     RowBox[{"-", "16"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"levelenergiesKelvin", "=", 
+   RowBox[{
+    RowBox[{"levels", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "2"}], "]"}], "]"}], " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"h", " ", "cl"}], ")"}], "/", "kB"}]}]}], ";"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->197586359],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LTE", "[", "T_", "]"}], ":=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "partitionFunction", "}"}], ",", 
+    RowBox[{
+     RowBox[{"partitionFunction", "=", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"levels", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "3"}], "]"}], "]"}], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", 
+            RowBox[{"(", 
+             RowBox[{"levelenergiesKelvin", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ")"}]}], "/", "T"}], "]"}]}], 
+        ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "@", "levels"}]}], "}"}]}], "]"}]}], ";", "\n", 
+     RowBox[{"(*", 
+      RowBox[{
+      "calculate", " ", "the", " ", "actual", " ", "LTE", " ", "level", " ", 
+       "populations"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"levels", "[", 
+         RowBox[{"[", 
+          RowBox[{"i", ",", "3"}], "]"}], "]"}], "*", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", 
+            RowBox[{"levelenergiesKelvin", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "/", "T"}], "]"}], "/", 
+         "partitionFunction"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"Length", "@", "levels"}]}], "}"}]}], "]"}]}]}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->17560070],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{"LTE", ",", 
+     RowBox[{"{", 
+      RowBox[{"100", ",", "300", ",", "500"}], "}"}]}], "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->301078242],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {Hue[0.67, 0.6, 0.6], LineBox[CompressedData["
+1:eJxTTMoPSmViYGDQBGIQDQEf7JlYfSMf8s2xhwo4vH7wvcvq5WYon8Mhb5HZ
+rylb90L5Ag5RH3z9Ts09COWLOFxo8fwTq34IypdwuMKU5rH98gEoX8bh1z13
+6ZyuPVC+gkO+TkFCUMw2KF/J4eWtzyG2HhugfBWH0pPPt3QrLIPy1RwWbJJN
+2qAMc5+Gw9xVwXn6xydA+VoO8idP1EWdaoLydRwOtDhKTjtZDOXrOSxSZYvo
+mZMM5Rs48K33+b/fLwjKN3SI/HKgq07aAco3ctjiM9NGbpcWlG/sYLmr44Lt
+axEo38Thz6fZ6bXP/9lB+KYODC9eSMn3PoXyzRxWbpCP6Us6A+WbO/is3OZh
+tWIjlG/h4LNUcVL0wSlQvqWDNWdrlzNfOZRv5WBd0rtW0zQCyrd2MFrVezKa
+3QLKt3GwSbXlDu4Vg/JtHTb89J1twvLFFsK3c+hLn2i24ewFKN/eYWOQ1R7p
+DaugfAeHT1wvnNl4WyD8BgeH/yz3wlSaYqDyjg7yyS09N3SNofKODn8txKsb
+cjig8k4Opj96E18X3LWByDs53K0zSc06swHCZ3B28N20NjhOrQkq7+xQ9Pv+
+40UTg6DyLg7P9OY1bf+rCJV3cXDVXB1U3vTBGgDXyLAb
+     "]]}, 
+   {Hue[0.9060679774997897, 0.6, 0.6], LineBox[CompressedData["
+1:eJxTTMoPSmViYGDQBGIQDQEf7FfUzy95e77JHirg4LtDvOjZ5tlQPofDVJnm
+c2/tl0H5Ag5/1gdkq1WuhfJFHA4r/aqYOnMjlC/hsGnOVdY7czdD+TIOS9L/
+ncs+uAXKV3DQ5uxRWcKzFcpXcvjX7qd0ZipMXsXhotOK9KZamH41B0WBvgmT
+XsHM13DoiVnMcpB1A5Sv5dBvFznf4M1qKF/H4bLtDhO2PcuhfD2HrDixt+c3
+LYbyDRxUHywv0vw8H8o3dDD3D/UOCp0J5Rs5LNw22dR+2WQo39jhdqI4W+OV
+XijfxKHrykrLzVptUL6pw0H9a271ig1QvpnD5E/T+mT+l0H55g4+HjydNfwF
+UL6FwxGW+HMHf6dC+ZYOHHF9IrZ1sVC+lUO+8VaRzynBUL61Q7dZaZYokyeU
+b+NgY3i16fI8eyjf1iFg39lzB2YZQ/l2Dud/3zm/47o6lG/vUPfFVLmsUAbK
+d3B4oMJmtHaJAITf4OCQt+R48S1pZqi8o4NheXfAnravdhB5RwdT5nUrSk4/
+h/AZnByeM/Cm9J6/CZV3ckiN+jz7U+VpqLyzw7m7XAVft+yByjs7lAe8q1Qr
+WAuVd3HYqjVz1e6Fc6HyLg7vZhQtyXHvtQMAg/60Pg==
+     "]]}, 
+   {Hue[0.1421359549995791, 0.6, 0.6], LineBox[CompressedData["
+1:eJxTTMoPSmViYGDQBGIQDQEf7Ot7bqyTnlFmDxVwUFszUzDy0AQon8Nhzyf7
+R2JBs6F8AYcO+5lt7A2LoHwRh5SLOUunH1wG5Us4cEtEHmQLXAXlyzi0rIyX
+XS61FspXcLAoiHqZKrIeyldyKJAsu3xDbgOUr+JQ1GS/NN0fxldzeLm1TPGa
+Moyv4ZDdM2OGtx9Mv5ZD2IZl2kxnYebrOLzs/Xhl1oPVUL6eg75BOm/vspVQ
+voFDiqbU2WTr5VC+ocPq49XK+TuXQPlGDkzbkkuOmsP8Z+zg6Pgx1X7yfCjf
+xOH60QVJ8n9mQfmmDikqpf5/9k+D8s0crBr0g6+9mQTlmzvMOHbUvVi4H8q3
+cOBY5Ve7Wr8Tyrd02CZ6fWWaeguUb+XgKDzLc/HNeijf2uHMvmav77cqoHwb
+By7ZoLJlGsVQvq1DlB2fgrVuLpRv5/DmKOfx259SoXx7h9qXNlZhAQlQvoPD
+XUfNv9O/hUP4DQ4O7J6Pu1JTAqHyjg4hiw6aWX72gMo7OrAeP9DBvcERKu/k
+8FPXi23dSQuovJOD+tTVDZbahlB5Z4euOw8TdzapQ+WdHXaeev762mV5qLyL
+w8TaxINpPqJQeReHXu3TNw7r8dgDAE9yrRM=
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 0},
+  PlotRange->{All, All},
+  PlotRangeClipping->True,
+  PlotRangePadding->{Automatic, Automatic}]], "Output",
+ ImageSize->{229, 143},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->434349403]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["\t", "ExampleDelimiter"],
+  $Line = 0; Null]], "ExampleDelimiter",
+ CellID->1008367924],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ep", "=", 
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<CO\>\"", ",", 
+     SuperscriptBox["10", "16"], ",", "5", ",", 
+     SuperscriptBox["10", "4"], ",", "100", ",", 
+     RowBox[{"ShowLevelPopulation", "\[Rule]", "True"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->49464540],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "10000"}],
+  SequenceForm["Number of Iterations:", 10000],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[84]:=",
+ CellID->509262084]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"ep", ",", 
+     RowBox[{"LTE", "[", "100", "]"}]}], "}"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->306634555],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {Hue[0.67, 0.6, 0.6], 
+    LineBox[{{1., 0.06310651001777298}, {2., 0.20246088419917652`}, {3., 
+     0.29352695093547526`}, {4., 0.24180338232026002`}, {5., 
+     0.12741130460967623`}, {6., 0.049022775148028705`}, {7., 
+     0.015961092521395794`}, {8., 0.004807596832747189}, {9., 
+     0.0013821833850255648`}, {10., 0.00038178006483661093`}, {11., 
+     0.000101223489001016}, {12., 0.000025813910613846665`}, {13., 
+     6.4494864185727945`*^-6}, {14., 1.5880247257837986`*^-6}, {15., 
+     3.7134237700216955`*^-7}, {16., 7.32086974018899*^-8}, {17., 
+     1.6636134192799486`*^-8}, {18., 3.1818360700729126`*^-9}}]}, 
+   {Hue[0.9060679774997897, 0.6, 0.6], LineBox[CompressedData["
+1:eJxTTMoPSmViYGDQBGIQDQEf7JlYfSMf8s2xhwo4vH7wvcvq5WYon8Mhb5HZ
+rylb90L5Ag5RH3z9Ts09COWLOFxo8fwTq34IypdwuMKU5rH98gEoX8bh1z13
+6ZyuPVC+gkO+TkFCUMw2KF/J4eWtzyG2HhugfBWH0pPPt3QrLIPy1RwWbJJN
+2qAMc5+Gw9xVwXn6xydA+VoO8idP1EWdaoLydRwOtDhKTjtZDOXrOSxSZYvo
+mZMM5Rs48K33+b/fLwjKN3SI/HKgq07aAco3ctjiM9NGbpcWlG/sYLmr44Lt
+axEo38Thz6fZ6bXP/9lB+KYODC9eSMn3PoXyzRxWbpCP6Us6A+WbO/is3OZh
+tWIjlG/h4LNUcVL0wSlQvqWDNWdrlzNfOZRv5WBd0rtW0zQCyrd2MFrVezKa
+3QLKt3GwSbXlDu4Vg/JtHTb89J1twvLFFsK3c+hLn2i24ewFKN/eYWOQ1R7p
+DaugfAeHT1wvnNl4WyD8BgeH/yz3wlSaYqDyjg7yyS09N3SNofKODn8txKsb
+cjig8k4Opj96E18X3LWByDs53K0zSc06swHCZ3B28N20NjhOrQkq7+xQ9Pv+
+40UTg6DyLg7P9OY1bf+rCJV3cXDVXB1U3vTBGgDXyLAb
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 0},
+  PlotRange->{All, All},
+  PlotRangeClipping->True,
+  PlotRangePadding->{Automatic, Automatic}]], "Output",
+ ImageSize->{229, 148},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->835061749]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   SuperscriptBox["10", "16"], ",", "5", ",", 
+   SuperscriptBox["10", "4"], ",", "100", ",", 
+   RowBox[{"ShowOpticalDepth", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->132046409],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "10000"}],
+  SequenceForm["Number of Iterations:", 10000],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[90]:=",
+ CellID->33690134],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "0.029018369123130765`"}], ",", "0.11627338250608456`", ",", 
+   "0.47958256633472307`", ",", "0.5385521896474997`", ",", 
+   "0.31966994303766`", ",", "0.12739325718822822`", ",", 
+   "0.041661434899365746`", ",", "0.012515302667323255`", ",", 
+   "0.0035903900009906058`", ",", "0.0009910599472204569`", ",", 
+   "0.00026290060263379665`", ",", "0.00006669565136959865`", ",", 
+   "0.0000165607565999842`", ",", "4.098316659033716`*^-6", ",", 
+   "9.905301320268157`*^-7", ",", "1.8670686890363786`*^-7", ",", 
+   "4.381944054312847`*^-8"}], "}"}]], "Output",
+ ImageSize->{500, 79},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->207237931]
+}, Open  ]],
+
+Cell["\<\
+We see that the level population deviates significantly from LTE. If we \
+increase the column density we automatically reduce the escape probability of \
+the photons and the level population approaches LTE.\
+\>", "ExampleText",
+ CellID->44815264],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ep2", "=", 
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<CO\>\"", ",", 
+     SuperscriptBox["10", "19"], ",", "5", ",", 
+     SuperscriptBox["10", "4"], ",", "100", ",", 
+     RowBox[{"ShowLevelPopulation", "\[Rule]", "True"}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->627132326],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "7909"}],
+  SequenceForm["Number of Iterations:", 7909],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[88]:=",
+ CellID->44749903]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"ep", ",", "ep2", ",", 
+     RowBox[{"LTE", "[", "100", "]"}]}], "}"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->830452386],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {Hue[0.67, 0.6, 0.6], 
+    LineBox[{{1., 0.06310651001777298}, {2., 0.20246088419917652`}, {3., 
+     0.29352695093547526`}, {4., 0.24180338232026002`}, {5., 
+     0.12741130460967623`}, {6., 0.049022775148028705`}, {7., 
+     0.015961092521395794`}, {8., 0.004807596832747189}, {9., 
+     0.0013821833850255648`}, {10., 0.00038178006483661093`}, {11., 
+     0.000101223489001016}, {12., 0.000025813910613846665`}, {13., 
+     6.4494864185727945`*^-6}, {14., 1.5880247257837986`*^-6}, {15., 
+     3.7134237700216955`*^-7}, {16., 7.32086974018899*^-8}, {17., 
+     1.6636134192799486`*^-8}, {18., 3.1818360700729126`*^-9}}]}, 
+   {Hue[0.9060679774997897, 0.6, 0.6], 
+    LineBox[{{1., 0.031197581184675634`}, {2., 0.08838213224566083}, {3., 
+     0.13109477225901578`}, {4., 0.15400726458345207`}, {5., 
+     0.15637676593485422`}, {6., 0.1416012682907955}, {7., 
+     0.11555087947445919`}, {8., 0.08464415187788564}, {9., 
+     0.05437415837740332}, {10., 0.028886232100062786`}, {11., 
+     0.01115529284205359}, {12., 0.0024548242248432334`}, {13., 
+     0.00024024075839029755`}, {14., 0.0000270420606731462}, {15., 
+     5.777948789980192*^-6}, {16., 1.2632982744573221`*^-6}, {17., 
+     2.820810613602118*^-7}, {18., 5.71016688554484*^-8}}]}, 
+   {Hue[0.1421359549995791, 0.6, 0.6], LineBox[CompressedData["
+1:eJxTTMoPSmViYGDQBGIQDQEf7JlYfSMf8s2xhwo4vH7wvcvq5WYon8Mhb5HZ
+rylb90L5Ag5RH3z9Ts09COWLOFxo8fwTq34IypdwuMKU5rH98gEoX8bh1z13
+6ZyuPVC+gkO+TkFCUMw2KF/J4eWtzyG2HhugfBWH0pPPt3QrLIPy1RwWbJJN
+2qAMc5+Gw9xVwXn6xydA+VoO8idP1EWdaoLydRwOtDhKTjtZDOXrOSxSZYvo
+mZMM5Rs48K33+b/fLwjKN3SI/HKgq07aAco3ctjiM9NGbpcWlG/sYLmr44Lt
+axEo38Thz6fZ6bXP/9lB+KYODC9eSMn3PoXyzRxWbpCP6Us6A+WbO/is3OZh
+tWIjlG/h4LNUcVL0wSlQvqWDNWdrlzNfOZRv5WBd0rtW0zQCyrd2MFrVezKa
+3QLKt3GwSbXlDu4Vg/JtHTb89J1twvLFFsK3c+hLn2i24ewFKN/eYWOQ1R7p
+DaugfAeHT1wvnNl4WyD8BgeH/yz3wlSaYqDyjg7yyS09N3SNofKODn8txKsb
+cjig8k4Opj96E18X3LWByDs53K0zSc06swHCZ3B28N20NjhOrQkq7+xQ9Pv+
+40UTg6DyLg7P9OY1bf+rCJV3cXDVXB1U3vTBGgDXyLAb
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesOrigin->{0, 0},
+  PlotRange->{All, All},
+  PlotRangeClipping->True,
+  PlotRangePadding->{Automatic, Automatic}]], "Output",
+ ImageSize->{229, 148},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->745678797]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   SuperscriptBox["10", "19"], ",", "5", ",", 
+   SuperscriptBox["10", "4"], ",", "100", ",", 
+   RowBox[{"ShowOpticalDepth", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->638248988],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "7909"}],
+  SequenceForm["Number of Iterations:", 7909],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[91]:=",
+ CellID->116960162],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "15.254284844177363`", ",", "56.90608848149815`", ",", 
+   "110.99358976716869`", ",", "162.01139487312955`", ",", 
+   "196.71215864368668`", ",", "208.41249691937176`", ",", 
+   "197.5882445128939`", ",", "169.5630522361083`", ",", 
+   "130.50049836070255`", ",", "85.09060166306645`", ",", 
+   "40.00975118302255`", ",", "9.93545769331609`", ",", "0.9489561432112268`",
+    ",", "0.09474634363254641`", ",", "0.019929442996774807`", ",", 
+   "0.004291602917139032`", ",", "0.0009723947657312333`"}], "}"}]], "Output",
+ ImageSize->{493, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->214803202]
+}, Open  ]]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowCollisionPartners",
+    BaseStyle->"Link",
+    ButtonData->"paclet:ref/ShowCollisionPartners"], "ExampleText",
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowCollisionTemperatures",
+    BaseStyle->"Link",
+    ButtonData->"paclet:ref/ShowCollisionTemperatures"], "ExampleText",
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowEnergyLevels",
+    BaseStyle->"Link",
+    ButtonData->"paclet:ref/ShowEnergyLevels"], "ExampleText",
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowTransitions",
+    BaseStyle->"Link",
+    ButtonData->"paclet:ref/ShowTransitions"], "ExampleText",
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowCollisionRates",
+    BaseStyle->"Link",
+    ButtonData->"paclet:ref/ShowCollisionRates"], "ExampleText",
+   FontFamily->"Verdana"]], "InlineFormula"]
+}], "SeeAlso",
+ CellID->175170130]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["TUTORIALS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "TutorialsSection",
+ CellID->250839057],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:EscapeProbability/tutorial/EscapeProbability"]], "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:EscapeProbability/guide/Escape Probability"]], "MoreAbout",
+ CellID->93365402]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["RELATED LINKS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "RelatedLinksSection",
+ CellID->1584193535],
+
+Cell[TextData[ButtonBox["LAMBDA Leiden Atomic and Molecular Database",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://www.strw.leidenuniv.nl/~moldata/"], None},
+ ButtonNote->"http://www.strw.leidenuniv.nl/~moldata/"]], "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"EscapeProbabilityRun - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "built" -> "{2011, 1, 14, 16, 54, 13.2695099}", "context" -> 
+    "EscapeProbability`", 
+    "keywords" -> {"radiative transfer", "escape probability", "astronomy"}, 
+    "index" -> True, "label" -> "EscapeProbability Package Paclet Symbol", 
+    "language" -> "en", "paclet" -> "EscapeProbability Package", "status" -> 
+    "None", "summary" -> 
+    "EscapeProbabilityRun[LAMBDAfile, Nc, FWHM, n, T] performs a radiative \
+transfer calculation using the escape probability approximation. The input \
+parameters are the column density of the required species Nc in \
+SuperscriptBox[\"cm\", RowBox[{\"-\", \"2\"}]], the FWHM line width in \
+km/sec, the total density n of any collision partner in \
+SuperscriptBox[\"cm\", RowBox[{\"-\", \"3\"}]], and the kinetic gas \
+temperature T in K. The atomic and molecular data is taken from the LAMBDA \
+Leiden Atomic and Molecular Database. ", "synonyms" -> {}, "title" -> 
+    "EscapeProbabilityRun", "type" -> "Symbol", "uri" -> 
+    "EscapeProbability/ref/EscapeProbabilityRun"}, "LinkTrails" -> "", 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "8.0 for Microsoft Windows (64-bit) (November 7, 2010)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[16283, 434, 461, 13, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->465605168]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 170374, 4673}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[613, 21, 76, 1, 70, "SymbolColorBar"],
+Cell[692, 24, 200, 5, 70, "LinkTrail"],
+Cell[895, 31, 3572, 83, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4492, 118, 63, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[4558, 121, 1450, 36, 70, "Usage"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6045, 162, 579, 17, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->87224572],
+Cell[6627, 181, 53, 0, 70, "Notes"],
+Cell[6683, 183, 9563, 246, 70, "3ColumnTableMod",
+ CellID->105759801]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[16283, 434, 461, 13, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->465605168],
+Cell[CellGroupData[{
+Cell[16769, 451, 147, 5, 70, "ExampleSection",
+ CellID->94179877],
+Cell[16919, 458, 126, 3, 70, "Input",
+ CellID->233470092],
+Cell[17048, 463, 245, 5, 70, "ExampleText",
+ CellID->76706148],
+Cell[17296, 470, 268, 8, 70, "Input",
+ CellID->361835800],
+Cell[17567, 480, 480, 14, 70, "ExampleText",
+ CellID->161724614],
+Cell[18050, 496, 119, 3, 70, "ExampleText",
+ CellID->378248940],
+Cell[CellGroupData[{
+Cell[18194, 503, 345, 11, 70, "Input",
+ CellID->2563574],
+Cell[18542, 516, 247, 6, 70, "Print",
+ CellID->127730889],
+Cell[18792, 524, 2384, 54, 137, "Output",
+ CellID->562195886]
+}, Open  ]],
+Cell[21191, 581, 385, 7, 70, "ExampleText",
+ CellID->37093321],
+Cell[21579, 590, 261, 8, 70, "Input",
+ CellID->119651767],
+Cell[CellGroupData[{
+Cell[21865, 602, 347, 11, 70, "Input",
+ CellID->342732254],
+Cell[22215, 615, 243, 6, 70, "Print",
+ CellID->843898732],
+Cell[22461, 623, 5079, 102, 384, "Output",
+ CellID->751293543]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27589, 731, 221, 7, 70, "ExampleSection",
+ CellID->1293636265],
+Cell[CellGroupData[{
+Cell[27835, 742, 238, 7, 70, "ExampleSubsection",
+ CellID->438807726],
+Cell[28076, 751, 271, 5, 70, "ExampleText",
+ CellID->46890917],
+Cell[28350, 758, 125, 3, 70, "Input",
+ CellID->17913139],
+Cell[CellGroupData[{
+Cell[28500, 765, 348, 11, 70, "Input",
+ CellID->183267014],
+Cell[28851, 778, 711, 13, 70, "Message",
+ CellID->394661657],
+Cell[29565, 793, 710, 13, 70, "Message",
+ CellID->19588632],
+Cell[30278, 808, 710, 13, 70, "Message",
+ CellID->51193841],
+Cell[30991, 823, 653, 11, 70, "Message",
+ CellID->234711710],
+Cell[31647, 836, 247, 6, 70, "Print",
+ CellID->458480799],
+Cell[31897, 844, 2432, 55, 137, "Output",
+ CellID->631413682]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[34378, 905, 239, 7, 70, "ExampleSubsection",
+ CellID->29128282],
+Cell[34620, 914, 352, 8, 70, "ExampleText",
+ CellID->63245305],
+Cell[34975, 924, 113, 3, 70, "ExampleText",
+ CellID->20275293],
+Cell[35091, 929, 1632, 45, 70, "Input",
+ CellID->1158342],
+Cell[CellGroupData[{
+Cell[36748, 978, 318, 9, 70, "Input",
+ CellID->2843165],
+Cell[37069, 989, 3835, 73, 188, "Output",
+ CellID->518732]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40941, 1067, 125, 3, 70, "ExampleDelimiter",
+ CellID->218610037],
+Cell[41069, 1072, 465, 14, 70, "ExampleText",
+ CellID->86141866],
+Cell[41537, 1088, 125, 3, 70, "Input",
+ CellID->15629507],
+Cell[CellGroupData[{
+Cell[41687, 1095, 126, 3, 70, "Input",
+ CellID->260617986],
+Cell[41816, 1100, 450, 8, 70, "Message",
+ CellID->128015747],
+Cell[42269, 1110, 566, 17, 63, "Output",
+ CellID->138900862]
+}, Open  ]],
+Cell[42850, 1130, 412, 13, 70, "ExampleText",
+ CellID->99952695],
+Cell[CellGroupData[{
+Cell[43287, 1147, 388, 11, 70, "Input",
+ CellID->328949952],
+Cell[43678, 1160, 242, 6, 70, "Print",
+ CellID->53336021],
+Cell[43923, 1168, 5027, 99, 704, "Output",
+ CellID->261901686]
+}, Open  ]]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[49011, 1274, 233, 7, 70, "ExampleSubsection",
+ CellID->351075886],
+Cell[49247, 1283, 139, 4, 70, "ExampleText",
+ CellID->184049945],
+Cell[49389, 1289, 125, 3, 70, "Input",
+ CellID->13085077],
+Cell[CellGroupData[{
+Cell[49539, 1296, 424, 13, 70, "Input",
+ CellID->517365320],
+Cell[49966, 1311, 246, 6, 70, "Print",
+ CellID->40855191],
+Cell[50215, 1319, 6089, 118, 479, "Output",
+ CellID->71123482]
+}, Open  ]]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[56365, 1444, 203, 6, 70, "ExampleSection"],
+Cell[CellGroupData[{
+Cell[56593, 1454, 209, 6, 70, "ExampleSubsection"],
+Cell[56805, 1462, 94, 1, 70, "ExampleText",
+ CellID->156894068],
+Cell[CellGroupData[{
+Cell[56924, 1467, 342, 9, 70, "Input",
+ CellID->333266038],
+Cell[57269, 1478, 248, 6, 70, "Print",
+ CellID->41024438],
+Cell[57520, 1486, 343, 10, 43, "Output",
+ CellID->58430302]
+}, Open  ]],
+Cell[57878, 1499, 120, 3, 70, "ExampleText",
+ CellID->31000899],
+Cell[CellGroupData[{
+Cell[58023, 1506, 398, 10, 70, "Input",
+ CellID->64676816],
+Cell[58424, 1518, 249, 6, 70, "Print",
+ CellID->678343574],
+Cell[58676, 1526, 340, 10, 43, "Output",
+ CellID->2586754]
+}, Open  ]],
+Cell[59031, 1539, 121, 3, 70, "ExampleText",
+ CellID->116677129],
+Cell[CellGroupData[{
+Cell[59177, 1546, 409, 10, 70, "Input",
+ CellID->139603311],
+Cell[59589, 1558, 249, 6, 70, "Print",
+ CellID->177569116],
+Cell[59841, 1566, 339, 10, 43, "Output",
+ CellID->65071858]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[60229, 1582, 218, 6, 70, "ExampleSubsection"],
+Cell[60450, 1590, 96, 1, 70, "ExampleText",
+ CellID->1096877],
+Cell[CellGroupData[{
+Cell[60571, 1595, 423, 12, 70, "Input",
+ CellID->106396552],
+Cell[60997, 1609, 246, 6, 70, "Print",
+ CellID->49545309],
+Cell[61246, 1617, 2366, 53, 393, "Output",
+ CellID->267989583]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63649, 1675, 482, 13, 70, "Input",
+ CellID->11262765],
+Cell[64134, 1690, 247, 6, 70, "Print",
+ CellID->580253335],
+Cell[64384, 1698, 2366, 53, 393, "Output",
+ CellID->329054288]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[66799, 1757, 220, 6, 70, "ExampleSubsection"],
+Cell[67022, 1765, 151, 4, 70, "ExampleText",
+ CellID->394208816],
+Cell[CellGroupData[{
+Cell[67198, 1773, 340, 9, 70, "Input",
+ CellID->323341196],
+Cell[67541, 1784, 250, 6, 70, "Print",
+ CellID->362571988],
+Cell[67794, 1792, 347, 10, 46, "Output",
+ CellID->23443628]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[68190, 1808, 239, 7, 70, "ExampleSubsection",
+ CellID->10611076],
+Cell[68432, 1817, 202, 5, 70, "ExampleText",
+ CellID->241000206],
+Cell[CellGroupData[{
+Cell[68659, 1826, 383, 10, 70, "Input",
+ CellID->36543338],
+Cell[69045, 1838, 242, 6, 70, "Print",
+ CellID->422864300],
+Cell[69290, 1846, 1557, 28, 219, "Output",
+ CellID->404968008]
+}, Open  ]],
+Cell[70862, 1877, 123, 3, 70, "ExampleText",
+ CellID->20918927],
+Cell[CellGroupData[{
+Cell[71010, 1884, 105, 3, 70, "Input",
+ CellID->231330060],
+Cell[71118, 1889, 158, 5, 43, "Output",
+ CellID->7796868]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[71325, 1900, 223, 6, 70, "ExampleSubsection"],
+Cell[71551, 1908, 82, 1, 70, "ExampleText",
+ CellID->148246701],
+Cell[CellGroupData[{
+Cell[71658, 1913, 343, 9, 70, "Input",
+ CellID->388254767],
+Cell[72004, 1924, 250, 6, 70, "Print",
+ CellID->125983151],
+Cell[72257, 1932, 342, 10, 43, "Output",
+ CellID->234332475]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[72648, 1948, 226, 6, 70, "ExampleSubsection"],
+Cell[72877, 1956, 85, 1, 70, "ExampleText",
+ CellID->372825316],
+Cell[CellGroupData[{
+Cell[72987, 1961, 346, 9, 70, "Input",
+ CellID->110615325],
+Cell[73336, 1972, 249, 6, 70, "Print",
+ CellID->71432636],
+Cell[73588, 1980, 329, 9, 43, "Output",
+ CellID->610461946]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[73966, 1995, 217, 6, 70, "ExampleSubsection"],
+Cell[74186, 2003, 387, 13, 70, "ExampleText",
+ CellID->22647309],
+Cell[CellGroupData[{
+Cell[74598, 2020, 343, 9, 70, "Input",
+ CellID->586707395],
+Cell[74944, 2031, 242, 6, 70, "Print",
+ CellID->100957150],
+Cell[75189, 2039, 1522, 28, 219, "Output",
+ CellID->194504288]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[76760, 2073, 241, 7, 70, "ExampleSubsection",
+ CellID->95201145],
+Cell[77004, 2082, 412, 13, 70, "ExampleText",
+ CellID->561596985],
+Cell[CellGroupData[{
+Cell[77441, 2099, 346, 9, 70, "Input",
+ CellID->27611756],
+Cell[77790, 2110, 251, 6, 70, "Print",
+ CellID->118215502],
+Cell[78044, 2118, 657, 15, 82, "Output",
+ CellID->20678584]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[78750, 2139, 215, 6, 70, "ExampleSubsection"],
+Cell[78968, 2147, 167, 4, 70, "ExampleText",
+ CellID->313789689],
+Cell[CellGroupData[{
+Cell[79160, 2155, 452, 12, 70, "Input",
+ CellID->942600757],
+Cell[79615, 2169, 242, 6, 70, "Print",
+ CellID->540321396],
+Cell[79860, 2177, 408, 11, 63, "Output",
+ CellID->409099465]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[80317, 2194, 212, 6, 70, "ExampleSubsection"],
+Cell[80532, 2202, 419, 13, 70, "ExampleText",
+ CellID->80403428],
+Cell[CellGroupData[{
+Cell[80976, 2219, 339, 9, 70, "Input",
+ CellID->336120145],
+Cell[81318, 2230, 242, 6, 70, "Print",
+ CellID->230592858],
+Cell[81563, 2238, 5179, 110, 679, "Output",
+ CellID->59295183]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[86791, 2354, 222, 6, 70, "ExampleSubsection"],
+Cell[87016, 2362, 379, 10, 70, "ExampleText",
+ CellID->34368165],
+Cell[CellGroupData[{
+Cell[87420, 2376, 416, 12, 70, "Input",
+ CellID->57294360],
+Cell[87839, 2390, 243, 6, 70, "Print",
+ CellID->754644251],
+Cell[88085, 2398, 4942, 95, 368, "Output",
+ CellID->101476146]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[93076, 2499, 229, 6, 70, "ExampleSubsection"],
+Cell[93308, 2507, 543, 11, 70, "ExampleText",
+ CellID->410615866],
+Cell[CellGroupData[{
+Cell[93876, 2522, 387, 10, 70, "Input",
+ CellID->489743615],
+Cell[94266, 2534, 246, 6, 70, "Print",
+ CellID->117403816],
+Cell[94515, 2542, 1510, 27, 219, "Output",
+ CellID->265824562]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[96062, 2574, 461, 12, 70, "Input",
+ CellID->50875497],
+Cell[96526, 2588, 248, 6, 70, "Print",
+ CellID->473247922],
+Cell[96777, 2596, 1513, 27, 219, "Output",
+ CellID->144232452]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[98327, 2628, 209, 6, 70, "Input",
+ CellID->785335451],
+Cell[98539, 2636, 2208, 43, 127, "Output",
+ CellID->103001423]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[100796, 2685, 209, 6, 70, "ExampleSubsection"],
+Cell[101008, 2693, 436, 14, 70, "ExampleText",
+ CellID->52670405],
+Cell[CellGroupData[{
+Cell[101469, 2711, 423, 12, 70, "Input",
+ CellID->223229043],
+Cell[101895, 2725, 246, 6, 70, "Print",
+ CellID->78466563],
+Cell[102144, 2733, 2365, 53, 393, "Output",
+ CellID->76470893]
+}, Open  ]],
+Cell[104524, 2789, 284, 8, 70, "ExampleText",
+ CellID->405317075],
+Cell[CellGroupData[{
+Cell[104833, 2801, 691, 20, 70, "Input",
+ CellID->274881957],
+Cell[105527, 2823, 247, 6, 70, "Print",
+ CellID->813859576],
+Cell[105777, 2831, 2367, 53, 393, "Output",
+ CellID->472054540]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[108193, 2890, 237, 7, 70, "ExampleSubsection",
+ CellID->180083823],
+Cell[108433, 2899, 723, 23, 70, "ExampleText",
+ CellID->723338760],
+Cell[CellGroupData[{
+Cell[109181, 2926, 421, 12, 70, "Input",
+ CellID->10340647],
+Cell[109605, 2940, 592, 11, 70, "Message",
+ CellID->267961832],
+Cell[110200, 2953, 248, 6, 70, "Print",
+ CellID->163312984],
+Cell[110451, 2961, 2365, 53, 393, "Output",
+ CellID->251157227]
+}, Open  ]],
+Cell[112831, 3017, 171, 4, 70, "ExampleText",
+ CellID->1123404],
+Cell[CellGroupData[{
+Cell[113027, 3025, 537, 16, 70, "Input",
+ CellID->33235157],
+Cell[113567, 3043, 248, 6, 70, "Print",
+ CellID->272769799],
+Cell[113818, 3051, 2363, 53, 393, "Output",
+ CellID->114881230]
+}, Open  ]]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[116242, 3111, 227, 7, 70, "ExampleSection",
+ CellID->258228157],
+Cell[CellGroupData[{
+Cell[116494, 3122, 223, 7, 70, "ExampleSubsection",
+ CellID->61490351],
+Cell[116720, 3131, 406, 7, 70, "ExampleText",
+ CellID->666453557],
+Cell[CellGroupData[{
+Cell[117151, 3142, 299, 7, 70, "Input",
+ CellID->450044509],
+Cell[117453, 3151, 245, 6, 70, "Print",
+ CellID->222660088],
+Cell[117701, 3159, 681, 15, 82, "Output",
+ CellID->620182285]
+}, Open  ]],
+Cell[118397, 3177, 760, 12, 70, "ExampleText",
+ CellID->115849401],
+Cell[CellGroupData[{
+Cell[119182, 3193, 299, 7, 70, "Input",
+ CellID->659045277],
+Cell[119484, 3202, 242, 6, 70, "Print",
+ CellID->80926839],
+Cell[119729, 3210, 679, 15, 82, "Output",
+ CellID->606540696]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120445, 3230, 299, 7, 70, "Input",
+ CellID->236681213],
+Cell[120747, 3239, 243, 6, 70, "Print",
+ CellID->143537359],
+Cell[120993, 3247, 676, 15, 82, "Output",
+ CellID->734138546]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[121706, 3267, 298, 7, 70, "Input",
+ CellID->73235456],
+Cell[122007, 3276, 243, 6, 70, "Print",
+ CellID->512116518],
+Cell[122253, 3284, 677, 15, 82, "Output",
+ CellID->6532331]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122967, 3304, 125, 3, 70, "ExampleDelimiter",
+ CellID->486703411],
+Cell[123095, 3309, 417, 7, 70, "ExampleText",
+ CellID->314056589],
+Cell[CellGroupData[{
+Cell[123537, 3320, 301, 7, 70, "Input",
+ CellID->16018993],
+Cell[123841, 3329, 247, 6, 70, "Print",
+ CellID->620548347],
+Cell[124091, 3337, 1193, 25, 120, "Output",
+ CellID->271451994]
+}, Open  ]],
+Cell[125299, 3365, 282, 5, 70, "ExampleText",
+ CellID->3740183],
+Cell[CellGroupData[{
+Cell[125606, 3374, 302, 7, 70, "Input",
+ CellID->138484706],
+Cell[125911, 3383, 250, 6, 70, "Print",
+ CellID->79351426],
+Cell[126164, 3391, 1182, 25, 120, "Output",
+ CellID->428510874]
+}, Open  ]]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[127407, 3423, 237, 7, 70, "ExampleSubsection",
+ CellID->101647812],
+Cell[127647, 3432, 685, 20, 70, "ExampleText",
+ CellID->265567395],
+Cell[CellGroupData[{
+Cell[128357, 3456, 363, 11, 70, "Input",
+ CellID->152461034],
+Cell[128723, 3469, 180, 5, 43, "Output",
+ CellID->464888122]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[128940, 3479, 387, 11, 70, "Input",
+ CellID->333604190],
+Cell[129330, 3492, 247, 6, 70, "Print",
+ CellID->331250560],
+Cell[129580, 3500, 1644, 41, 164, "Output",
+ CellID->101978393]
+}, Open  ]],
+Cell[131239, 3544, 262, 5, 70, "ExampleText",
+ CellID->120545056],
+Cell[131504, 3551, 69, 2, 70, "Input",
+ CellID->483140313]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[131622, 3559, 238, 7, 70, "ExampleSection",
+ CellID->2123667759],
+Cell[131863, 3568, 236, 5, 70, "ExampleText",
+ CellID->348119199],
+Cell[CellGroupData[{
+Cell[132124, 3577, 160, 5, 70, "Input",
+ CellID->317680507],
+Cell[132287, 3584, 450, 8, 70, "Message",
+ CellID->118536040],
+Cell[132740, 3594, 2566, 51, 147, "Output",
+ CellID->293379726]
+}, Open  ]],
+Cell[135321, 3648, 397, 11, 70, "ExampleText",
+ CellID->172828855],
+Cell[135721, 3661, 545, 17, 70, "Input",
+ CellID->241203588],
+Cell[CellGroupData[{
+Cell[136291, 3682, 409, 12, 70, "Input",
+ CellID->149067894],
+Cell[136703, 3696, 243, 6, 70, "Print",
+ CellID->110558460],
+Cell[136949, 3704, 2085, 50, 214, "Output",
+ CellID->420989663]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[139071, 3759, 125, 3, 70, "ExampleDelimiter",
+ CellID->129653832],
+Cell[139199, 3764, 129, 3, 70, "ExampleText",
+ CellID->226355556],
+Cell[CellGroupData[{
+Cell[139353, 3771, 506, 13, 70, "Input",
+ CellID->806867182],
+Cell[139862, 3786, 243, 6, 70, "Print",
+ CellID->104394917],
+Cell[140108, 3794, 245, 8, 43, "Output",
+ CellID->44709961]
+}, Open  ]],
+Cell[140368, 3805, 103, 3, 70, "ExampleText",
+ CellID->972090838],
+Cell[CellGroupData[{
+Cell[140496, 3812, 506, 13, 70, "Input",
+ CellID->13604314],
+Cell[141005, 3827, 243, 6, 70, "Print",
+ CellID->106842742],
+Cell[141251, 3835, 246, 8, 43, "Output",
+ CellID->21090384]
+}, Open  ]],
+Cell[141512, 3846, 127, 3, 70, "ExampleText",
+ CellID->90770612]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[141688, 3855, 231, 7, 70, "ExampleSection",
+ CellID->1305812373],
+Cell[141922, 3864, 284, 5, 70, "ExampleText",
+ CellID->63656767],
+Cell[CellGroupData[{
+Cell[142231, 3873, 544, 16, 70, "Input",
+ CellID->281313553],
+Cell[142778, 3891, 592, 11, 70, "Message",
+ CellID->286044522],
+Cell[143373, 3904, 243, 6, 70, "Print",
+ CellID->837258110],
+Cell[143619, 3912, 2076, 49, 214, "Output",
+ CellID->128073251]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[145732, 3966, 125, 3, 70, "ExampleDelimiter",
+ CellID->354299008],
+Cell[145860, 3971, 157, 4, 70, "ExampleText",
+ CellID->454791538],
+Cell[CellGroupData[{
+Cell[146042, 3979, 605, 18, 70, "Input",
+ CellID->522624979],
+Cell[146650, 3999, 592, 11, 70, "Message",
+ CellID->995583986],
+Cell[147245, 4012, 243, 6, 70, "Print",
+ CellID->323400080],
+Cell[147491, 4020, 2084, 50, 214, "Output",
+ CellID->11160762]
+}, Open  ]]
+}, Open  ]],
+Cell[149602, 4074, 124, 3, 70, "ExampleDelimiter",
+ CellID->25653340]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[149763, 4082, 228, 7, 70, "ExampleSection",
+ CellID->589267740],
+Cell[149994, 4091, 141, 4, 70, "ExampleText",
+ CellID->263441759],
+Cell[150138, 4097, 846, 29, 70, "Input",
+ CellID->197586359],
+Cell[150987, 4128, 1536, 46, 70, "Input",
+ CellID->17560070],
+Cell[CellGroupData[{
+Cell[152548, 4178, 298, 9, 70, "Input",
+ CellID->301078242],
+Cell[152849, 4189, 2550, 51, 169, "Output",
+ CellID->434349403]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[155436, 4245, 126, 3, 70, "ExampleDelimiter",
+ CellID->1008367924],
+Cell[CellGroupData[{
+Cell[155587, 4252, 347, 10, 70, "Input",
+ CellID->49464540],
+Cell[155937, 4264, 251, 6, 70, "Print",
+ CellID->509262084]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[156225, 4275, 256, 8, 70, "Input",
+ CellID->306634555],
+Cell[156484, 4285, 1735, 35, 174, "Output",
+ CellID->835061749]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[158256, 4325, 291, 7, 70, "Input",
+ CellID->132046409],
+Cell[158550, 4334, 250, 6, 70, "Print",
+ CellID->33690134],
+Cell[158803, 4342, 748, 16, 105, "Output",
+ CellID->207237931]
+}, Open  ]],
+Cell[159566, 4361, 256, 5, 70, "ExampleText",
+ CellID->44815264],
+Cell[CellGroupData[{
+Cell[159847, 4370, 349, 10, 70, "Input",
+ CellID->627132326],
+Cell[160199, 4382, 248, 6, 70, "Print",
+ CellID->44749903]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[160484, 4393, 268, 8, 70, "Input",
+ CellID->830452386],
+Cell[160755, 4403, 2360, 45, 174, "Output",
+ CellID->745678797]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[163152, 4453, 291, 7, 70, "Input",
+ CellID->638248988],
+Cell[163446, 4462, 249, 6, 70, "Print",
+ CellID->116960162],
+Cell[163698, 4470, 692, 15, 82, "Output",
+ CellID->214803202]
+}, Open  ]]
+}, Open  ]]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[164463, 4493, 417, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[164883, 4507, 1515, 48, 70, "SeeAlso",
+ CellID->175170130]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[166435, 4560, 419, 12, 70, "TutorialsSection",
+ CellID->250839057],
+Cell[166857, 4574, 171, 4, 70, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[167065, 4583, 419, 12, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[167487, 4597, 168, 4, 70, "MoreAbout",
+ CellID->93365402]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[167692, 4606, 427, 12, 70, "RelatedLinksSection",
+ CellID->1584193535],
+Cell[168122, 4620, 263, 5, 70, "RelatedLinks",
+ CellID->1038487239]
+}, Open  ]],
+Cell[168400, 4628, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,3932 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    130593,       3922]
+NotebookOptionsPosition[    115643,       3432]
+NotebookOutlinePosition[    118603,       3496]
+CellTagsIndexPosition[    118560,       3493]
+WindowTitle->EscapeProbability - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[" ", "TutorialColorBar",
+ CellMargins->{{Inherited, Inherited}, {-5, 0}}],
+
+Cell[TextData[{
+ ButtonBox["Mathematica",
+  BaseStyle->{"Link", "LinkTrail"},
+  ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"],
+ StyleBox[" > ", "LinkTrailSeparator"]
+}], "LinkTrail"],
+
+Cell[BoxData[GridBox[{
+   {Cell["ESCAPE PROBABILITY TUTORIAL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Escape Probability\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/guide/EscapeProbability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Functions \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"EscapeProbabilityRun\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/EscapeProbabilityRun"], \
+"\<\"ShowCollisionPartners\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowCollisionPartners"], \
+"\<\"ShowCollisionRates\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowCollisionRates"], \
+"\<\"ShowCollisionTemperatures\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowCollisionTemperatures"], \
+"\<\"ShowEnergyLevels\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowEnergyLevels"], "\<\"ShowTransitions\
+\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowTransitions"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->
+         False], {"\<\"EscapeProbability/tutorial/EscapeProbability\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["EscapeProbability/tutorial/EscapeProbability"]}, Visible -> 
+            False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/EscapeProbability/\
+tutorial/EscapeProbability.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "EscapeProbability/tutorial/EscapeProbability", ".html"]], 
+           None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["EscapeProbability", "Title",
+ CellID->509267359],
+
+Cell[TextData[{
+ "EscapeProbability extends the capabilities of ",
+ StyleBox["Mathematica ",
+  FontSlant->"Italic"],
+ "to solve the radiative transfer problem (in the astronomical context) using \
+the escape probability approximation.  It includes functions to numerically \
+(iteratively) solve the involved equations of radiative transfer and \
+statistical equilibrium. The relevant properties of the medium are taken from \
+LAMBDA, the Leiden Atomic and Molecular Database \
+(http://www.strw.leidenuniv.nl/~moldata/). The package includes functions to \
+display the properties of many species, like energy levels, allowed \
+transitions, collision rates and so on. This package has been inspired by the \
+software RADEX (summarized in Van der Tak, F.F.S., Black, J.H., Sch\
+\[ODoubleDot]ier, F.L., Jansen, D.J., van Dishoeck, E.F. 2007, A&A 468, 627) \
+which is an open source one-dimensional non-LTE radiative transfer code, that \
+uses the escape probability formulation assuming an isothermal and \
+homogeneous medium without large-scale velocity fields.  \
+(http://www.strw.leidenuniv.nl/~moldata/radex.html)"
+}], "Text",
+ CellID->422847889],
+
+Cell["This loads the package. ", "MathCaption",
+ CellID->10049],
+
+Cell[BoxData[
+ RowBox[{"<<", "EscapeProbability`"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->24456],
+
+Cell[CellGroupData[{
+
+Cell["Radiative Transfer", "Section",
+ CellID->60567997],
+
+Cell["\<\
+The escape probability approximation is an approach to simplify the general \
+radiative transfer problem and to decouple the radiative transfer equation \
+from the statistical equations. The radiative transfer equation can be \
+written as:\
+\>", "Text",
+ CellID->1534169418],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"d", " ", 
+     SubscriptBox["I", "v"]}], 
+    RowBox[{"d", " ", "s"}]], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["j", "\[Nu]"], " ", 
+     RowBox[{"(", 
+      OverscriptBox["r", "\[RightVector]"], ")"}]}], "-", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["I", "\[Nu]"], "(", " ", 
+      OverscriptBox["r", "\[RightVector]"], ")"}], " ", 
+     SubscriptBox["\[Alpha]", "\[Nu]"]}]}]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->140642292],
+
+Cell[TextData[{
+ "with the specific intensity of an object ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", "\[Nu]"], "=", 
+    FractionBox["dE", 
+     RowBox[{
+     "dA", " ", "dt", " ", "d\[Nu]", " ", "d\[CapitalOmega]", " ", "\[Theta]",
+       " ", "cos"}]]}], TraditionalForm]], "InlineMath"],
+ " is defined as the energy that flows through the area element ",
+ Cell[BoxData["dA"], "InlineFormula"],
+ " per time interval ",
+ Cell[BoxData["dt"], "InlineFormula"],
+ ", per frequency interval ",
+ Cell[BoxData["d\[Nu]"], "InlineFormula"],
+ "  from the solid angle element ",
+ Cell[BoxData["d\[CapitalOmega]"], "InlineFormula"],
+ " (inclined against ",
+ Cell[BoxData["dA"], "InlineFormula"],
+ " with the angle \[Theta]) at the point ",
+ Cell[BoxData[
+  OverscriptBox["r", "\[RightVector]"]], "InlineFormula"],
+ ". Units of ",
+ Cell[BoxData[
+  SubscriptBox["I", "\[Nu]"]], "InlineFormula"],
+ " are for example [erg ",
+ Cell[BoxData[
+  SuperscriptBox["cm", 
+   RowBox[{"-", "2"}]]], "InlineFormula"],
+ " ",
+ Cell[BoxData[
+  SuperscriptBox["sec", 
+   RowBox[{"-", "1"}]]], "InlineFormula"],
+ " ",
+ Cell[BoxData[
+  SuperscriptBox["Hz", 
+   RowBox[{"-", "1"}]]], "InlineFormula"],
+ " ",
+ Cell[BoxData[
+  SuperscriptBox["sterad", 
+   RowBox[{"-", "1"}]]], "InlineFormula"],
+ "]. ",
+ Cell[BoxData[
+  SubscriptBox["\[Alpha]", "\[Nu]"]], "InlineFormula"],
+ " is the absorption coefficient (in ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["cm", 
+    RowBox[{"-", "1"}]], ")"}]], "InlineFormula"],
+ " and can also be expressed as ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["\[Alpha]", "\[Nu]"], "=", 
+   RowBox[{
+    SubscriptBox["n", "i"], " ", 
+    SubscriptBox["\[Sigma]", "\[Nu]"]}]}]], "InlineFormula"],
+ " where ",
+ Cell[BoxData[
+  SubscriptBox["\[Sigma]", "\[Nu]"]], "InlineFormula"],
+ " is the absorption cross section in ",
+ Cell[BoxData[
+  SuperscriptBox["cm", "2"]], "InlineFormula"],
+ " and ",
+ Cell[BoxData[
+  SubscriptBox["n", "i"]], "InlineFormula"],
+ " the number density of the absorbing particles (in ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["cm", 
+    RowBox[{"-", "3"}]], ")"}]], "InlineFormula"],
+ ".  ",
+ Cell[BoxData[
+  SubscriptBox["j", "\[Nu]"]], "InlineFormula"],
+ " is the emission coefficient. Hence, the above equation describes how the \
+intensity changes along the line of sigh ",
+ Cell[BoxData["s"], "InlineFormula"],
+ " by absorption and emission of photons. By defining the optical depth ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"\[DifferentialD]", 
+    SubscriptBox["\[Tau]", "\[Nu]"]}], "=", 
+   RowBox[{
+    SubscriptBox["\[Alpha]", "\[Nu]"], 
+    RowBox[{"(", 
+     OverscriptBox["r", "\[RightVector]"], ")"}], " ", 
+    RowBox[{"\[DifferentialD]", "s"}]}]}]], "InlineFormula"],
+ " we can rewrite the radiative transfer equation"
+}], "Text",
+ CellID->256624645],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"d", " ", 
+     SubscriptBox["I", "\[Nu]"]}], 
+    RowBox[{"d", " ", 
+     SubscriptBox["\[Tau]", "\[Nu]"]}]], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["S", "\[Nu]"], "(", 
+     OverscriptBox["r", "\[RightVector]"], ")"}], "+", 
+    SubscriptBox["I", "\[Nu]"]}]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->907477686],
+
+Cell[TextData[{
+ "where the source function ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["S", "\[Nu]"], "=", 
+    FractionBox[
+     SubscriptBox["j", "\[Nu]"], 
+     SubscriptBox["\[Alpha]", "\[Nu]"]]}], TraditionalForm]], "InlineMath"],
+ ". The formal solution to this equation is"
+}], "Text",
+ CellID->472409941],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["I", "\[Nu]"], " ", 
+    RowBox[{"(", 
+     SubscriptBox["\[Tau]", "\[Nu]"], ")"}]}], "=", 
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", 
+      SubscriptBox["\[Tau]", "\[Nu]"]], 
+     RowBox[{
+      SubscriptBox["S", "\[Nu]"], " ", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["\[Tau]", "\[Nu]"], "-", 
+          SubscriptBox[
+           SuperscriptBox["\[Tau]", "\[Prime]",
+            MultilineFunction->None], "\[Nu]"]}], ")"}]}]], " ", 
+      SubscriptBox[
+       SuperscriptBox["\[Tau]", "\[Prime]",
+        MultilineFunction->None], "\[Nu]"], 
+      RowBox[{"\[DifferentialD]", 
+       SuperscriptBox["\[Tau]", "\[Prime]",
+        MultilineFunction->None]}]}]}], "+", 
+    RowBox[{"0", " ", 
+     SubscriptBox["I", "\[Nu]"], " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      SubscriptBox["\[Tau]", "\[Nu]"]]}]}]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->35705166],
+
+Cell[CellGroupData[{
+
+Cell["Interaction Radiation - Matter", "Subsection",
+ CellID->243102195],
+
+Cell[TextData[{
+ "To further specify ",
+ Cell[BoxData[
+  SubscriptBox["\[Tau]", "\[Nu]"]], "InlineFormula"],
+ " and ",
+ Cell[BoxData[
+  SubscriptBox["S", "\[Nu]"]], "InlineFormula"],
+ " let us take a look at possible interactions between photons and \
+absorbing/emitting particles. Neglecting polarization, magnetic fields and \
+dust continuum effects we find three processes:"
+}], "Text",
+ CellID->59793123],
+
+Cell["absorption", "BulletedText",
+ CellID->187799066],
+
+Cell["spontaneous emission", "BulletedText",
+ CellID->408137343],
+
+Cell[CellGroupData[{
+
+Cell["induced emission", "BulletedText",
+ CellID->81513231],
+
+Cell[TextData[{
+ "The probability for each of these processes is described by the Einstein \
+coefficients ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["B", "12"], ",", " ", 
+   SubscriptBox["A", "21"], ","}]], "InlineFormula"],
+ "and ",
+ Cell[BoxData[
+  SubscriptBox["B", "21"]], "InlineFormula"],
+ " where 1 and 2 denote the lower and the upper energy level of an atom (or \
+molecule). We ",
+ Cell[BoxData[
+  SubscriptBox["A", "21"]], "InlineFormula"],
+ " as short hand for ",
+ Cell[BoxData[
+  SubscriptBox["A", 
+   RowBox[{"2", "\[Rule]", "1"}]]], "InlineFormula"],
+ " indicating a transition from 2 to 1."
+}], "Text",
+ CellID->412289885]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Absorption", "Subsubsection",
+ CellID->750947607],
+
+Cell[TextData[{
+ "An atom or molecule (from now on we will always use the term atom even if \
+we mean molecule) residing in the lower energy state 1 (of a transition 1->2) \
+can absorb a photon of the radiation field if the photon energy ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[ExponentialE]", "\[Nu]"], "=", "h\[Nu]"}], 
+   TraditionalForm]], "InlineMath"],
+ " corresponds to the energy difference of the two energy levels ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[ExponentialE]", "\[Nu]"], "=", 
+    RowBox[{
+     SubscriptBox["\[ExponentialE]", "2"], "-", 
+     SubscriptBox["\[ExponentialE]", "1"]}]}], TraditionalForm]], 
+  "InlineMath"],
+ ". The rate of this absorption is proportional to the intensity ",
+ Cell[BoxData[
+  SubscriptBox["I", "\[Nu]"]], "InlineFormula"],
+ ", the density of atoms in the state 1 ",
+ Cell[BoxData[
+  SubscriptBox["n", "1"]], "InlineFormula"],
+ ", a proportional factor describing the probability of the process ",
+ Cell[BoxData[
+  SubscriptBox["B", "12"]], "InlineFormula"],
+ " and the profile function ",
+ Cell[BoxData[
+  SubscriptBox["\[Phi]", "\[Nu]"]], "InlineFormula"],
+ " describing the velocity distribution of the atoms in state 1"
+}], "Text",
+ CellID->285842675],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["B", "12"], " ", 
+   SubscriptBox["n", "1"], " ", 
+   SubscriptBox["I", 
+    SubscriptBox["\[Nu]", "12"]], " ", 
+   SubscriptBox["\[Phi]", 
+    SubscriptBox["\[Nu]", "12"]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->36613419],
+
+Cell["\<\
+ This means the energy rate that is removed from the intensity field by \
+absorption is\
+\>", "Text",
+ CellID->687567119],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    SubscriptBox["B", "12"], " ", 
+    SubscriptBox["n", "1"], " ", 
+    SubscriptBox["I", 
+     SubscriptBox["\[Nu]", "12"]], " ", 
+    RowBox[{"(", 
+     RowBox[{"h", " ", 
+      SubscriptBox["\[Nu]", "12"]}], ")"}], " ", 
+    SubscriptBox["\[Phi]", 
+     SubscriptBox["\[Nu]", "12"]]}], 
+   RowBox[{"4", " ", "\[Pi]"}]], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->129124142],
+
+Cell["\<\
+The 4\[Pi] term is due to the assumption that the absorption is isotropic.\
+\>", "Text",
+ CellID->447628034]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Spontaneous Emission", "Subsubsection",
+ CellID->286623856],
+
+Cell[TextData[{
+ "An atom in an excited energetic state 2 has a finite probability of \
+undergoing a transition to the energetically lower state by spontaneously \
+emitting a photon of energy ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["h\[Nu]", "21"], "=", 
+    RowBox[{
+     SubscriptBox["\[ExponentialE]", "2"], "-", 
+     SubscriptBox["\[ExponentialE]", "1"]}]}], TraditionalForm]], 
+  "InlineMath"],
+ ". The probability for this decay is ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["A", "21"], " ", "[", 
+   SuperscriptBox["s", 
+    RowBox[{"-", "1"}]], "]"}]], "InlineFormula"],
+ " with its rate"
+}], "Text",
+ CellID->409365801],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["A", "12"], " ", 
+   SubscriptBox["n", "2"], " ", 
+   SubscriptBox["\[Phi]", 
+    SubscriptBox["\[Nu]", "21"]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->41853194],
+
+Cell["This (isotropic) emissions provides an energy of ", "Text",
+ CellID->516070291],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  FractionBox[
+   RowBox[{
+    SubscriptBox["A", "12"], " ", 
+    SubscriptBox["n", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{"h", " ", 
+      SubscriptBox["\[Nu]", "21"]}], ")"}], " ", 
+    SubscriptBox["\[Phi]", 
+     SubscriptBox["\[Nu]", "21"]]}], 
+   RowBox[{"4", " ", "\[Pi]"}]], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->262355823],
+
+Cell["to the radiation field.", "Text",
+ CellID->185805908]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Induced Emission", "Subsubsection",
+ CellID->129575053],
+
+Cell[TextData[{
+ "An atom in an excited energetic state 2 has also finite probability of \
+undergoing a transition to the energetically lower state if a photon of \
+energy ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["h\[Nu]", "21"], "=", 
+    RowBox[{
+     SubscriptBox["\[ExponentialE]", "2"], "-", 
+     SubscriptBox["\[ExponentialE]", "1"]}]}], TraditionalForm]], 
+  "InlineMath"],
+ " flies by. The probability for this induced decay is ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["B", "21"], " ", "[", 
+   RowBox[{
+    SuperscriptBox["cm", 
+     RowBox[{"-", "2"}]], " ", 
+    SuperscriptBox["erg", 
+     RowBox[{"-", "1"}]], 
+    SuperscriptBox["s", 
+     RowBox[{"-", "1"}]]}], "]"}]], "InlineFormula"],
+ " with the rate"
+}], "Text",
+ CellID->35973440],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["B", "21"], " ", 
+   SubscriptBox["n", "2"], " ", 
+   SubscriptBox["I", 
+    SubscriptBox["\[Nu]", "21"]], " ", 
+   SubscriptBox["\[Phi]", 
+    SubscriptBox["\[Nu]", "21"]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->5763987],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 0.5}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 3},
+ CellID->181693651],
+
+Cell[TextData[{
+ "The line profile functions are normalized",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", 
+     RowBox[{"-", "\[Infinity]"}], 
+     RowBox[{"+", "\[Infinity]"}]], 
+    RowBox[{
+     SubscriptBox["\[Phi]", "a"], 
+     RowBox[{"(", "\[Vee]", ")"}], 
+     RowBox[{"\[DifferentialD]", "\[Nu]"}]}]}], "=", 
+   RowBox[{
+    RowBox[{"d", 
+     RowBox[{
+      SubsuperscriptBox["\[Integral]", 
+       RowBox[{"-", "\[Infinity]"}], 
+       RowBox[{"+", "\[Infinity]"}]], 
+      RowBox[{
+       SubscriptBox["\[Phi]", "e"], 
+       RowBox[{"(", "\[Vee]", ")"}], 
+       RowBox[{"\[DifferentialD]", "\[Nu]"}]}]}]}], " ", "=", "1"}]}]], 
+  "InlineFormula"],
+ ". Both profile functions could be different but for simplicity we make the \
+assumption of complete redistribution which means that the frequency of an \
+emitted photon is completely independent of the frequency of the prior \
+absorption process. The atom has no \"memory\" of its past ",
+ Cell[BoxData[
+  SubscriptBox["\[Phi]", "e"]], "InlineFormula"],
+ "=",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["\[Phi]", "a"], "=", "\[Phi]"}]], "InlineFormula"],
+ ". "
+}], "Text",
+ CellID->194431632]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Einstein Relations", "Subsubsection",
+ CellID->14112718],
+
+Cell[TextData[{
+ "From the fact that the level populations ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   SubscriptBox["n", "i"]}]], "InlineFormula"],
+ ") have to reach the Boltzmann distribution under thermodynamical \
+equilibrium one can derive relations between the Einstein coefficients:"
+}], "Text",
+ CellID->111092533],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["B", "12"], " ", 
+    SubscriptBox["g", "1"]}], "=", 
+   RowBox[{
+    SubscriptBox["B", "21"], " ", 
+    SubscriptBox["g", "2"]}]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->274781627],
+
+Cell["and", "Text",
+ CellID->2851447],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["A", "21"], "=", 
+   FractionBox[
+    RowBox[{
+     SubscriptBox["B", "21"], " ", 
+     RowBox[{"(", 
+      RowBox[{"2", " ", 
+       SuperscriptBox["h\[Nu]", "3"]}], ")"}]}], 
+    SuperscriptBox["c", "2"]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->663066008],
+
+Cell[TextData[{
+ Cell[BoxData[
+  SubscriptBox["g", "i"]], "InlineFormula"],
+ "is the statistical weight of the state i."
+}], "Text",
+ CellID->402837285]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Source Function", "Subsubsection",
+ CellID->305154585],
+
+Cell["\<\
+Writing the absorption and emission coefficients in terms of the Einstein \
+coefficients\
+\>", "Text",
+ CellID->242778183],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["j", "\[Nu]"], "=", 
+    FractionBox[
+     RowBox[{
+      SubscriptBox["A", "21"], " ", "h\[Nu]", " ", 
+      SubscriptBox["n", "2"], " ", "\[Phi]"}], 
+     RowBox[{"4", " ", "\[Pi]"}]]}], TraditionalForm]], "InlineMath"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["\[Alpha]", "\[Nu]"], "=", 
+    FractionBox[
+     RowBox[{"h\[Nu]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["B", "12"], " ", 
+         SubscriptBox["n", "1"]}], "-", 
+        RowBox[{
+         SubscriptBox["B", "21"], " ", 
+         SubscriptBox["n", "2"]}]}], ")"}]}], 
+     RowBox[{"4", " ", "\[Pi]"}]]}], TraditionalForm]], "InlineMath"]
+}], "DisplayMath",
+ CellID->141670524],
+
+Cell["allows us to rewrite the source functions", "Text",
+ CellID->584131576],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["S", "\[Nu]"], "=", 
+   FractionBox[
+    SubscriptBox["A", "21"], 
+    RowBox[{
+     SubscriptBox["B", "21"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       FractionBox[
+        RowBox[{
+         SubscriptBox["g", "2"], " ", 
+         SubscriptBox["n", "1"]}], 
+        RowBox[{
+         SubscriptBox["g", "1"], " ", 
+         SubscriptBox["n", "2"]}]], "-", "1"}], ")"}]}]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->516566152],
+
+Cell[TextData[{
+ "and we can define the excitation temperature which characterizes the ratio \
+of ",
+ Cell[BoxData[
+  FormBox[
+   FractionBox[
+    SubscriptBox["n", "1"], 
+    SubscriptBox["n", "2"]], TraditionalForm]], "InlineMath"],
+ " "
+}], "Text",
+ CellID->4937540],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    SubscriptBox["n", "2"], 
+    SubscriptBox["n", "1"]], "=", 
+   FractionBox[
+    RowBox[{
+     SubscriptBox["g", "2"], " ", 
+     SuperscriptBox["\[Epsilon]", 
+      RowBox[{"-", 
+       FractionBox["h\[Nu]", 
+        RowBox[{"k", " ", 
+         SubscriptBox["T", "ex"]}]]}]]}], 
+    SubscriptBox["g", "1"]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->75424962],
+
+Cell[TextData[{
+ "and the source function becomes ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["S", "\[Nu]"], "=", 
+    RowBox[{
+     SubscriptBox["B", "\[Nu]"], "(", 
+     SubscriptBox["T", "ex"], ")"}]}], TraditionalForm]], "InlineMath"],
+ " with the black body radiation at temperature ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["T", "ex"], TraditionalForm]], "InlineMath"],
+ "."
+}], "Text",
+ CellID->54835070],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["B", "\[Nu]"], "(", 
+    SubscriptBox["T", "ex"], ")"}], "=", 
+   FractionBox[
+    RowBox[{"2", " ", 
+     SuperscriptBox["h\[Nu]", "3"]}], 
+    RowBox[{
+     SuperscriptBox["c", "2"], " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["h\[Nu]", 
+         RowBox[{"k", " ", 
+          SubscriptBox["T", "ex"]}]]}], "-", "1"}]]}]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->111570939]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Rayleigh Jeans Approximation", "Subsubsection",
+ CellID->87907820],
+
+Cell["\<\
+For h\[Vee]\[LessLess]kT, i.e. for small frequencies, the Rayleigh Jeans \
+approximation is valid\
+\>", "Text",
+ CellID->194696786],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["B", "\[Nu]"], 
+   RowBox[{"(", "T", ")"}]}], "\[TildeEqual]", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"2", 
+     SuperscriptBox["h\[Nu]", "2"]}], 
+    SuperscriptBox["c", "2"]], "kT", Cell[
+   "", "InlineFormula"]}]}]], "InlineFormula"]], "DisplayMath",
+ CellID->680444211],
+
+Cell[TextData[{
+ "which means the intensity of the black body radiation is directly \
+proportional to the temperature of the black body. For this reason it is \
+common to express astronomically observed intensities in the radio (and \
+submm) regime by giving so called brightness temperatures ",
+ Cell[BoxData[
+  SubscriptBox["T", "B"]], "InlineFormula"],
+ ". ",
+ Cell[BoxData[
+  SubscriptBox["T", "B"]], "InlineFormula"],
+ " is the temperature a black body must have in order to radiate the \
+intensity ",
+ Cell[BoxData[
+  SubscriptBox["I", "\[Nu]"]], "InlineFormula"],
+ " at the frequency \[Nu]."
+}], "Text",
+ CellID->197238058],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["I", "\[Nu]"], "=", 
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      RowBox[{"2", 
+       SuperscriptBox["h\[Nu]", "2"]}], 
+      SuperscriptBox["c", "2"]], 
+     SubscriptBox["kT", "B"]}], "=", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"2", "k", " ", 
+       SubscriptBox["T", "B"]}], 
+      SuperscriptBox["\[Lambda]", "2"]], Cell["", "InlineFormula"]}]}]}]], 
+  "InlineFormula"],
+ " i.e."
+}], "DisplayMath",
+ CellID->195791629],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["I", "\[Nu]"], "(", 
+    FractionBox["W", 
+     RowBox[{"Hz", " ", 
+      SuperscriptBox["m", "2"], " ", "sr"}]], ")"}], "=", 
+   FractionBox[
+    RowBox[{"3.08`", " ", 
+     SuperscriptBox[
+      RowBox[{"\[Nu]", "(", "MHz", ")"}], "2"], " ", 
+     RowBox[{
+      SubscriptBox["T", "B"], "(", "K", ")"}]}], 
+    SuperscriptBox["10", "28"]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->139102114],
+
+Cell["\<\
+Implicitly assuming Rayleigh Jeans we can rewrite the general solution of the \
+radiative transfer equation for a homogeneous medium to\
+\>", "Text",
+ CellID->117475187],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["I", "\[Nu]"], "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["B", "\[Nu]"], " ", 
+      SubscriptBox["T", "ex"], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"-", 
+          SubscriptBox["\[Tau]", "\[Nu]"]}]]}], ")"}]}], "+", 
+     RowBox[{
+      SubsuperscriptBox["\[ImaginaryI]", "\[Nu]", "bg"], " ", 
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"-", 
+        SubscriptBox["\[Tau]", "\[Nu]"]}]]}]}]}], TraditionalForm]], 
+  "InlineMath"],
+ " leading to "
+}], "DisplayMath",
+ CellID->13750312],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["T", "R"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["T", "bg"], " ", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"-", 
+       SubscriptBox["\[Tau]", "\[Nu]"]}]]}], "+", 
+    RowBox[{
+     SubscriptBox["T", "ex"], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"-", 
+         SubscriptBox["\[Tau]", "\[Nu]"]}]]}], ")"}]}]}]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->95951668],
+
+Cell["\<\
+which makes the Rayleigh Jeans approximation interesting for radio astronomy \
+since one just thinks in terms of temperatures. \
+\>", "Text",
+ CellID->351056109]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Statistical Equilibrium", "Subsubsection",
+ CellID->20799250],
+
+Cell[TextData[{
+ "With the radiative transfer equation given above one just has to specify \
+the energy level populations ",
+ Cell[BoxData[
+  SubscriptBox["n", "i"]], "InlineFormula"],
+ " at all positions and the problem is solved. Unfortunately, this is far \
+from simple because the ",
+ Cell[BoxData[
+  SubscriptBox["I", "\[Nu]"]], "InlineFormula"],
+ " at each position and ",
+ Cell[BoxData[
+  SubscriptBox["n", "i"]], "InlineFormula"],
+ "'s at each position are coupled via the absorption and emission processes \
+described above. To solve the problem at one spot one has to know the ",
+ Cell[BoxData[
+  SubscriptBox["n", "i"]], "InlineFormula"],
+ " at all other positions, which are dependent on the values of ",
+ Cell[BoxData[
+  SubscriptBox["n", "i"]], "InlineFormula"],
+ " at our chosen position. Numerically this is done via iterative numerical \
+algorithms. "
+}], "Text",
+ CellID->240095314],
+
+Cell[TextData[{
+ "Assuming an ",
+ Cell[BoxData[
+  SubscriptBox["I", 
+   RowBox[{"\[Nu]", " "}]]], "InlineFormula"],
+ "one has to solve the statistical equations to get the ",
+ Cell[BoxData[
+  SubscriptBox["n", "i"]], "InlineFormula"],
+ " which are then again used to calculate ",
+ Cell[BoxData[
+  SubscriptBox["I", "\[Nu]"]], "InlineFormula"],
+ " and so on. The statistical equations balance all populating and \
+depopulating processes for each energy level. This includes collisions which \
+haven't been considered so far.  "
+}], "Text",
+ CellID->536805330],
+
+Cell[TextData[{
+ "The rate ",
+ Cell[BoxData[
+  SubscriptBox["C", "21"]], "InlineFormula"],
+ " is the collision rate per second per molecule of the species of interest \
+for the transition 2\[Rule]1. The collisions follow the detailed balance \
+equations"
+}], "Text",
+ CellID->374739595],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    SubscriptBox["C", "12"], " ", 
+    SubscriptBox["n", "1"]}], "=", 
+   RowBox[{
+    SubscriptBox["C", "21"], " ", 
+    SubscriptBox["n", "2"]}]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->47344918],
+
+Cell[TextData[{
+ "Using the Boltzmann distribution for ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["n", "1"], " ", "and", " ", 
+   SubscriptBox["n", "2"]}]], "InlineFormula"],
+ " we can calculate "
+}], "Text",
+ CellID->701185614],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   SubscriptBox["C", "12"], "=", 
+   FractionBox[
+    RowBox[{
+     SubscriptBox["C", "21"], " ", 
+     SubscriptBox["g", "2"], " ", 
+     SuperscriptBox["\[Epsilon]", 
+      RowBox[{"-", 
+       FractionBox["\[CapitalDelta]E", 
+        RowBox[{"k", " ", "T"}]]}]]}], 
+    SubscriptBox["g", "1"]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->110546431],
+
+Cell["\<\
+Balancing all processes for a two level system one can write:\
+\>", "Text",
+ CellID->310142066],
+
+Cell[TextData[Cell[BoxData[{
+ RowBox[{
+  FractionBox[
+   RowBox[{"\[DifferentialD]", 
+    SubscriptBox["n", "1"]}], 
+   RowBox[{"\[DifferentialD]", "t"}]], "=", " ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", 
+     SubscriptBox["n", "1"]}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["B", "12"], 
+       OverscriptBox["J", "~"]}], " ", "+", 
+      SubscriptBox["C", "12"]}], ")"}]}], "+", 
+   RowBox[{
+    SubscriptBox["n", "2"], 
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox["A", "21"], "+", 
+      RowBox[{
+       SubscriptBox["B", "21"], 
+       OverscriptBox["J", "~"]}], "+", 
+      SubscriptBox["C", "21"]}], ")"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  FractionBox[
+   RowBox[{"\[DifferentialD]", 
+    SubscriptBox["n", "2"]}], 
+   RowBox[{"\[DifferentialD]", "t"}]], "=", " ", 
+  RowBox[{
+   RowBox[{
+    SubscriptBox["n", "1"], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["B", "12"], 
+       OverscriptBox["J", "~"]}], " ", "+", 
+      SubscriptBox["C", "12"]}], ")"}]}], "-", 
+   RowBox[{
+    SubscriptBox["n", "2"], 
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox["A", "21"], "+", 
+      RowBox[{
+       SubscriptBox["B", "21"], 
+       OverscriptBox["J", "~"]}], "+", 
+      SubscriptBox["C", "21"]}], 
+     ")"}]}]}]}]}], "InlineFormula"]], "DisplayMath",
+ CellID->137208326],
+
+Cell[TextData[{
+ "with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    OverscriptBox["J", "~"], "=", 
+    RowBox[{"\[Integral]", 
+     RowBox[{"\[Integral]", 
+      RowBox[{
+       SubscriptBox["I", "\[Nu]"], 
+       RowBox[{"\[DifferentialD]", "\[Nu]"}], 
+       RowBox[{"\[DifferentialD]", "\[CapitalOmega]"}]}]}]}]}], 
+   TraditionalForm]], "InlineMath"],
+ " ."
+}], "Text",
+ CellID->296426147]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[" Escape Probability (EP)", "Section",
+ CellID->240352417],
+
+Cell[TextData[{
+ "One approach to reduce the complexity of the radiative transfer problem is \
+to use approximations in order to decouple the radiative transfer equation \
+from the statistical balance. We stated above that a photon that is emitted \
+at a position ",
+ Cell[BoxData[
+  OverscriptBox["r", "\[RightVector]"]], "InlineFormula"],
+ " can be absorbed at another position  ",
+ Cell[BoxData[
+  OverscriptBox["r", "\[RightVector]"]], "InlineFormula"],
+ "' and influence the level population there. Assuming an homogeneous, \
+isothermal medium one can derive the probability of an  absorption while \
+passing a column of absorber. This assumes that the medium along the flight \
+path of the photon is in the same state as at position ",
+ Cell[BoxData[
+  OverscriptBox["r", "\[RightVector]"]], "InlineFormula"],
+ ".  This is a strong assumption, but justified under certain conditions. For \
+example, consider a outward expanding spherical shell. The atoms at outer \
+radii have a velocity relative to the atoms at the center. This velocity \
+difference produces a Doppler shift in frequency which makes an absorption in \
+the expanding shell unlikely because the profile functions drops rapidly for \
+shifted frequencies. This Doppler shift makes the expanding shell virtually \
+transparent for photons emitted at the center and thus decouples the \
+radiation from the matter in the shell. This particular approximation is \
+called Sobolev approximation of LVG (large velocity gradient). The escape \
+probability for a photon in an expanding shell is  "
+}], "Text",
+ CellID->642198899],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Beta]", "=", 
+   FractionBox[
+    RowBox[{"1", "-", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{"-", "\[Tau]"}]]}], "\[Tau]"]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->802010997],
+
+Cell["\<\
+with the optical depth \[Tau] towards the observer.\
+\>", "Text",
+ CellID->167937308],
+
+Cell["\<\
+Even without larger Doppler velocities one can derive probabilities for \
+emitted photons to escape a cloud without being absorbed. This probability \
+depends on the column density of material which the photon has to travel \
+through. For a plane-parallel homogeneous slab of gas we find\
+\>", "Text",
+ CellID->201147906],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Beta]", "=", 
+   FractionBox[
+    RowBox[{"1", "-", 
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", "3"}], " ", "\[Tau]"}]]}], 
+    RowBox[{"3", " ", "\[Tau]"}]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->110615539],
+
+Cell["For a uniform sphere one finds", "Text",
+ CellID->196545598],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Beta]", "=", 
+   FractionBox[
+    RowBox[{"1.5`", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{"-", "\[Tau]"}]], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          FractionBox["2", 
+           SuperscriptBox["\[Tau]", "2"]], "+", 
+          FractionBox["2", "\[Tau]"]}], ")"}]}], "-", 
+       FractionBox["2", 
+        SuperscriptBox["\[Tau]", "2"]], "+", "1"}], ")"}]}], "\[Tau]"]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->302304150],
+
+Cell["For a turbulent medium one can estimate", "Text",
+ CellID->761516025],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{"\[Beta]", "=", 
+   FractionBox["1", 
+    RowBox[{"\[Tau]", " ", 
+     SqrtBox[
+      RowBox[{"\[Pi]", " ", 
+       RowBox[{"ln", "(", 
+        FractionBox["\[Tau]", "2"], ")"}]}]]}]]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->8502055],
+
+Cell[TextData[{
+ " If \[Beta] is the probability for an emitted photon to leave the medium \
+without further contributing to the level populations, the we can write ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    OverscriptBox["J", "~"], "=", 
+    RowBox[{"S", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "\[Beta]"}], ")"}]}]}], TraditionalForm]], 
+  "InlineMath"],
+ " which simplifies the statistical equations significantly, e.g."
+}], "Text",
+ CellID->71268016],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  RowBox[{
+   FractionBox[
+    RowBox[{"d", " ", 
+     SubscriptBox["n", "1"]}], 
+    RowBox[{"d", " ", "t"}]], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["C", "12"], " ", 
+     SubscriptBox["n", "1"]}], "-", 
+    RowBox[{
+     SubscriptBox["C", "21"], " ", 
+     SubscriptBox["n", "2"]}], "-", 
+    RowBox[{
+     SubscriptBox["n", "2"], " ", 
+     SubscriptBox["\[Beta]A", "21"]}]}]}], 
+  TraditionalForm]], "InlineMath"]], "DisplayMath",
+ CellID->71681536],
+
+Cell[TextData[{
+ "Since no ",
+ Cell[BoxData[
+  OverscriptBox["J", "~"]]],
+ " radiation field occurs in the equation any more, they can be solved \
+locally and then used to compute the radiation. We still have to iterate, \
+because the new intensity influences the local level populations, but we are \
+decoupled from the rest of the cloud!"
+}], "Text",
+ CellID->243398956],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{
+     ButtonBox["EscapeProbabilityRun",
+      BaseStyle->"Link",
+      ButtonData->"paclet:EscapeProbability/ref/EscapeProbabilityRun"], "[", 
+     StyleBox[
+      RowBox[{"s", ",", "N", ",", "\[CapitalDelta]v", ",", "n", ",", "T"}], 
+      "TI"], "]"}], Cell[TextData[{
+     "solve the radiative transfer problem for species ",
+     StyleBox["s", "TI"],
+     " assuming column density ",
+     StyleBox["N", "TI"],
+     ", FWHM line width ",
+     StyleBox["\[CapitalDelta]v", "TI"],
+     ", density ",
+     StyleBox["n", "TI"],
+     " and temperature ",
+     StyleBox["T", "TI"]
+    }], "TableText"]}
+  }]], "DefinitionBox",
+ CellID->193325932],
+
+Cell["\<\
+EscapeProbability function to solve the radiative transfer problem using the \
+EP approximation.\
+\>", "Caption",
+ CellID->271324832],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<p-h2o@lowT\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "14"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50."}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[9]:=",
+ CellID->596741535],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "178"}],
+  SequenceForm["Number of Iterations:", 178],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[9]:=",
+ CellID->588801697],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_1\"\>", "\<\"0_0_0\"\>", "53.4`", "1113.34306`", 
+      "269.27230857306466`", "5.971539431412816`", "8.584594320517889`", 
+      "0.006947015097312485`", "0.03697548785544571`", 
+      "6.571465446246772`*^-7"},
+     {"\<\"2_0_2\"\>", "\<\"1_1_1\"\>", "100.8`", "987.9267`", 
+      "303.45617341853404`", "15.65503752233175`", "0.0008027561164809927`", 
+      "0.00193435830984603`", "0.010295622104155496`", 
+      "1.278462681280038`*^-7"},
+     {"\<\"2_1_1\"\>", "\<\"2_0_2\"\>", "136.9`", "752.03323`", 
+      "398.6425653025998`", "14.18555522445774`", "0.0001031918662508487`", 
+      "0.0003173806881538846`", "0.001689258712699051`", 
+      "9.252701650090408`*^-9"},
+     {"\<\"2_2_0\"\>", "\<\"2_1_1\"\>", "195.9`", "1228.78902`", 
+      "243.9739053006838`", "12.67182719651471`", "5.2901944967562735`*^-6", 
+      "3.0001643348666444`*^-6", "0.000015968374672327716`", 
+      "3.8155220776580767`*^-10"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{556, 335},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[9]=",
+ CellID->201797605]
+}, Open  ]],
+
+Cell[TextData[{
+ "By default, the output is formatted as a table. To print the table contents \
+as lists use the option ",
+ Cell[BoxData[
+  ButtonBox["TableOutput",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/TableOutput"]], "InlineFormula"],
+ "->False."
+}], "Text",
+ CellID->299280466],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<p-h2o@lowT\>\"", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "14"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "4"]}], ",", "50.", ",", 
+   RowBox[{"TableOutput", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->17188376],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "178"}],
+  SequenceForm["Number of Iterations:", 178],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[12]:=",
+ CellID->3006016],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"1_1_1\"\>", ",", "\<\"0_0_0\"\>", ",", "53.4`", ",", 
+     "1113.34306`", ",", "269.27230857306466`", ",", "5.971539431412816`", 
+     ",", "8.584594320517889`", ",", "0.006947015097312485`", ",", 
+     "0.03697548785544571`", ",", "6.571465446246772`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2_0_2\"\>", ",", "\<\"1_1_1\"\>", ",", "100.8`", ",", 
+     "987.9267`", ",", "303.45617341853404`", ",", "15.65503752233175`", ",", 
+     "0.0008027561164809927`", ",", "0.00193435830984603`", ",", 
+     "0.010295622104155496`", ",", "1.278462681280038`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2_1_1\"\>", ",", "\<\"2_0_2\"\>", ",", "136.9`", ",", 
+     "752.03323`", ",", "398.6425653025998`", ",", "14.18555522445774`", ",", 
+     "0.0001031918662508487`", ",", "0.0003173806881538846`", ",", 
+     "0.001689258712699051`", ",", "9.252701650090408`*^-9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"2_2_0\"\>", ",", "\<\"2_1_1\"\>", ",", "195.9`", ",", 
+     "1228.78902`", ",", "243.9739053006838`", ",", "12.67182719651471`", ",",
+      "5.2901944967562735`*^-6", ",", "3.0001643348666444`*^-6", ",", 
+     "0.000015968374672327716`", ",", "3.8155220776580767`*^-10"}], "}"}]}], 
+  "}"}]], "Output",
+ ImageSize->{531, 167},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]=",
+ CellID->73445393]
+}, Open  ]],
+
+Cell["\<\
+The species has to be defined by pointing to the respective LAMBDA file. The \
+package tries to find the correct file if only the name of a species is \
+given, but be aware that for some species multiple LAMBDA files exists \
+employing different assumptions for the given collision rates for instance.\
+\>", "Text",
+ CellID->33303350],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<p-h2o@lowT\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "14"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50."}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[10]:=",
+ CellID->325136880],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "178"}],
+  SequenceForm["Number of Iterations:", 178],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->26219612],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_1\"\>", "\<\"0_0_0\"\>", "53.4`", "1113.34306`", 
+      "269.27230857306466`", "5.971539431412816`", "8.584594320517889`", 
+      "0.006947015097312485`", "0.03697548785544571`", 
+      "6.571465446246772`*^-7"},
+     {"\<\"2_0_2\"\>", "\<\"1_1_1\"\>", "100.8`", "987.9267`", 
+      "303.45617341853404`", "15.65503752233175`", "0.0008027561164809927`", 
+      "0.00193435830984603`", "0.010295622104155496`", 
+      "1.278462681280038`*^-7"},
+     {"\<\"2_1_1\"\>", "\<\"2_0_2\"\>", "136.9`", "752.03323`", 
+      "398.6425653025998`", "14.18555522445774`", "0.0001031918662508487`", 
+      "0.0003173806881538846`", "0.001689258712699051`", 
+      "9.252701650090408`*^-9"},
+     {"\<\"2_2_0\"\>", "\<\"2_1_1\"\>", "195.9`", "1228.78902`", 
+      "243.9739053006838`", "12.67182719651471`", "5.2901944967562735`*^-6", 
+      "3.0001643348666444`*^-6", "0.000015968374672327716`", 
+      "3.8155220776580767`*^-10"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{556, 335},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[10]=",
+ CellID->244185637]
+}, Open  ]],
+
+Cell[TextData[{
+ "\"p-h2o@lowT\" points to a data file for ",
+ Cell[BoxData[
+  RowBox[{"para", "-", 
+   RowBox[{
+    SubscriptBox["H", "2"], "O"}]}]], "InlineFormula"],
+ " with only the lowest transitions included, i.e. the ones that have \
+sufficiently populated energy levels at low temperatures. The advantage is a \
+short computation time. A more complete set of transitions of ",
+ Cell[BoxData[
+  RowBox[{"p", "-", 
+   RowBox[{
+    SubscriptBox["H", "2"], "O"}]}]], "InlineFormula"],
+ " takes longer to compute."
+}], "Text",
+ CellID->107917503],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<p-h2o\>\"", ",", 
+     RowBox[{"1.", " ", 
+      SuperscriptBox["10", "14"]}], ",", "5", ",", 
+     RowBox[{"1", " ", 
+      SuperscriptBox["10", "4"]}], ",", "50."}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->30042928],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "174"}],
+  SequenceForm["Number of Iterations:", 174],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[11]:=",
+ CellID->528431629],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"\<\"1_1_1\"\>", "\<\"0_0_0\"\>", "53.4`", "1113.34306`", 
+      "269.27230857306466`", "4.9431249662421575`", "8.585537818880136`", 
+      "0.001079492866682149`", "0.005745600782915739`", 
+      "1.0211364123299422`*^-7"},
+     {"\<\"2_0_2\"\>", "\<\"1_1_1\"\>", "100.8`", "987.9267`", 
+      "303.45617341853404`", "18.24716159361503`", "0.00012135954988026791`", 
+      "0.0004624440045298326`", "0.0024613582141100343`", 
+      "3.0564006625026323`*^-8"},
+     {"\<\"2_1_1\"\>", "\<\"2_0_2\"\>", "136.9`", "752.03323`", 
+      "398.6425653025998`", "5.574905771418151`", "0.000026721943048848207`", 
+      "1.4887317775239771`*^-6", "7.923774885871369`*^-6", 
+      "4.3401478062708427`*^-11"},
+     {"\<\"2_2_0\"\>", "\<\"2_1_1\"\>", "195.9`", "1228.78902`", 
+      "243.9739053006838`", "26.393177430897552`", "2.2396043829954657`*^-8", 
+      "1.5834958649480967`*^-7", "8.428156741186245`*^-7", 
+      "2.0138441625926108`*^-11"},
+     {"\<\"3_1_3\"\>", "\<\"2_2_0\"\>", "204.7`", "183.31004`", 
+      "1635.439368187362`", 
+      RowBox[{"-", "3.2514105694417292`"}], 
+      RowBox[{"-", "3.022365373153783`*^-9"}], "2.959682252688118`*^-8", 
+      "1.5752908789932511`*^-7", "1.2496282260141417`*^-14"},
+     {"\<\"3_2_2\"\>", "\<\"3_1_3\"\>", "296.8`", "1919.35978`", 
+      "156.19398672613636`", "8.070347655994805`", "4.139019008628664`*^-8", 
+      "4.209313881886082`*^-11", "2.2404073136338675`*^-10", 
+      "2.0401281376653308`*^-14"},
+     {"\<\"3_3_1\"\>", "\<\"4_0_4\"\>", "410.4`", "1893.68681`", 
+      "158.3115298775303`", "11.816103933664689`", "1.3941054061707407`*^-12",
+       "5.789452617291927`*^-14", "3.0814361555536285`*^-13", 
+      "2.6948768917527813`*^-17"},
+     {"\<\"4_2_2\"\>", "\<\"3_3_1\"\>", "454.3`", "916.17164`", 
+      "327.2230255893972`", 
+      RowBox[{"-", "14.944996114111069`"}], 
+      RowBox[{"-", "4.3969844321694984`*^-13"}], "2.040763868332584`*^-11", 
+      "1.086196568920018`*^-10", "1.0757224806673178`*^-15"},
+     {"\<\"4_1_3\"\>", "\<\"4_0_4\"\>", "396.4`", "1602.21955`", 
+      "187.11072149881082`", "14.476693034484134`", "6.734478565911276`*^-10",
+       "2.5677372485344214`*^-10", "1.366678150532446`*^-9", 
+      "7.239250811338911`*^-14"},
+     {"\<\"4_2_2\"\>", "\<\"4_1_3\"\>", "454.3`", "1207.6389`", 
+      "248.24676979186418`", 
+      RowBox[{"-", "103.08057787278337`"}], 
+      RowBox[{"-", "4.5218851264130905`*^-12"}], "6.093794346501925`*^-10", 
+      "3.24342204092565`*^-9", "7.356581233902228`*^-14"},
+     {"\<\"5_1_5\"\>", "\<\"4_2_2\"\>", "469.9`", "325.15297`", 
+      "922.0043599786279`", "12.204255816912791`", "1.8485141736454248`*^-13",
+       "1.1034566611556113`*^-12", "5.873148079000742`*^-12", 
+      "2.600132055753495`*^-18"},
+     {"\<\"5_2_4\"\>", "\<\"4_3_1\"\>", "598.8`", "970.31524`", 
+      "308.9639775213672`", 
+      RowBox[{"-", "27.77541240333393`"}], 
+      RowBox[{"-", "2.215307734917053`*^-17"}], "0.`", "0.`", "0.`"},
+     {"\<\"5_3_3\"\>", "\<\"4_4_0\"\>", "725.1`", "474.68932`", 
+      "631.5550895478331`", 
+      RowBox[{"-", "7.925690276535259`"}], 
+      RowBox[{"-", "5.149152599286635`*^-17"}], "0.`", "0.`", "0.`"},
+     {"\<\"5_3_3\"\>", "\<\"6_0_6\"\>", "725.1`", "1716.95686`", 
+      "174.6068657776294`", "30.043466867493628`", "1.1027565009663246`*^-16",
+       "6.296525713279691`*^-16", "3.351325810893116`*^-15", 
+      "2.1845203247987797`*^-19"},
+     {"\<\"6_3_3\"\>", "\<\"5_4_2\"\>", "951.8`", "1541.96728`", 
+      "194.4220606289389`", 
+      RowBox[{"-", "71.51213849373795`"}], 
+      RowBox[{"-", "2.1686645367396924`*^-22"}], "0.`", "0.`", "0.`"},
+     {"\<\"6_4_2\"\>", "\<\"5_5_1\"\>", "1090.3`", "470.88906`", 
+      "636.6519876252806`", 
+      RowBox[{"-", "7.948493816415088`"}], 
+      RowBox[{"-", "8.1748131391530865`*^-22"}], "0.`", "0.`", "0.`"},
+     {"\<\"6_2_4\"\>", "\<\"6_1_5\"\>", "867.3`", "1794.78916`", 
+      "167.03491567778357`", 
+      RowBox[{"-", "42.257362131238324`"}], 
+      RowBox[{"-", "1.1706550169231978`*^-17"}], "0.`", "0.`", "0.`"},
+     {"\<\"6_3_3\"\>", "\<\"6_2_4\"\>", "951.8`", "1762.04292`", 
+      "170.13913372779817`", "10.618197458850792`", "1.548221810588666`*^-17",
+       "0.`", "0.`", "0.`"},
+     {"\<\"6_2_4\"\>", "\<\"7_1_7\"\>", "867.3`", "488.49113`", 
+      "613.7111558197588`", "9.304590542766345`", "1.2432578462757861`*^-18", 
+      "0.`", "0.`", "0.`"},
+     {"\<\"7_2_6\"\>", "\<\"6_3_3\"\>", "1021.`", "1440.78186`", 
+      "208.076228833142`", "14.085189707149878`", "2.9409820687712106`*^-22", 
+      "0.`", "0.`", "0.`"},
+     {"\<\"7_3_5\"\>", "\<\"6_4_2\"\>", "1175.1`", "1766.199`", 
+      "169.73877575516687`", "80.85089349364465`", "2.4625580696817483`*^-21",
+       "0.`", "0.`", "0.`"},
+     {"\<\"7_4_4\"\>", "\<\"6_5_1\"\>", "1334.8`", "1172.52603`", 
+      "255.68085341354853`", "19.220285837561732`", "5.207248842690071`*^-26",
+       "0.`", "0.`", "0.`"},
+     {"\<\"7_5_3\"\>", "\<\"6_6_0\"\>", "1524.6`", "437.34671`", 
+      "685.4800759790786`", "4.840874026711739`", "5.278717797237766`*^-25", 
+      "0.`", "0.`", "0.`"},
+     {"\<\"8_5_3\"\>", "\<\"7_6_2\"\>", "1807.`", "1190.82908`", 
+      "251.75103718495018`", "4.637206554470845`", "2.5266559284351248`*^-26",
+       "0.`", "0.`", "0.`"},
+     {"\<\"9_2_8\"\>", "\<\"8_3_5\"\>", "1554.5`", "906.20605`", 
+      "330.82151239224237`", "28.234465627534224`", "5.209976228574974`*^-29",
+       "0.`", "0.`", "0.`"},
+     {"\<\"9_4_6\"\>", "\<\"10_1_9\"\>", "1929.3`", "1435.00858`", 
+      "208.9133543717209`", 
+      RowBox[{"-", "688.120278212417`"}], 
+      RowBox[{"-", "2.051820891919022`*^-33"}], "0.`", "0.`", "0.`"},
+     {"\<\"7_4_4\"\>", "\<\"8_1_7\"\>", "1334.8`", "1344.67636`", 
+      "222.9476660093883`", "14.754159061325318`", "3.486969250418451`*^-26", 
+      "0.`", "0.`", "0.`"},
+     {"\<\"8_2_6\"\>", "\<\"9_1_9\"\>", "1414.2`", "1879.75036`", 
+      "159.4852499456364`", "50.31171920475455`", "6.678275684210206`*^-25", 
+      "0.`", "0.`", "0.`"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{562, 1703},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]=",
+ CellID->2258168]
+}, Open  ]],
+
+Cell[TextData[{
+ "You can display the final escape probabilities for all transitions using \
+the option ",
+ Cell[BoxData[
+  ButtonBox["ShowEscapeProbability",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/ShowEscapeProbability"]], 
+  "InlineFormula"],
+ "\[Rule]True."
+}], "Text",
+ CellID->14626061],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<p-h2o@lowT\>\"", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "14"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "4"]}], ",", "50.", ",", 
+   RowBox[{"ShowEscapeProbability", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[44]:=",
+ CellID->747639641],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "178"}],
+  SequenceForm["Number of Iterations:", 178],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[44]:=",
+ CellID->229593134],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.16999810498946263`", ",", "0.9996990308872821`", ",", 
+   "0.9999613041149892`", ",", "0.9999980161798624`"}], "}"}]], "Output",
+ ImageSize->{352, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[44]=",
+ CellID->483662102]
+}, Open  ]],
+
+Cell["\<\
+In the above case the model cloud is virtually transparent for photons \
+emitted in the last three transitions, while 83% of the photons emitted in \
+the lowest transition are rather reabsorbed in the cloud than escaping it.\
+\>", "Text",
+ CellID->754065520]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Cloud Geometry", "Section",
+ CellID->71282666],
+
+Cell["\<\
+The probability for a photon to escape a model clouds depends on the geometry \
+of the cloud. The standard geometry that is applied in EscapeProbability is a \
+homogeneous spherical cloud. \
+\>", "Text",
+ CellID->265084168],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"EdgeForm", "[", 
+     RowBox[{"{", 
+      RowBox[{"Thick", ",", "Black"}], "}"}], "]"}], ",", 
+    RowBox[{"FaceForm", "[", "Gray", "]"}], ",", 
+    RowBox[{"Disk", "[", "]"}], ",", 
+    RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+    RowBox[{"Point", "[", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], "]"}], ",", "Thick", ",", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Text", "[", 
+       RowBox[{"\"\<n\\n \!\(\*SubscriptBox[\(n\), \(i\)]\)\\n T\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0.3"}], "}"}]}], "]"}], ",", "Italic"}], "]"}], 
+    ",", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Text", "[", 
+       RowBox[{"\"\<R\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{"0.5", ",", "0.1"}], "}"}]}], "]"}], ",", "Italic"}], 
+     "]"}]}], "}"}], "]"}]], "Input",
+ CellLabel->"In[60]:=",
+ CellID->15257273],
+
+Cell[BoxData[
+ GraphicsBox[
+  {EdgeForm[{GrayLevel[0], Thickness[Large]}], FaceForm[GrayLevel[0.5]], 
+   DiskBox[{0, 0}], 
+   {PointSize[Large], PointBox[{0, 0}], 
+    {Thickness[Large], LineBox[{{0, 0}, {1, 0}}], 
+     StyleBox[
+      InsetBox["\<\"n\\n \\!\\(\\*SubscriptBox[\\(n\\), \\(i\\)]\\)\\n \
+T\"\>", {0, 0.3}],
+      StripOnInput->False,
+      FontSlant->Italic], 
+     StyleBox[InsetBox["\<\"R\"\>", {0.5, 0.1}],
+      StripOnInput->False,
+      FontSlant->Italic]}}}]], "Output",
+ ImageSize->{229, 225},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[60]=",
+ CellID->162039834]
+}, {2}]],
+
+Cell[TextData[{
+ "The column density of the species under consideration is ",
+ Cell[BoxData[
+  RowBox[{"n", "\[Cross]", 
+   SubscriptBox["n", "i"], "\[Cross]", "R"}]], "InlineFormula"],
+ ". The advantage of the spherical geometry is the isotropy when sitting in \
+the center. The escape probability is the same no matter in which direction."
+}], "Text",
+ CellID->15322864],
+
+Cell["\<\
+Other geometries included are for instance a semi-infinite plane parallel \
+slab of gas\
+\>", "Text",
+ CellID->299147040],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{"Gray", ",", 
+    RowBox[{"Rectangle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"-", "1"}]}], "}"}], ",", 
+      RowBox[{"{", " ", 
+       RowBox[{"1.3", ",", "1"}], "}"}]}], "]"}], ",", "Black", ",", "Thick", 
+    ",", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+    RowBox[{"Point", "[", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], "]"}], ",", "Thin", ",", "Dashed", ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"-", "0.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Dashing", "[", 
+     RowBox[{"{", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}], ",", "0.4", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"3", "/", "4"}], "\[Pi]"}], ",", "\[Pi]"}], "}"}]}], "]"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Text", "[", 
+       RowBox[{"\"\<\[Theta]\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{"0.7", ",", "0.1"}], "}"}]}], "]"}], ",", "Italic"}], "]"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Text", "[", 
+       RowBox[{"\"\<n\\n \!\(\*SubscriptBox[\(n\), \(i\)]\)\\n T\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "0.3"}], "}"}]}], "]"}], ",", "Italic"}], "]"}]}], 
+   "}"}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellLabel->"In[75]:=",
+ CellID->4450578],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {GrayLevel[0.5], RectangleBox[{0, -1}, {1.3, 1}]}, 
+   {GrayLevel[0], Thickness[Large], LineBox[{{0, 1}, {0, -1}}], 
+    {PointSize[Large], PointBox[{1, 0}], 
+     {Thickness[Tiny], Dashing[{Small, Small}], LineBox[{{0, 1}, {1, 0}}], 
+      LineBox[{{0, 0}, {1, 0}}], LineBox[{{0, -0.5}, {1, 0}}], 
+      {Dashing[{}], 
+       CircleBox[{1, 0}, 0.4, 
+        NCache[{Rational[3, 4] Pi, Pi}, {2.356194490192345, 
+         3.141592653589793}]], 
+       StyleBox[InsetBox["\<\"\[Theta]\"\>", {0.7, 0.1}],
+        StripOnInput->False,
+        FontSlant->Italic], 
+       StyleBox[
+        InsetBox["\<\"n\\n \\!\\(\\*SubscriptBox[\\(n\\), \\(i\\)]\\)\\n \
+T\"\>", {1, 0.3}],
+        StripOnInput->False,
+        FontSlant->Italic]}}}}}]], "Output",
+ ImageSize->{183, 270},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[75]=",
+ CellID->365921283]
+}, {2}]],
+
+Cell["\<\
+Here, the escape probability depends a function of the angle \[Theta]. \
+Integrating over all angles (only the left half space, since the slab extends \
+infinitely to the right) then gives the final \[Beta]. \
+\>", "Text",
+ CellID->322570522],
+
+Cell["\<\
+The choice of the model geometry changes the escape probability accordingly:\
+\>", "MathCaption",
+ CellID->317947616],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<p-h2o@lowT\>\"", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "14"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "4"]}], ",", "50.", ",", "\[IndentingNewLine]", 
+   RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}], ",", 
+   RowBox[{"ShowEscapeProbability", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[76]:=",
+ CellID->88048636],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "178"}],
+  SequenceForm["Number of Iterations:", 178],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[76]:=",
+ CellID->406371716],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.16999810498946263`", ",", "0.9996990308872821`", ",", 
+   "0.9999613041149892`", ",", "0.9999980161798624`"}], "}"}]], "Output",
+ ImageSize->{352, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[76]=",
+ CellID->15170443]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<p-h2o@lowT\>\"", ",", 
+   RowBox[{"1.", " ", 
+    SuperscriptBox["10", "14"]}], ",", "5", ",", 
+   RowBox[{"1", " ", 
+    SuperscriptBox["10", "4"]}], ",", "50.", ",", "\[IndentingNewLine]", 
+   RowBox[{"Geometry", "\[Rule]", "\"\<PlaneParallel\>\""}], ",", 
+   RowBox[{"ShowEscapeProbability", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[77]:=",
+ CellID->255292044],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "780"}],
+  SequenceForm["Number of Iterations:", 780],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[77]:=",
+ CellID->4971061],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.038846302133805535`", ",", "0.994557888479839`", ",", 
+   "0.9998433396141221`", ",", "0.999991884273297`"}], "}"}]], "Output",
+ ImageSize->{361, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[77]=",
+ CellID->342791289]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Accessing the LAMBDA data files", "Section",
+ CellID->338225304],
+
+Cell["\<\
+The package offers a number of functions to display the contents of the used \
+LAMBDA data files.\
+\>", "Text",
+ CellID->308412189],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{
+     ButtonBox["ShowCollisionPartners",
+      BaseStyle->"Link",
+      ButtonData->"paclet:EscapeProbability/ref/ShowCollisionPartners"], "[", 
+     StyleBox["species", "TI"], "]"}], Cell["\<\
+displays all collisional partners for which collision rates are listed in the \
+data file\
+\>", "TableText"]},
+   {
+    RowBox[{
+     ButtonBox["ShowCollisionRates",
+      BaseStyle->"Link",
+      ButtonData->"paclet:EscapeProbability/ref/ShowCollisionRates"], "[", 
+     StyleBox["species", "TI"], "]"}], Cell["\<\
+displays the whole set of collision rates for each collision partner\
+\>", "TableText"]},
+   {
+    RowBox[{
+     ButtonBox["ShowCollisionTemperatures",
+      BaseStyle->"Link",
+      ButtonData->"paclet:EscapeProbability/ref/ShowCollisionTemperatures"], 
+     "[", 
+     StyleBox["species", "TI"], "]"}], Cell["\<\
+displays the temperature grid for which collision rates are given\
+\>", "TableText"]},
+   {
+    RowBox[{
+     ButtonBox["ShowEnergyLevels",
+      BaseStyle->"Link",
+      ButtonData->"paclet:EscapeProbability/ref/ShowEnergyLevels"], "[", 
+     StyleBox["species", "TI"], "]"}], Cell[TextData[{
+     "displays the energy levels of ",
+     StyleBox["species", "TI"],
+     " together with properties of these levels"
+    }], "TableText"]},
+   {
+    RowBox[{
+     ButtonBox["ShowTransitions",
+      BaseStyle->"Link",
+      ButtonData->"paclet:EscapeProbability/ref/ShowTransitions"], "[", 
+     StyleBox["species", "TI"], "]"}], Cell[TextData[{
+     "displays all listed transition of ",
+     StyleBox["species", "TI"],
+     " with their properties"
+    }], "TableText"]}
+  }]], "DefinitionBox",
+ CellID->109979077],
+
+Cell["\<\
+Functions in EscapeProbability that provide direct access to the LAMBDA \
+database files..\
+\>", "Caption",
+ CellID->788984270],
+
+Cell["\<\
+LAMBDA lists the energy levels of a species in the following order:\
+\[LineSeparator]Level, Energies(cm^-1), statistical weight, J of lower level \
+(or set of quantum number if not linear rotator)\
+\>", "MathCaption",
+ CellID->165393122],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ShowEnergyLevels", "[", "\"\<CO\>\"", "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ";;", "10"}], "]"}], "]"}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Nr.\>\"", ",", 
+        "\"\<E[\!\(\*SuperscriptBox[\(cm\), \(-1\)]\)]\>\"", ",", "\"\<g\>\"",
+         ",", "\"\<\!\(\*SubscriptBox[\(J\), \(lower\)]\)\>\""}], "}"}]}], 
+     "}"}]}]}], "]"}]], "Input",
+ CellLabel->"In[16]:=",
+ CellID->484653808],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      TagBox["\<\"Nr.\"\>",
+       HoldForm], 
+      TagBox["\<\"E[\\!\\(\\*SuperscriptBox[\\(cm\\), \\(-1\\)]\\)]\"\>",
+       HoldForm], 
+      TagBox["\<\"g\"\>",
+       HoldForm], 
+      TagBox["\<\"\\!\\(\\*SubscriptBox[\\(J\\), \\(lower\\)]\\)\"\>",
+       HoldForm]},
+     {"1", "0.`", "1.`", "0"},
+     {"2", "3.845033413`", "3.`", "1"},
+     {"3", "11.534919938`", "5.`", "2"},
+     {"4", "23.069512649`", "7.`", "3"},
+     {"5", "38.448164669`", "9.`", "4"},
+     {"6", "57.670329083`", "11.`", "5"},
+     {"7", "80.735459105`", "13.`", "6"},
+     {"8", "107.642407981`", "15.`", "7"},
+     {"9", "138.390328288`", "17.`", "8"},
+     {"10", "172.978074417`", "19.`", "9"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {None, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {
+     None, {"Nr.", "E[\!\(\*SuperscriptBox[\(cm\), \(-1\)]\)]", "g", 
+       "\!\(\*SubscriptBox[\(J\), \(lower\)]\)"}}]]]], "Output",
+ ImageSize->{199, 198},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[16]//TableForm=",
+ CellID->80879099]
+}, Open  ]],
+
+Cell["Transitions have the following entries:", "Text",
+ CellID->8678768],
+
+Cell["\<\
+Transition number, upper level number, lower level number, Einstein A value, \
+frequency [GHz], and E_u[K].\
+\>", "Text",
+ CellID->332151716],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ShowTransitions", "[", "\"\<CO\>\"", "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ";;", "10"}], "]"}], "]"}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Nr.\>\"", ",", "\"\<upper\>\"", ",", "\"\<lower\>\"", ",", 
+        "\"\<\!\(\*SubscriptBox[\(A\), \(ul\)]\)[\!\(\*SuperscriptBox[\(s\), \
+\(-1\)]\)]\>\"", ",", "\"\<\[Nu] [GHz]\>\"", ",", 
+        "\"\<\!\(\*SubscriptBox[\(E\), \(u\)]\)[K]\>\""}], "}"}]}], "}"}]}]}],
+   "]"}]], "Input",
+ CellLabel->"In[17]:=",
+ CellID->260630193],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      TagBox["\<\"Nr.\"\>",
+       HoldForm], 
+      TagBox["\<\"upper\"\>",
+       HoldForm], 
+      TagBox["\<\"lower\"\>",
+       HoldForm], 
+      TagBox["\<\"\\!\\(\\*SubscriptBox[\\(A\\), \
+\\(ul\\)]\\)[\\!\\(\\*SuperscriptBox[\\(s\\), \\(-1\\)]\\)]\"\>",
+       HoldForm], 
+      TagBox["\<\"\[Nu] [GHz]\"\>",
+       HoldForm], 
+      TagBox["\<\"\\!\\(\\*SubscriptBox[\\(E\\), \\(u\\)]\\)[K]\"\>",
+       HoldForm]},
+     {"1", "2", "1", "7.203`*^-8", "115.2712018`", "5.53`"},
+     {"2", "3", "2", "6.91`*^-7", "230.538`", "16.6`"},
+     {"3", "4", "3", "2.497`*^-6", "345.7959899`", "33.19`"},
+     {"4", "5", "4", "6.126`*^-6", "461.0407682`", "55.32`"},
+     {"5", "6", "5", "0.00001221`", "576.2679305`", "82.97`"},
+     {"6", "7", "6", "0.00002137`", "691.4730763`", "116.16`"},
+     {"7", "8", "7", "0.00003422`", "806.651806`", "154.87`"},
+     {"8", "9", "8", "0.00005134`", "921.7997`", "199.11`"},
+     {"9", "10", "9", "0.0000733`", "1036.912393`", "248.88`"},
+     {"10", "11", "10", "0.0001006`", "1151.985452`", "304.16`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {None, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {
+     None, {"Nr.", "upper", "lower", 
+       "\!\(\*SubscriptBox[\(A\), \(ul\)]\)[\!\(\*SuperscriptBox[\(s\), \
+\(-1\)]\)]", "\[Nu] [GHz]", 
+       "\!\(\*SubscriptBox[\(E\), \(u\)]\)[K]"}}]]]], "Output",
+ ImageSize->{386, 210},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[17]//TableForm=",
+ CellID->781251416]
+}, Open  ]],
+
+Cell[TextData[{
+ "The collision partners for which collision rates are present can be listed \
+by ",
+ Cell[BoxData[
+  ButtonBox["ShowCollisionPartners",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/ShowCollisionPartners"]], 
+  "InlineFormula"]
+}], "Text",
+ CellID->90569331],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "[", "\"\<CO\>\"", "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[19]:=",
+ CellID->433894326],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "::", "\<\"combop\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"If ortho- and para-H2 is given \
+seperately as collision partners   the default behavior is to combine both \
+into a single collision partner. In that case only one   H2 density needs to \
+be given.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[19]:=",
+ CellID->215503784],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"2", "\<\"CO-pH2\"\>", "\<\"from\"\>", "\<\"Yang\"\>", "\<\"et\"\>", "\<\
+\"al.\"\>", "\<\"(2010)\"\>"},
+    {"3", "\<\"CO-oH2\"\>", "\<\"from\"\>", "\<\"Yang\"\>", "\<\"et\"\>", "\<\
+\"al.\"\>", "\<\"(2010).\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{313, 32},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[19]//TableForm=",
+ CellID->216372893]
+}, Open  ]],
+
+Cell[TextData[{
+ "A warning is displayed to indicate that separate collision rates for para- \
+and ortho ",
+ Cell[BoxData[
+  SubscriptBox["H", "2"]], "InlineFormula"],
+ " are listed which are usually combined into a single collision rate."
+}], "Text",
+ CellID->471714965],
+
+Cell["\<\
+The number of collision partners varies across the different species. \
+Collision rates are difficult to measure and to calculate.\
+\>", "Text",
+ CellID->12395854],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "[", "\"\<hco+@xpol.dat\>\"", "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->788868918],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"1", "\<\"HCO+\"\>", "\<\"-\"\>", "\<\"H2\"\>", "\<\"from\"\>", \
+"\<\"Flower\"\>", "\<\"(1999)\"\>", "\<\"+\"\>", "\<\"extrapolation\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{434, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]//TableForm=",
+ CellID->303705325]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "[", "\"\<co.dat\>\"", "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->54009192],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "::", "\<\"combop\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"If ortho- and para-H2 is given \
+seperately as collision partners   the default behavior is to combine both \
+into a single collision partner. In that case only one   H2 density needs to \
+be given.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[2]:=",
+ CellID->57000432],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"2", "\<\"CO-pH2\"\>", "\<\"from\"\>", "\<\"Yang\"\>", "\<\"et\"\>", "\<\
+\"al.\"\>", "\<\"(2010)\"\>"},
+    {"3", "\<\"CO-oH2\"\>", "\<\"from\"\>", "\<\"Yang\"\>", "\<\"et\"\>", "\<\
+\"al.\"\>", "\<\"(2010).\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{313, 32},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]//TableForm=",
+ CellID->324679253]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "[", "\"\<catom.dat\>\"", "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->76463222],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "::", "\<\"combop\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"If ortho- and para-H2 is given \
+seperately as collision partners   the default behavior is to combine both \
+into a single collision partner. In that case only one   H2 density needs to \
+be given.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[3]:=",
+ CellID->482453457],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {"5", "\<\"C\"\>", "\<\"+\"\>", "\<\"H\"\>", "\<\"!\"\>", \
+"\<\"Launay\"\>", "\<\"&\"\>", "\<\"Roueff\"\>", 
+     "1977", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", \
+"\<\"\"\>"},
+    {"4", "\<\"C\"\>", "\<\"+\"\>", "\<\"e\"\>", "\<\"!\"\>", "\<\"from\"\>", \
+"\<\"Johnson,\"\>", "\<\"Burke,\"\>", "\<\"&\"\>", "\<\"Kingston\"\>", \
+"\<\"1987,\"\>", "\<\"JPhysB,\"\>", "\<\"20,\"\>", "2553", "\<\"\"\>"},
+    {"7", "\<\"C\"\>", "\<\"+\"\>", "\<\"H+\"\>", "\<\"!\"\>", \
+"\<\"Roueff\"\>", "\<\"&\"\>", "\<\"Le\"\>", "\<\"Bourlot\"\>", \
+"\<\"1990,\"\>", "\<\"A&A,\"\>", "\<\"236,\"\>", 
+     "515", "\<\"\"\>", "\<\"\"\>"},
+    {"6", "\<\"C\"\>", "\<\"+\"\>", "\<\"He\"\>", "\<\"!\"\>", \
+"\<\"Staemmler,\"\>", "\<\"V.,\"\>", "\<\"Flower,\"\>", "\<\"D.R.\"\>", \
+"\<\"1991,\"\>", "\<\"J.\"\>", "\<\"Phys.\"\>", "\<\"B,\"\>", "\<\"24,\"\>", 
+     "2343"},
+    {"2", "\<\"C\"\>", "\<\"+\"\>", "\<\"p-H2\"\>", "\<\"!\"\>", \
+"\<\"K.\"\>", "\<\"Schroeder\"\>", "\<\"et\"\>", "\<\"al.\"\>", \
+"\<\"1991,\"\>", "\<\"J.\"\>", "\<\"Phys.\"\>", "\<\"B,\"\>", "\<\"24,\"\>", 
+     "2487"},
+    {"3", "\<\"C\"\>", "\<\"+\"\>", "\<\"o-H2\"\>", "\<\"!\"\>", \
+"\<\"K.\"\>", "\<\"Schroeder\"\>", "\<\"et\"\>", "\<\"al.\"\>", \
+"\<\"1991,\"\>", "\<\"J.\"\>", "\<\"Phys.\"\>", "\<\"B,\"\>", "\<\"24,\"\>", 
+     "2487"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  TableForm[{{5, "C", "+", "H", "!", "Launay", "&", "Roueff", 1977}, {
+    4, "C", "+", "e", "!", "from", "Johnson,", "Burke,", "&", "Kingston", 
+     "1987,", "JPhysB,", "20,", 2553}, {
+    7, "C", "+", "H+", "!", "Roueff", "&", "Le", "Bourlot", "1990,", "A&A,", 
+     "236,", 515}, {
+    6, "C", "+", "He", "!", "Staemmler,", "V.,", "Flower,", "D.R.", "1991,", 
+     "J.", "Phys.", "B,", "24,", 2343}, {
+    2, "C", "+", "p-H2", "!", "K.", "Schroeder", "et", "al.", "1991,", "J.", 
+     "Phys.", "B,", "24,", 2487}, {
+    3, "C", "+", "o-H2", "!", "K.", "Schroeder", "et", "al.", "1991,", "J.", 
+     "Phys.", "B,", "24,", 2487}}]]], "Output",
+ ImageSize->{1086, 105},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]//TableForm=",
+ CellID->136689314]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "[", "\"\<c+.dat\>\"", "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->209500933],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "::", "\<\"combop\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"If ortho- and para-H2 is given \
+seperately as collision partners   the default behavior is to combine both \
+into a single collision partner. In that case only one   H2 density needs to \
+be given.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[4]:=",
+ CellID->29781995],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {"2", "\<\"C+\"\>", "\<\"+\"\>", "\<\"pH2\"\>", "\<\"!\"\>", \
+"\<\"Flower\"\>", "\<\"&\"\>", "\<\"Launay\"\>", "\<\"(1977,\"\>", \
+"\<\"JPB,\"\>", "\<\"10,\"\>", "\<\"3673);\"\>", "\<\"no\"\>", \
+"\<\"corr.\"\>", "\<\"for\"\>", "\<\"Flower\"\>", "\<\"(1988)\"\>"},
+    {"3", "\<\"C+\"\>", "\<\"+\"\>", "\<\"oH2\"\>", "\<\"!\"\>", \
+"\<\"Flower\"\>", "\<\"&\"\>", "\<\"Launay\"\>", "\<\"(1977,\"\>", \
+"\<\"JPB,\"\>", "\<\"10,\"\>", "\<\"3673)\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\
+\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"5", "\<\"C+\"\>", "\<\"+\"\>", "\<\"H\"\>", "\<\"!\"\>", \
+"\<\"Launay\"\>", "\<\"&\"\>", "\<\"Roueff,\"\>", "\<\"1977,\"\>", \
+"\<\"JPB,\"\>", "\<\"10,\"\>", 
+     "879", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+    {"4", "\<\"C+\"\>", "\<\"+\"\>", "\<\"e\"\>", "\<\"!\"\>", \
+"\<\"Wilson\"\>", "\<\"&\"\>", "\<\"Bell,\"\>", "\<\"2002,\"\>", \
+"\<\"MNRAS,\"\>", "\<\"337,\"\>", 
+     "1027", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  TableForm[{{
+    2, "C+", "+", "pH2", "!", "Flower", "&", "Launay", "(1977,", "JPB,", 
+     "10,", "3673);", "no", "corr.", "for", "Flower", "(1988)"}, {
+    3, "C+", "+", "oH2", "!", "Flower", "&", "Launay", "(1977,", "JPB,", 
+     "10,", "3673)"}, {
+    5, "C+", "+", "H", "!", "Launay", "&", "Roueff,", "1977,", "JPB,", "10,", 
+     879}, {4, "C+", "+", "e", "!", "Wilson", "&", "Bell,", "2002,", "MNRAS,",
+      "337,", 1027}}]]], "Output",
+ ImageSize->{1094, 69},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]//TableForm=",
+ CellID->367413670]
+}, Open  ]],
+
+Cell[TextData[{
+ "The collision rates in the LAMBDA database are provided for a set of \
+temperatures for which the rates have been measured or calculated. ",
+ Cell[BoxData[
+  ButtonBox["EscapeProbabilityRun",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/EscapeProbabilityRun"]], 
+  "InlineFormula"],
+ " interpolates the collision rates on their provided temperature grid. You \
+can show the temperature grid of the collision rates."
+}], "Text",
+ CellID->356269861],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ShowCollisionTemperatures", "[", "\"\<co.dat\>\"", "]"}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->449242803],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2.`", ",", "5.`", ",", "10.`", ",", "20.`", ",", "30.`", ",", "40.`", ",", 
+   "50.`", ",", "60.`", ",", "70.`", ",", "80.`", ",", "90.`", ",", "100.`", 
+   ",", "150.`", ",", "200.`", ",", "300.`", ",", "400.`", ",", "500.`", ",", 
+   "600.`", ",", "700.`", ",", "750.`", ",", "800.`", ",", "900.`", ",", 
+   "1000.`", ",", "2000.`", ",", "3000.`"}], "}"}]], "Output",
+ ImageSize->{436, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[11]=",
+ CellID->832550204]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionTemperatures", "[", "\"\<co.dat\>\"", "]"}], "//", 
+  "Length"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->57129696],
+
+Cell[BoxData["25"], "Output",
+ ImageSize->{22, 17},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[12]=",
+ CellID->599715016]
+}, Open  ]],
+
+Cell["\<\
+In the case of CO this means, for each transition the data files contain 25 \
+collision rate coefficients. \
+\>", "Text",
+ CellID->54293800],
+
+Cell["\<\
+You can also display all collision rates that are given in the LAMBDA files. \
+\>", "Text",
+ CellID->787786475],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"ShowCollisionRates", "[", "\"\<o-h2o@lowT.dat\>\"", "]"}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\"\<Nr.\>\"", ",", "\"\<upper\>\"", ",", "\"\<lower\>\""}], 
+         "}"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "<>", "\"\< K\>\""}], "&"}], "/@", 
+         RowBox[{"ToString", "/@", 
+          RowBox[{
+          "ShowCollisionTemperatures", "[", "\"\<o-h2o@lowT.dat\>\"", 
+           "]"}]}]}]}], "]"}]}], "}"}]}]}], "]"}]], "Input",
+ CellLabel->"In[9]:=",
+ CellID->15583937],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      TagBox["\<\"Nr.\"\>",
+       HoldForm], 
+      TagBox["\<\"upper\"\>",
+       HoldForm], 
+      TagBox["\<\"lower\"\>",
+       HoldForm], 
+      TagBox["\<\"5. K\"\>",
+       HoldForm], 
+      TagBox["\<\"8. K\"\>",
+       HoldForm], 
+      TagBox["\<\"12. K\"\>",
+       HoldForm], 
+      TagBox["\<\"16. K\"\>",
+       HoldForm], 
+      TagBox["\<\"20. K\"\>",
+       HoldForm], 
+      TagBox["\<\"40. K\"\>",
+       HoldForm], 
+      TagBox["\<\"60. K\"\>",
+       HoldForm], 
+      TagBox["\<\"80. K\"\>",
+       HoldForm], 
+      TagBox["\<\"100. K\"\>",
+       HoldForm], 
+      TagBox["\<\"120. K\"\>",
+       HoldForm], 
+      TagBox["\<\"140. K\"\>",
+       HoldForm]},
+     {"1", "2", "1", "2.1978841158841159`*^-10", "2.297822177822178`*^-10", 
+      "2.497662337662338`*^-10", "2.597582417582418`*^-10", 
+      "2.6955251259771406`*^-10", "2.5917007872704275`*^-10", 
+      "1.9671012247983252`*^-10", "1.5158130595270773`*^-10", 
+      "1.2491232803959022`*^-10", "1.0987082035906066`*^-10", 
+      "1.0098450229386133`*^-10"},
+     {"2", "3", "1", "7.694305694305696`*^-11", "8.193906093906094`*^-11", 
+      "8.893206793206795`*^-11", "9.492607392607394`*^-11", 
+      "9.886094016980755`*^-11", "1.0009841944518161`*^-10", 
+      "8.626417713292837`*^-11", "6.990069655750988`*^-11", 
+      "6.483381369983825`*^-11", "5.877021033210004`*^-11", 
+      "5.584776628451483`*^-11"},
+     {"3", "3", "2", "8.493106893106893`*^-11", "8.992707292707293`*^-11", 
+      "9.492307692307693`*^-11", "9.891908091908091`*^-11", 
+      "9.985380889646435`*^-11", "8.888604517113308`*^-11", 
+      "6.78047958520545`*^-11", "5.226342517333239`*^-11", 
+      "4.2693984762744686`*^-11", "3.7371970515183675`*^-11", 
+      "3.356517752300989`*^-11"},
+     {"4", "4", "1", "1.998361638361638`*^-11", "2.0982917082917084`*^-11", 
+      "2.0983116883116883`*^-11", "2.1982317682317685`*^-11", 
+      "2.1968622397289913`*^-11", "2.0929669520356154`*^-11", 
+      "1.804628957229748`*^-11", "1.5102110282097512`*^-11", 
+      "1.3408195428823406`*^-11", "1.2452728601333374`*^-11", 
+      "1.1915906938099004`*^-11"},
+     {"5", "4", "2", "4.797202797202798`*^-11", "4.997102897102897`*^-11", 
+      "5.196903096903097`*^-11", "5.2968031968031964`*^-11", 
+      "5.394116699491858`*^-11", "5.4724317487692064`*^-11", 
+      "4.854179019982645`*^-11", "4.3274542768355`*^-11", 
+      "4.007163444278782`*^-11", "3.917941793215867`*^-11", 
+      "3.8285779243168305`*^-11"},
+     {"6", "4", "3", "6.694305694305694`*^-11", "7.293706293706294`*^-11", 
+      "7.793206793206794`*^-11", "8.292697302697304`*^-11", 
+      "8.486611034298137`*^-11", "7.99535559476432`*^-11", 
+      "6.342782349013322`*^-11", "4.9441416457101185`*^-11", 
+      "4.1108311651302254`*^-11", "3.6522952277885606`*^-11", 
+      "3.356836800467325`*^-11"},
+     {"7", "5", "1", "1.8989010989010988`*^-11", "1.8989310689310687`*^-11", 
+      "1.898951048951049`*^-11", "1.8989710289710288`*^-11", 
+      "1.998003243463903`*^-11", "1.696483476017808`*^-11", 
+      "1.6178901695668416`*^-11", "1.480214802773318`*^-11", 
+      "1.4055931574837426`*^-11", "1.3438727203377407`*^-11", 
+      "1.3403828577996036`*^-11"},
+     {"8", "5", "2", "1.7985714285714286`*^-11", "1.7985814185814187`*^-11", 
+      "1.6986813186813187`*^-11", "1.6986713286713286`*^-11", 
+      "1.697628851613385`*^-11", "1.461602908154243`*^-11", 
+      "1.1765809987092029`*^-11", "9.750499261297624`*^-12", 
+      "8.235129231697495`*^-12", "7.671550486091062`*^-12", 
+      "7.439380091754453`*^-12"},
+     {"9", "5", "3", "6.995004995004995`*^-11", "7.394605394605395`*^-11", 
+      "7.894105894105895`*^-11", "8.293706293706295`*^-11", 
+      "8.688055117150136`*^-11", "8.578618885793474`*^-11", 
+      "7.214903894253483`*^-11", "5.919747451591012`*^-11", 
+      "5.159083303416556`*^-11", "4.726255957280484`*^-11", 
+      "4.47493160551287`*^-11"},
+     {"10", "5", "4", "2.8972827172827173`*^-11", "3.197012987012987`*^-11", 
+      "3.596643356643357`*^-11", "3.796453546453546`*^-11", 
+      "3.893492713074328`*^-11", "3.129815908802813`*^-11", 
+      "2.1638282976542282`*^-11", "1.5435047865172977`*^-11", 
+      "1.167742190767377`*^-11", "9.356885683365681`*^-12", 
+      "8.061303474796035`*^-12"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {None, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {
+     None, {"Nr.", "upper", "lower", "5. K", "8. K", "12. K", "16. K", 
+       "20. K", "40. K", "60. K", "80. K", "100. K", "120. K", 
+       "140. K"}}]]]], "Output",
+ ImageSize->{1562, 225},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[9]//TableForm=",
+ CellID->82995671]
+}, Open  ]],
+
+Cell[TextData[{
+ "You can switch of the combining of ortho- and para rates using the option ",
+ Cell[BoxData[
+  ButtonBox["CombineOrthoPara",
+   BaseStyle->"Link",
+   ButtonData->"paclet:EscapeProbability/ref/CombineOrthoPara"]], 
+  "InlineFormula"],
+ "->",
+ Cell[BoxData[
+  ButtonBox["False",
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/False"]], "InlineFormula"],
+ ". As a result, you get separate collision rates displayed for ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"o", "/", "p"}], "-", 
+   SubscriptBox["H", "2."]}]], "InlineFormula"]
+}], "Text",
+ CellID->4974871],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "[", "\"\<o-h2o@lowT.dat\>\"", "]"}], " ", 
+  "//", " ", "TableForm"}]], "Input",
+ CellLabel->"In[37]:=",
+ CellID->775433125],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ShowCollisionPartners", "::", "\<\"combop\"\>"}], ":", 
+  " ", "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"If ortho- and para-H2 is given \
+seperately as collision partners   the default behavior is to combine both \
+into a single collision partner. In that case only one   H2 density needs to \
+be given.\\\\\\\"\\\", \\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellLabel->"During evaluation of In[37]:=",
+ CellID->104550078],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"2", "\<\"oH2O\"\>", "\<\"-\"\>", "\<\"pH2\"\>", "\<\"from\"\>", \
+"\<\"Dubernet\"\>", "\<\"&\"\>", "\<\"Grosjean\"\>", "\<\"(2002)\"\>", \
+"\<\"and\"\>", "\<\"Phillips\"\>", "\<\"et\"\>", "\<\"al.\"\>", "\<\"(1996)\"\
+\>", "\<\"for\"\>", "\<\"T>20K\"\>"},
+    {"3", "\<\"oH2O\"\>", "\<\"-\"\>", "\<\"oH2\"\>", "\<\"from\"\>", \
+"\<\"Grosjean\"\>", "\<\"et\"\>", "\<\"al.\"\>", "\<\"(2003)\"\>", "\<\"and\"\
+\>", "\<\"Phillips\"\>", "\<\"et\"\>", "\<\"al.\"\>", "\<\"(1996)\"\>", \
+"\<\"for\"\>", "\<\"T>20K\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ ImageSize->{772, 34},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[37]//TableForm=",
+ CellID->137515056]
+}, Open  ]],
+
+Cell[TextData[{
+ "here the rates for ",
+ Cell[BoxData[
+  RowBox[{"para", "-", 
+   SubscriptBox["H", "2"]}]], "InlineFormula"]
+}], "Text",
+ CellID->407533360],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"First", "@", 
+    RowBox[{"ShowCollisionRates", "[", 
+     RowBox[{"\"\<o-h2o@lowT.dat\>\"", ",", 
+      RowBox[{"CombineOrthoPara", " ", "->", " ", "False"}]}], "]"}]}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\"\<Nr.\>\"", ",", "\"\<upper\>\"", ",", "\"\<lower\>\""}], 
+         "}"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "<>", "\"\< K\>\""}], "&"}], "/@", 
+         RowBox[{"ToString", "/@", 
+          RowBox[{"First", "@", 
+           RowBox[{"ShowCollisionTemperatures", "[", 
+            RowBox[{"\"\<o-h2o@lowT.dat\>\"", ",", 
+             RowBox[{"CombineOrthoPara", " ", "->", " ", "False"}]}], 
+            "]"}]}]}]}]}], "]"}]}], "}"}]}]}], "]"}]], "Input",
+ CellLabel->"In[38]:=",
+ CellID->191889505],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      TagBox["\<\"Nr.\"\>",
+       HoldForm], 
+      TagBox["\<\"upper\"\>",
+       HoldForm], 
+      TagBox["\<\"lower\"\>",
+       HoldForm], 
+      TagBox["\<\"5. K\"\>",
+       HoldForm], 
+      TagBox["\<\"8. K\"\>",
+       HoldForm], 
+      TagBox["\<\"12. K\"\>",
+       HoldForm], 
+      TagBox["\<\"16. K\"\>",
+       HoldForm], 
+      TagBox["\<\"20. K\"\>",
+       HoldForm], 
+      TagBox["\<\"40. K\"\>",
+       HoldForm], 
+      TagBox["\<\"60. K\"\>",
+       HoldForm], 
+      TagBox["\<\"80. K\"\>",
+       HoldForm], 
+      TagBox["\<\"100. K\"\>",
+       HoldForm], 
+      TagBox["\<\"120. K\"\>",
+       HoldForm], 
+      TagBox["\<\"140. K\"\>",
+       HoldForm]},
+     {"1", "2", "1", "8.2`*^-12", "1.2`*^-11", "1.6`*^-11", "1.8`*^-11", 
+      "1.9`*^-11", "1.6`*^-11", "1.9`*^-11", "2.2`*^-11", "2.4`*^-11", 
+      "2.7`*^-11", "3.`*^-11"},
+     {"2", "3", "1", "2.`*^-11", "2.1`*^-11", "2.1`*^-11", "2.1`*^-11", 
+      "2.1`*^-11", "2.2`*^-11", "2.2`*^-11", "2.3`*^-11", "2.5`*^-11", 
+      "2.6`*^-11", "2.8`*^-11"},
+     {"3", "3", "2", "1.6`*^-11", "1.7`*^-11", "1.8`*^-11", "1.8`*^-11", 
+      "1.8`*^-11", "1.7`*^-11", "1.6`*^-11", "1.6`*^-11", "1.5`*^-11", 
+      "1.5`*^-11", "1.5`*^-11"},
+     {"4", "4", "1", "3.6`*^-12", "3.9`*^-12", "4.1`*^-12", "4.3`*^-12", 
+      "4.4`*^-12", "4.6`*^-12", "4.8`*^-12", "4.9`*^-12", "5.1`*^-12", 
+      "5.3`*^-12", "5.5`*^-12"},
+     {"5", "4", "2", "2.`*^-11", "2.1`*^-11", "2.1`*^-11", "2.1`*^-11", 
+      "2.1`*^-11", "2.1`*^-11", "2.1`*^-11", "2.2`*^-11", "2.3`*^-11", 
+      "2.5`*^-11", "2.6`*^-11"},
+     {"6", "4", "3", "1.`*^-11", "1.`*^-11", "1.`*^-11", "9.9`*^-12", 
+      "9.9`*^-12", "8.6`*^-12", "9.`*^-12", "9.6`*^-12", "1.`*^-11", 
+      "1.1`*^-11", "1.2`*^-11"},
+     {"7", "5", "1", "8.`*^-12", "8.3`*^-12", "8.5`*^-12", "8.7`*^-12", 
+      "8.8`*^-12", "8.8`*^-12", "8.9`*^-12", "9.`*^-12", "9.2`*^-12", 
+      "9.5`*^-12", "9.8`*^-12"},
+     {"8", "5", "2", "3.7`*^-12", "3.8`*^-12", "3.8`*^-12", "3.7`*^-12", 
+      "3.7`*^-12", "3.7`*^-12", "3.7`*^-12", "3.9`*^-12", "4.1`*^-12", 
+      "4.3`*^-12", "4.6`*^-12"},
+     {"9", "5", "3", "2.`*^-11", "2.`*^-11", "2.`*^-11", "2.`*^-11", 
+      "2.`*^-11", "2.1`*^-11", "2.1`*^-11", "2.1`*^-11", "2.2`*^-11", 
+      "2.3`*^-11", "2.4`*^-11"},
+     {"10", "5", "4", "1.8`*^-12", "2.1`*^-12", "2.4`*^-12", "2.5`*^-12", 
+      "2.5`*^-12", "2.1`*^-12", "1.9`*^-12", "1.8`*^-12", "1.7`*^-12", 
+      "1.7`*^-12", "1.7`*^-12"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {None, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {
+     None, {"Nr.", "upper", "lower", "5. K", "8. K", "12. K", "16. K", 
+       "20. K", "40. K", "60. K", "80. K", "100. K", "120. K", 
+       "140. K"}}]]]], "Output",
+ ImageSize->{1166, 225},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[38]//TableForm=",
+ CellID->446047013]
+}, Open  ]],
+
+Cell[TextData[{
+ "and these are for ",
+ Cell[BoxData[
+  RowBox[{"ortho", "-", 
+   SubscriptBox["H", "2"]}]], "InlineFormula"]
+}], "Text",
+ CellID->263563833],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Last", "@", 
+    RowBox[{"ShowCollisionRates", "[", 
+     RowBox[{"\"\<o-h2o@lowT.dat\>\"", ",", 
+      RowBox[{"CombineOrthoPara", " ", "->", " ", "False"}]}], "]"}]}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"\"\<Nr.\>\"", ",", "\"\<upper\>\"", ",", "\"\<lower\>\""}], 
+         "}"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "<>", "\"\< K\>\""}], "&"}], "/@", 
+         RowBox[{"ToString", "/@", 
+          RowBox[{"Last", "@", 
+           RowBox[{"ShowCollisionTemperatures", "[", 
+            RowBox[{"\"\<o-h2o@lowT.dat\>\"", ",", 
+             RowBox[{"CombineOrthoPara", " ", "->", " ", "False"}]}], 
+            "]"}]}]}]}]}], "]"}]}], "}"}]}]}], "]"}]], "Input",
+ CellLabel->"In[39]:=",
+ CellID->555889668],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      TagBox["\<\"Nr.\"\>",
+       HoldForm], 
+      TagBox["\<\"upper\"\>",
+       HoldForm], 
+      TagBox["\<\"lower\"\>",
+       HoldForm], 
+      TagBox["\<\"5. K\"\>",
+       HoldForm], 
+      TagBox["\<\"8. K\"\>",
+       HoldForm], 
+      TagBox["\<\"12. K\"\>",
+       HoldForm], 
+      TagBox["\<\"16. K\"\>",
+       HoldForm], 
+      TagBox["\<\"20. K\"\>",
+       HoldForm], 
+      TagBox["\<\"40. K\"\>",
+       HoldForm], 
+      TagBox["\<\"60. K\"\>",
+       HoldForm], 
+      TagBox["\<\"80. K\"\>",
+       HoldForm], 
+      TagBox["\<\"100. K\"\>",
+       HoldForm], 
+      TagBox["\<\"120. K\"\>",
+       HoldForm], 
+      TagBox["\<\"140. K\"\>",
+       HoldForm]},
+     {"1", "2", "1", "2.2`*^-10", "2.3`*^-10", "2.5`*^-10", "2.6`*^-10", 
+      "2.7`*^-10", "2.9`*^-10", "2.9`*^-10", "2.9`*^-10", "2.9`*^-10", 
+      "2.9`*^-10", "2.9`*^-10"},
+     {"2", "3", "1", "7.7`*^-11", "8.2`*^-11", "8.9`*^-11", "9.5`*^-11", 
+      "9.9`*^-11", "1.1`*^-10", "1.2`*^-10", "1.2`*^-10", "1.3`*^-10", 
+      "1.3`*^-10", "1.3`*^-10"},
+     {"3", "3", "2", "8.5`*^-11", "9.`*^-11", "9.5`*^-11", "9.9`*^-11", 
+      "1.`*^-10", "9.8`*^-11", "9.5`*^-11", "9.1`*^-11", "8.8`*^-11", 
+      "8.6`*^-11", "8.3`*^-11"},
+     {"4", "4", "1", "2.`*^-11", "2.1`*^-11", "2.1`*^-11", "2.2`*^-11", 
+      "2.2`*^-11", "2.3`*^-11", "2.5`*^-11", "2.6`*^-11", "2.7`*^-11", 
+      "2.8`*^-11", "2.9`*^-11"},
+     {"5", "4", "2", "4.8`*^-11", "5.`*^-11", "5.2`*^-11", "5.3`*^-11", 
+      "5.4`*^-11", "5.9`*^-11", "6.3`*^-11", "6.6`*^-11", "6.8`*^-11", 
+      "7.`*^-11", "7.1`*^-11"},
+     {"6", "4", "3", "6.7`*^-11", "7.3`*^-11", "7.8`*^-11", "8.3`*^-11", 
+      "8.5`*^-11", "8.9`*^-11", "9.2`*^-11", "9.2`*^-11", "9.2`*^-11", 
+      "9.2`*^-11", "9.1`*^-11"},
+     {"7", "5", "1", "1.9`*^-11", "1.9`*^-11", "1.9`*^-11", "1.9`*^-11", 
+      "2.`*^-11", "1.8`*^-11", "2.`*^-11", "2.1`*^-11", "2.2`*^-11", 
+      "2.2`*^-11", "2.3`*^-11"},
+     {"8", "5", "2", "1.8`*^-11", "1.8`*^-11", "1.7`*^-11", "1.7`*^-11", 
+      "1.7`*^-11", "1.6`*^-11", "1.6`*^-11", "1.6`*^-11", "1.5`*^-11", 
+      "1.5`*^-11", "1.5`*^-11"},
+     {"9", "5", "3", "7.`*^-11", "7.4`*^-11", "7.9`*^-11", "8.3`*^-11", 
+      "8.7`*^-11", "9.4`*^-11", "9.9`*^-11", "1.`*^-10", "1.`*^-10", 
+      "1.`*^-10", "1.`*^-10"},
+     {"10", "5", "4", "2.9`*^-11", "3.2`*^-11", "3.6`*^-11", "3.8`*^-11", 
+      "3.9`*^-11", "3.5`*^-11", "3.2`*^-11", "3.`*^-11", "2.8`*^-11", 
+      "2.6`*^-11", "2.5`*^-11"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {None, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {
+     None, {"Nr.", "upper", "lower", "5. K", "8. K", "12. K", "16. K", 
+       "20. K", "40. K", "60. K", "80. K", "100. K", "120. K", 
+       "140. K"}}]]]], "Output",
+ ImageSize->{1166, 225},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[39]//TableForm=",
+ CellID->194004678]
+}, Open  ]],
+
+Cell["\<\
+When collision rate coefficients for more than one partners are listed, they \
+not necessarily have identical temperature grid points, nor do they cover the \
+same temperature ranges or apply to all listed transitions.\
+\>", "Text",
+ CellID->5849401],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Riffle", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{"#", ",", "Red", ",", "Bold"}], "]"}], "&"}], "/@", 
+      RowBox[{
+       RowBox[{"ShowCollisionPartners", "[", "\"\<c+.dat\>\"", "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", " ", 
+         RowBox[{"2", " ", ";;", " ", "4"}]}], "]"}], "]"}]}], "//", " ", 
+     "Quiet"}], ",", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"TableForm", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ShowCollisionRates", "[", 
+          RowBox[{"\"\<c+.dat\>\"", ",", " ", 
+           RowBox[{"CombineOrthoPara", " ", "->", " ", "False"}]}], "]"}], 
+         "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+        RowBox[{"TableHeadings", " ", "->", " ", 
+         RowBox[{"{", 
+          RowBox[{"None", ",", " ", 
+           RowBox[{"Join", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+              "\"\<Nr.\>\"", ",", " ", "\"\<upper\>\"", ",", " ", 
+               "\"\<lower\>\""}], "}"}], ",", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", " ", "<>", " ", "\"\< K\>\""}], " ", "&"}], " ", "/@",
+               " ", 
+              RowBox[{"ToString", " ", "/@", " ", 
+               RowBox[{
+                RowBox[{"ShowCollisionTemperatures", "[", 
+                 RowBox[{"\"\<c+.dat\>\"", ",", " ", 
+                  RowBox[{"CombineOrthoPara", " ", "->", " ", "False"}]}], 
+                 "]"}], "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}]}]}], "]"}]}], "}"}]}]}], 
+       "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "1", ",", " ", 
+        RowBox[{"Length", "@", 
+         RowBox[{"ShowCollisionRates", "[", 
+          RowBox[{"\"\<c+.dat\>\"", ",", " ", 
+           RowBox[{"CombineOrthoPara", " ", "->", " ", "False"}]}], "]"}]}]}],
+        "}"}]}], "]"}]}], "]"}], " ", "//", " ", "Column"}]], "Input",
+ CellLabel->"In[36]:=",
+ CellID->1662928],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"\<\"C+\"\>", ",", "\<\"+\"\>", ",", "\<\"pH2\"\>"}], "}"}],
+      StripOnInput->False,
+      LineColor->RGBColor[1, 0, 0],
+      FrontFaceColor->RGBColor[1, 0, 0],
+      BackFaceColor->RGBColor[1, 0, 0],
+      GraphicsColor->RGBColor[1, 0, 0],
+      FontWeight->Bold,
+      FontColor->RGBColor[1, 0, 0]]},
+    {
+     TagBox[
+      TagBox[GridBox[{
+         {
+          TagBox["\<\"Nr.\"\>",
+           HoldForm], 
+          TagBox["\<\"upper\"\>",
+           HoldForm], 
+          TagBox["\<\"lower\"\>",
+           HoldForm], 
+          TagBox["\<\"10. K\"\>",
+           HoldForm], 
+          TagBox["\<\"20. K\"\>",
+           HoldForm], 
+          TagBox["\<\"50. K\"\>",
+           HoldForm], 
+          TagBox["\<\"100. K\"\>",
+           HoldForm], 
+          TagBox["\<\"200. K\"\>",
+           HoldForm], 
+          TagBox["\<\"250. K\"\>",
+           HoldForm]},
+         {"1", "2", "1", "3.`*^-10", "3.4`*^-10", "3.9`*^-10", "4.3`*^-10", 
+          "4.6`*^-10", "4.7`*^-10"}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxDividers->{
+         "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       {None, OutputFormsDump`HeadedColumns}],
+      Function[BoxForm`e$, 
+       TableForm[
+       BoxForm`e$, 
+        TableHeadings -> {
+         None, {"Nr.", "upper", "lower", "10. K", "20. K", "50. K", "100. K", 
+           "200. K", "250. K"}}]]]},
+    {
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"\<\"C+\"\>", ",", "\<\"+\"\>", ",", "\<\"oH2\"\>"}], "}"}],
+      StripOnInput->False,
+      LineColor->RGBColor[1, 0, 0],
+      FrontFaceColor->RGBColor[1, 0, 0],
+      BackFaceColor->RGBColor[1, 0, 0],
+      GraphicsColor->RGBColor[1, 0, 0],
+      FontWeight->Bold,
+      FontColor->RGBColor[1, 0, 0]]},
+    {
+     TagBox[
+      TagBox[GridBox[{
+         {
+          TagBox["\<\"Nr.\"\>",
+           HoldForm], 
+          TagBox["\<\"upper\"\>",
+           HoldForm], 
+          TagBox["\<\"lower\"\>",
+           HoldForm], 
+          TagBox["\<\"10. K\"\>",
+           HoldForm], 
+          TagBox["\<\"20. K\"\>",
+           HoldForm], 
+          TagBox["\<\"50. K\"\>",
+           HoldForm], 
+          TagBox["\<\"100. K\"\>",
+           HoldForm], 
+          TagBox["\<\"200. K\"\>",
+           HoldForm], 
+          TagBox["\<\"250. K\"\>",
+           HoldForm]},
+         {"1", "2", "1", "4.4`*^-10", "4.6`*^-10", "4.9`*^-10", "5.1`*^-10", 
+          "5.6`*^-10", "5.7`*^-10"}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxDividers->{
+         "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       {None, OutputFormsDump`HeadedColumns}],
+      Function[BoxForm`e$, 
+       TableForm[
+       BoxForm`e$, 
+        TableHeadings -> {
+         None, {"Nr.", "upper", "lower", "10. K", "20. K", "50. K", "100. K", 
+           "200. K", "250. K"}}]]]},
+    {
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"\<\"C+\"\>", ",", "\<\"+\"\>", ",", "\<\"H\"\>"}], "}"}],
+      StripOnInput->False,
+      LineColor->RGBColor[1, 0, 0],
+      FrontFaceColor->RGBColor[1, 0, 0],
+      BackFaceColor->RGBColor[1, 0, 0],
+      GraphicsColor->RGBColor[1, 0, 0],
+      FontWeight->Bold,
+      FontColor->RGBColor[1, 0, 0]]},
+    {
+     TagBox[
+      TagBox[GridBox[{
+         {
+          TagBox["\<\"Nr.\"\>",
+           HoldForm], 
+          TagBox["\<\"upper\"\>",
+           HoldForm], 
+          TagBox["\<\"lower\"\>",
+           HoldForm], 
+          TagBox["\<\"5. K\"\>",
+           HoldForm], 
+          TagBox["\<\"10. K\"\>",
+           HoldForm], 
+          TagBox["\<\"20. K\"\>",
+           HoldForm], 
+          TagBox["\<\"50. K\"\>",
+           HoldForm], 
+          TagBox["\<\"100. K\"\>",
+           HoldForm], 
+          TagBox["\<\"200. K\"\>",
+           HoldForm], 
+          TagBox["\<\"300. K\"\>",
+           HoldForm], 
+          TagBox["\<\"500. K\"\>",
+           HoldForm], 
+          TagBox["\<\"1000. K\"\>",
+           HoldForm], 
+          TagBox["\<\"3162. K\"\>",
+           HoldForm]},
+         {"1", "2", "1", "5.9`*^-10", "6.5`*^-10", "7.`*^-10", "7.7`*^-10", 
+          "8.1`*^-10", "8.3`*^-10", "8.5`*^-10", "8.9`*^-10", "9.8`*^-10", 
+          "1.1`*^-9"}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxDividers->{
+         "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       {None, OutputFormsDump`HeadedColumns}],
+      Function[BoxForm`e$, 
+       TableForm[
+       BoxForm`e$, 
+        TableHeadings -> {
+         None, {"Nr.", "upper", "lower", "5. K", "10. K", "20. K", "50. K", 
+           "100. K", "200. K", "300. K", "500. K", "1000. K", "3162. K"}}]]]},
+    {
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"\<\"C+\"\>", ",", "\<\"+\"\>", ",", "\<\"e\"\>"}], "}"}],
+      StripOnInput->False,
+      LineColor->RGBColor[1, 0, 0],
+      FrontFaceColor->RGBColor[1, 0, 0],
+      BackFaceColor->RGBColor[1, 0, 0],
+      GraphicsColor->RGBColor[1, 0, 0],
+      FontWeight->Bold,
+      FontColor->RGBColor[1, 0, 0]]},
+    {
+     TagBox[
+      TagBox[GridBox[{
+         {
+          TagBox["\<\"Nr.\"\>",
+           HoldForm], 
+          TagBox["\<\"upper\"\>",
+           HoldForm], 
+          TagBox["\<\"lower\"\>",
+           HoldForm], 
+          TagBox["\<\"10. K\"\>",
+           HoldForm], 
+          TagBox["\<\"20. K\"\>",
+           HoldForm], 
+          TagBox["\<\"50. K\"\>",
+           HoldForm], 
+          TagBox["\<\"100. K\"\>",
+           HoldForm], 
+          TagBox["\<\"316.2 K\"\>",
+           HoldForm], 
+          TagBox["\<\"1000. K\"\>",
+           HoldForm], 
+          TagBox["\<\"2000. K\"\>",
+           HoldForm], 
+          TagBox["\<\"10000. K\"\>",
+           HoldForm], 
+          TagBox["\<\"20000. K\"\>",
+           HoldForm]},
+         {"1", "2", "1", "1.2`*^-6", "8.4`*^-7", "5.3`*^-7", "3.8`*^-7", 
+          "2.1`*^-7", "1.2`*^-7", "8.6`*^-8", "4.8`*^-8", "3.7`*^-8"},
+         {"2", "3", "1", "4.`*^-7", "2.8`*^-7", "1.8`*^-7", "1.3`*^-7", 
+          "7.1`*^-8", "4.`*^-8", "2.8`*^-8", "1.2`*^-8", "8.5`*^-9"},
+         {"3", "4", "1", "2.9`*^-7", "2.1`*^-7", "1.3`*^-7", "9.3`*^-8", 
+          "5.2`*^-8", "2.9`*^-8", "2.1`*^-8", "9.`*^-9", "6.3`*^-9"},
+         {"4", "5", "1", "1.2`*^-7", "8.5`*^-8", "5.3`*^-8", "3.8`*^-8", 
+          "2.1`*^-8", "1.2`*^-8", "8.5`*^-9", "3.8`*^-9", "2.7`*^-9"},
+         {"5", "3", "2", "2.7`*^-7", "1.9`*^-7", "1.2`*^-7", "8.6`*^-8", 
+          "4.9`*^-8", "2.7`*^-8", "1.9`*^-8", "8.7`*^-9", "6.1`*^-9"},
+         {"6", "4", "2", "3.8`*^-7", "2.7`*^-7", "1.7`*^-7", "1.2`*^-7", 
+          "6.7`*^-8", "3.8`*^-8", "2.7`*^-8", "1.2`*^-8", "8.3`*^-9"},
+         {"7", "5", "2", "5.5`*^-7", "3.9`*^-7", "2.5`*^-7", "1.7`*^-7", 
+          "9.8`*^-8", "5.5`*^-8", "3.9`*^-8", "1.7`*^-8", "1.2`*^-8"}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxDividers->{
+         "Columns" -> {{False}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}],
+       {None, OutputFormsDump`HeadedColumns}],
+      Function[BoxForm`e$, 
+       TableForm[
+       BoxForm`e$, 
+        TableHeadings -> {
+         None, {"Nr.", "upper", "lower", "10. K", "20. K", "50. K", "100. K", 
+           "316.2 K", "1000. K", "2000. K", "10000. K", "20000. K"}}]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ ImageSize->{1057, 358},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[36]=",
+ CellID->286485730]
+}, Open  ]],
+
+Cell[BoxData["XXXX"], "Input",
+ CellLabel->"In[1]:=",
+ CellID->2058623809],
+
+Cell[BoxData["XXXX"], "Input",
+ CellLabel->"Out[1]=",
+ CellID->1181321046]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MORE ABOUT", "TutorialMoreAboutSection",
+ CellID->23220180],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:EscapeProbability/guide/EscapeProbability"]], "TutorialMoreAbout",
+ CellID->1567025153]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"EscapeProbability - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "built" -> "{2011, 1, 14, 16, 55, 0.1163922}", "context" -> 
+    "EscapeProbability`", "keywords" -> {}, "index" -> True, "label" -> 
+    "Escape Probability Tutorial", "language" -> "en", "paclet" -> 
+    "EscapeProbability", "status" -> "None", "summary" -> 
+    "EscapeProbability extends the capabilities of Mathematica to solve the \
+radiative transfer problem (in the astronomical context) using the escape \
+probability approximation. It includes functions to numerically (iteratively) \
+solve the involved equations of radiative transfer and statistical \
+equilibrium. The relevant properties of the medium are taken from LAMBDA, the \
+Leiden Atomic and Molecular Database \
+(http://www.strw.leidenuniv.nl/~moldata/). The package includes functions to \
+display the properties of many species, like energy levels, allowed \
+transitions, collision rates and so on. This package has been inspired by the \
+software RADEX (summarized in Van der Tak, F.F.S., Black, J.H., Scho\"ier, \
+F.L., Jansen, D.J., van Dishoeck, E.F. 2007, A&A 468, 627) which is an open \
+source one-dimensional non-LTE radiative transfer code, that uses the escape \
+probability formulation assuming an isothermal and homogeneous medium without \
+large-scale velocity fields. \
+(http://www.strw.leidenuniv.nl/~moldata/radex.html) This loads the package. \
+The escape probability approximation is an approach to simplify the general \
+radiative transfer problem and to decouple the radiative transfer equation \
+from the statistical equations. The radiative transfer equation can be \
+written as:", "synonyms" -> {}, "title" -> "EscapeProbability", "type" -> 
+    "Tutorial", "uri" -> "EscapeProbability/tutorial/EscapeProbability"}, 
+  "LinkTrails" -> "", "SearchTextTranslated" -> ""},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["TutorialMoreAboutSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["RelatedTutorialsSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}], 
+   Cell[
+    StyleData["TutorialRelatedLinksSection"], 
+    CellGroupingRules -> {"SectionGrouping", 30}]}, Visible -> False, 
+  FrontEndVersion -> "8.0 for Microsoft Windows (64-bit) (November 7, 2010)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[610, 21, 78, 1, 70, "TutorialColorBar"],
+Cell[691, 24, 200, 5, 70, "LinkTrail"],
+Cell[894, 31, 3329, 74, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4248, 109, 54, 1, 70, "Title",
+ CellID->509267359],
+Cell[4305, 112, 1146, 19, 70, "Text",
+ CellID->422847889],
+Cell[5454, 133, 63, 1, 70, "MathCaption",
+ CellID->10049],
+Cell[5520, 136, 101, 3, 70, "Input",
+ CellID->24456],
+Cell[CellGroupData[{
+Cell[5646, 143, 56, 1, 70, "Section",
+ CellID->60567997],
+Cell[5705, 146, 284, 6, 70, "Text",
+ CellID->1534169418],
+Cell[5992, 154, 545, 18, 70, "DisplayMath",
+ CellID->140642292],
+Cell[6540, 174, 2811, 89, 70, "Text",
+ CellID->256624645],
+Cell[9354, 265, 422, 14, 70, "DisplayMath",
+ CellID->907477686],
+Cell[9779, 281, 327, 11, 70, "Text",
+ CellID->472409941],
+Cell[10109, 294, 1076, 32, 70, "DisplayMath",
+ CellID->35705166],
+Cell[CellGroupData[{
+Cell[11210, 330, 72, 1, 70, "Subsection",
+ CellID->243102195],
+Cell[11285, 333, 408, 11, 70, "Text",
+ CellID->59793123],
+Cell[11696, 346, 54, 1, 70, "BulletedText",
+ CellID->187799066],
+Cell[11753, 349, 64, 1, 70, "BulletedText",
+ CellID->408137343],
+Cell[CellGroupData[{
+Cell[11842, 354, 59, 1, 70, "BulletedText",
+ CellID->81513231],
+Cell[11904, 357, 640, 20, 70, "Text",
+ CellID->412289885]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12581, 382, 55, 1, 70, "Subsubsection",
+ CellID->750947607],
+Cell[12639, 385, 1247, 32, 70, "Text",
+ CellID->285842675],
+Cell[13889, 419, 312, 10, 70, "DisplayMath",
+ CellID->36613419],
+Cell[14204, 431, 131, 4, 70, "Text",
+ CellID->687567119],
+Cell[14338, 437, 461, 15, 70, "DisplayMath",
+ CellID->129124142],
+Cell[14802, 454, 118, 3, 70, "Text",
+ CellID->447628034]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14957, 462, 65, 1, 70, "Subsubsection",
+ CellID->286623856],
+Cell[15025, 465, 649, 20, 70, "Text",
+ CellID->409365801],
+Cell[15677, 487, 250, 8, 70, "DisplayMath",
+ CellID->41853194],
+Cell[15930, 497, 85, 1, 70, "Text",
+ CellID->516070291],
+Cell[16018, 500, 397, 13, 70, "DisplayMath",
+ CellID->262355823],
+Cell[16418, 515, 59, 1, 70, "Text",
+ CellID->185805908]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16514, 521, 61, 1, 70, "Subsubsection",
+ CellID->129575053],
+Cell[16578, 524, 773, 25, 70, "Text",
+ CellID->35973440],
+Cell[17354, 551, 311, 10, 70, "DisplayMath",
+ CellID->5763987],
+Cell[17668, 563, 293, 10, 70, "Text",
+ CellID->181693651],
+Cell[17964, 575, 1186, 35, 70, "Text",
+ CellID->194431632]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19187, 615, 62, 1, 70, "Subsubsection",
+ CellID->14112718],
+Cell[19252, 618, 314, 8, 70, "Text",
+ CellID->111092533],
+Cell[19569, 628, 283, 10, 70, "DisplayMath",
+ CellID->274781627],
+Cell[19855, 640, 37, 1, 70, "Text",
+ CellID->2851447],
+Cell[19895, 643, 347, 12, 70, "DisplayMath",
+ CellID->663066008],
+Cell[20245, 657, 152, 5, 70, "Text",
+ CellID->402837285]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20434, 667, 60, 1, 70, "Subsubsection",
+ CellID->305154585],
+Cell[20497, 670, 132, 4, 70, "Text",
+ CellID->242778183],
+Cell[20632, 676, 779, 27, 70, "DisplayMath",
+ CellID->141670524],
+Cell[21414, 705, 77, 1, 70, "Text",
+ CellID->584131576],
+Cell[21494, 708, 515, 18, 70, "DisplayMath",
+ CellID->516566152],
+Cell[22012, 728, 269, 10, 70, "Text",
+ CellID->4937540],
+Cell[22284, 740, 450, 16, 70, "DisplayMath",
+ CellID->75424962],
+Cell[22737, 758, 428, 15, 70, "Text",
+ CellID->54835070],
+Cell[23168, 775, 534, 18, 70, "DisplayMath",
+ CellID->111570939]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23739, 798, 72, 1, 70, "Subsubsection",
+ CellID->87907820],
+Cell[23814, 801, 141, 4, 70, "Text",
+ CellID->194696786],
+Cell[23958, 807, 339, 11, 70, "DisplayMath",
+ CellID->680444211],
+Cell[24300, 820, 630, 16, 70, "Text",
+ CellID->197238058],
+Cell[24933, 838, 493, 19, 70, "DisplayMath",
+ CellID->195791629],
+Cell[25429, 859, 494, 16, 70, "DisplayMath",
+ CellID->139102114],
+Cell[25926, 877, 179, 4, 70, "Text",
+ CellID->117475187],
+Cell[26108, 883, 650, 22, 70, "DisplayMath",
+ CellID->13750312],
+Cell[26761, 907, 542, 18, 70, "DisplayMath",
+ CellID->95951668],
+Cell[27306, 927, 171, 4, 70, "Text",
+ CellID->351056109]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27514, 936, 67, 1, 70, "Subsubsection",
+ CellID->20799250],
+Cell[27584, 939, 900, 22, 70, "Text",
+ CellID->240095314],
+Cell[28487, 963, 558, 15, 70, "Text",
+ CellID->536805330],
+Cell[29048, 980, 286, 8, 70, "Text",
+ CellID->374739595],
+Cell[29337, 990, 282, 10, 70, "DisplayMath",
+ CellID->47344918],
+Cell[29622, 1002, 230, 8, 70, "Text",
+ CellID->701185614],
+Cell[29855, 1012, 421, 14, 70, "DisplayMath",
+ CellID->110546431],
+Cell[30279, 1028, 105, 3, 70, "Text",
+ CellID->310142066],
+Cell[30387, 1033, 1349, 49, 70, "DisplayMath",
+ CellID->137208326],
+Cell[31739, 1084, 393, 15, 70, "Text",
+ CellID->296426147]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32193, 1106, 63, 1, 70, "Section",
+ CellID->240352417],
+Cell[32259, 1109, 1590, 27, 70, "Text",
+ CellID->642198899],
+Cell[33852, 1138, 263, 8, 70, "DisplayMath",
+ CellID->802010997],
+Cell[34118, 1148, 95, 3, 70, "Text",
+ CellID->167937308],
+Cell[34216, 1153, 331, 6, 70, "Text",
+ CellID->201147906],
+Cell[34550, 1161, 316, 10, 70, "DisplayMath",
+ CellID->110615539],
+Cell[34869, 1173, 66, 1, 70, "Text",
+ CellID->196545598],
+Cell[34938, 1176, 584, 18, 70, "DisplayMath",
+ CellID->302304150],
+Cell[35525, 1196, 75, 1, 70, "Text",
+ CellID->761516025],
+Cell[35603, 1199, 305, 10, 70, "DisplayMath",
+ CellID->8502055],
+Cell[35911, 1211, 465, 13, 70, "Text",
+ CellID->71268016],
+Cell[36379, 1226, 502, 18, 70, "DisplayMath",
+ CellID->71681536],
+Cell[36884, 1246, 372, 9, 70, "Text",
+ CellID->243398956],
+Cell[37259, 1257, 684, 21, 70, "DefinitionBox",
+ CellID->193325932],
+Cell[37946, 1280, 143, 4, 70, "Caption",
+ CellID->271324832],
+Cell[CellGroupData[{
+Cell[38114, 1288, 361, 11, 70, "Input",
+ CellID->596741535],
+Cell[38478, 1301, 246, 6, 70, "Print",
+ CellID->588801697],
+Cell[38727, 1309, 2384, 54, 361, "Output",
+ CellID->201797605]
+}, Open  ]],
+Cell[41126, 1366, 309, 9, 70, "Text",
+ CellID->299280466],
+Cell[CellGroupData[{
+Cell[41460, 1379, 346, 9, 70, "Input",
+ CellID->17188376],
+Cell[41809, 1390, 245, 6, 70, "Print",
+ CellID->3006016],
+Cell[42057, 1398, 1437, 28, 193, "Output",
+ CellID->73445393]
+}, Open  ]],
+Cell[43509, 1429, 344, 6, 70, "Text",
+ CellID->33303350],
+Cell[CellGroupData[{
+Cell[43878, 1439, 362, 11, 70, "Input",
+ CellID->325136880],
+Cell[44243, 1452, 246, 6, 70, "Print",
+ CellID->26219612],
+Cell[44492, 1460, 2385, 54, 361, "Output",
+ CellID->244185637]
+}, Open  ]],
+Cell[46892, 1517, 549, 15, 70, "Text",
+ CellID->107917503],
+Cell[CellGroupData[{
+Cell[47466, 1536, 356, 11, 70, "Input",
+ CellID->30042928],
+Cell[47825, 1549, 247, 6, 70, "Print",
+ CellID->528431629],
+Cell[48075, 1557, 7426, 143, 1729, "Output",
+ CellID->2258168]
+}, Open  ]],
+Cell[55516, 1703, 319, 10, 70, "Text",
+ CellID->14626061],
+Cell[CellGroupData[{
+Cell[55860, 1717, 356, 9, 70, "Input",
+ CellID->747639641],
+Cell[56219, 1728, 247, 6, 70, "Print",
+ CellID->229593134],
+Cell[56469, 1736, 305, 9, 43, "Output",
+ CellID->483662102]
+}, Open  ]],
+Cell[56789, 1748, 268, 5, 70, "Text",
+ CellID->754065520]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57094, 1758, 52, 1, 70, "Section",
+ CellID->71282666],
+Cell[57149, 1761, 233, 5, 70, "Text",
+ CellID->265084168],
+Cell[CellGroupData[{
+Cell[57407, 1770, 1170, 35, 70, "Input",
+ CellID->15257273],
+Cell[58580, 1807, 625, 18, 251, "Output",
+ CellID->162039834]
+}, {2}]],
+Cell[59217, 1828, 372, 8, 70, "Text",
+ CellID->15322864],
+Cell[59592, 1838, 131, 4, 70, "Text",
+ CellID->299147040],
+Cell[CellGroupData[{
+Cell[59748, 1846, 2382, 73, 70, "Input",
+ CellID->4450578],
+Cell[62133, 1921, 909, 23, 296, "Output",
+ CellID->365921283]
+}, {2}]],
+Cell[63054, 1947, 252, 5, 70, "Text",
+ CellID->322570522],
+Cell[63309, 1954, 127, 3, 70, "MathCaption",
+ CellID->317947616],
+Cell[CellGroupData[{
+Cell[63461, 1961, 438, 10, 70, "Input",
+ CellID->88048636],
+Cell[63902, 1973, 247, 6, 70, "Print",
+ CellID->406371716],
+Cell[64152, 1981, 304, 9, 43, "Output",
+ CellID->15170443]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[64493, 1995, 446, 10, 70, "Input",
+ CellID->255292044],
+Cell[64942, 2007, 245, 6, 70, "Print",
+ CellID->4971061],
+Cell[65190, 2015, 304, 9, 43, "Output",
+ CellID->342791289]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[65543, 2030, 70, 1, 70, "Section",
+ CellID->338225304],
+Cell[65616, 2033, 141, 4, 70, "Text",
+ CellID->308412189],
+Cell[65760, 2039, 1677, 48, 70, "DefinitionBox",
+ CellID->109979077],
+Cell[67440, 2089, 137, 4, 70, "Caption",
+ CellID->788984270],
+Cell[67580, 2095, 247, 5, 70, "MathCaption",
+ CellID->165393122],
+Cell[CellGroupData[{
+Cell[67852, 2104, 579, 17, 70, "Input",
+ CellID->484653808],
+Cell[68434, 2123, 1678, 47, 240, "Output",
+ CellID->80879099]
+}, Open  ]],
+Cell[70127, 2173, 73, 1, 70, "Text",
+ CellID->8678768],
+Cell[70203, 2176, 151, 4, 70, "Text",
+ CellID->332151716],
+Cell[CellGroupData[{
+Cell[70379, 2184, 663, 18, 70, "Input",
+ CellID->260630193],
+Cell[71045, 2204, 2113, 54, 252, "Output",
+ CellID->781251416]
+}, Open  ]],
+Cell[73173, 2261, 296, 9, 70, "Text",
+ CellID->90569331],
+Cell[CellGroupData[{
+Cell[73494, 2274, 162, 5, 70, "Input",
+ CellID->433894326],
+Cell[73659, 2281, 451, 8, 70, "Message",
+ CellID->215503784],
+Cell[74113, 2291, 850, 23, 74, "Output",
+ CellID->216372893]
+}, Open  ]],
+Cell[74978, 2317, 271, 7, 70, "Text",
+ CellID->471714965],
+Cell[75252, 2326, 173, 4, 70, "Text",
+ CellID->12395854],
+Cell[CellGroupData[{
+Cell[75450, 2334, 172, 5, 70, "Input",
+ CellID->788868918],
+Cell[75625, 2341, 774, 21, 59, "Output",
+ CellID->303705325]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76436, 2367, 164, 5, 70, "Input",
+ CellID->54009192],
+Cell[76603, 2374, 449, 8, 70, "Message",
+ CellID->57000432],
+Cell[77055, 2384, 849, 23, 74, "Output",
+ CellID->324679253]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[77941, 2412, 167, 5, 70, "Input",
+ CellID->76463222],
+Cell[78111, 2419, 450, 8, 70, "Message",
+ CellID->482453457],
+Cell[78564, 2429, 2566, 51, 147, "Output",
+ CellID->136689314]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[81167, 2485, 165, 5, 70, "Input",
+ CellID->209500933],
+Cell[81335, 2492, 449, 8, 70, "Message",
+ CellID->29781995],
+Cell[81787, 2502, 2037, 41, 111, "Output",
+ CellID->367413670]
+}, Open  ]],
+Cell[83839, 2546, 487, 11, 70, "Text",
+ CellID->356269861],
+Cell[CellGroupData[{
+Cell[84351, 2561, 135, 3, 70, "Input",
+ CellID->449242803],
+Cell[84489, 2566, 544, 12, 82, "Output",
+ CellID->832550204]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[85070, 2583, 166, 5, 70, "Input",
+ CellID->57129696],
+Cell[85239, 2590, 160, 5, 43, "Output",
+ CellID->599715016]
+}, Open  ]],
+Cell[85414, 2598, 150, 4, 70, "Text",
+ CellID->54293800],
+Cell[85567, 2604, 121, 3, 70, "Text",
+ CellID->787786475],
+Cell[CellGroupData[{
+Cell[85713, 2611, 704, 20, 70, "Input",
+ CellID->15583937],
+Cell[86420, 2633, 5291, 118, 267, "Output",
+ CellID->82995671]
+}, Open  ]],
+Cell[91726, 2754, 575, 18, 70, "Text",
+ CellID->4974871],
+Cell[CellGroupData[{
+Cell[92326, 2776, 184, 5, 70, "Input",
+ CellID->775433125],
+Cell[92513, 2783, 451, 8, 70, "Message",
+ CellID->104550078],
+Cell[92967, 2793, 1149, 27, 76, "Output",
+ CellID->137515056]
+}, Open  ]],
+Cell[94131, 2823, 157, 6, 70, "Text",
+ CellID->407533360],
+Cell[CellGroupData[{
+Cell[94313, 2833, 941, 25, 70, "Input",
+ CellID->191889505],
+Cell[95257, 2860, 3492, 88, 267, "Output",
+ CellID->446047013]
+}, Open  ]],
+Cell[98764, 2951, 157, 6, 70, "Text",
+ CellID->263563833],
+Cell[CellGroupData[{
+Cell[98946, 2961, 939, 25, 70, "Input",
+ CellID->555889668],
+Cell[99888, 2988, 3494, 88, 267, "Output",
+ CellID->194004678]
+}, Open  ]],
+Cell[103397, 3079, 260, 5, 70, "Text",
+ CellID->5849401],
+Cell[CellGroupData[{
+Cell[103682, 3088, 2073, 54, 70, "Input",
+ CellID->1662928],
+Cell[105758, 3144, 9383, 261, 384, "Output",
+ CellID->286485730]
+}, Open  ]],
+Cell[115156, 3408, 74, 2, 70, "Input",
+ CellID->2058623809],
+Cell[115233, 3412, 74, 2, 70, "Input",
+ CellID->1181321046]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[115344, 3419, 65, 1, 70, "TutorialMoreAboutSection",
+ CellID->23220180],
+Cell[115412, 3422, 177, 4, 70, "TutorialMoreAbout",
+ CellID->1567025153]
+}, Open  ]]
+}, Open  ]],
+Cell[115616, 3430, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,640 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     23576,        630]
+NotebookOptionsPosition[     20428,        529]
+NotebookOutlinePosition[     22100,        576]
+CellTagsIndexPosition[     22015,        571]
+WindowTitle->TableOutput - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[" ", "SymbolColorBar",
+ CellMargins->{{Inherited, Inherited}, {-5, 0}}],
+
+Cell[TextData[{
+ ButtonBox["Mathematica",
+  BaseStyle->{"Link", "LinkTrail"},
+  ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"],
+ StyleBox[" > ", "LinkTrailSeparator"]
+}], "LinkTrail"],
+
+Cell[BoxData[GridBox[{
+   {Cell["ESCAPEPROBABILITY PACKAGE PACLET SYMBOL", "PacletNameCell"], Cell[
+    TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"EscapeProbabilityRun\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/EscapeProbabilityRun"], \
+"\<\"ShowExcitationTemperture\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowExcitationTemperture"], \
+"\<\"ShowLevelPopulation\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowLevelPopulation"], \
+"\<\"ShowOpticalDepth\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowOpticalDepth"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Escape Probability\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/guide/EscapeProbability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"EscapeProbability/ref/TableOutput\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["EscapeProbability/ref/TableOutput"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/EscapeProbability/\
+ref/TableOutput.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "EscapeProbability/ref/TableOutput", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["TableOutput", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["TableOutput"], "InlineFormula"],
+     "\[LineSeparator]is an option for ",
+     Cell[BoxData[
+      ButtonBox["EscapeProbabilityRun",
+       BaseStyle->"Link",
+       ButtonData->"paclet:EscapeProbability/ref/EscapeProbabilityRun"]], 
+      "InlineFormula"],
+     " which specifies whether the output should be as formated table/grid."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->112188499],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection",
+ CellID->600174115],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EscapeProbability`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->911237957],
+
+Cell["\<\
+Instead for showing the default tabular output one can chose to displaylists.\
+\>", "ExampleText",
+ CellID->134022981],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"EscapeProbabilityRun", "[", 
+    RowBox[{"\"\<C18O\>\"", ",", 
+     SuperscriptBox["10", "14"], ",", "1", ",", 
+     SuperscriptBox["10", "5"], ",", "35"}], "]"}], ",", "9"}], 
+  "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->66307647],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "7"}],
+  SequenceForm["Number of Iterations:", 7],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[41]:=",
+ CellID->228909868],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Line\"\>", 
+      "\[SpanFromLeft]", "\<\" E_UP\"\>", "\<\"Frequency\"\>", "\<\" \
+Wavelength\"\>", "\<\"T_EX\"\>", "\<\"Tau\"\>", "\<\"T_R\"\>", \
+"\<\"Flux\"\>", "\<\"Flux\"\>"},
+     {"\<\"\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[GHz]\"\>", \
+"\<\"[\[Micro]m]\"\>", "\<\"[K]\"\>", "\<\"\"\>", "\<\"[K]\"\>", "\<\"[K \
+km/s]\"\>", "\<\"[erg/cm2/s]\"\>"},
+     {"1", "0", "5.27`", "109.7821734`", "2730.7935953106207`", 
+      "36.86948451414653`", "0.003738831694971858`", "0.12465571262296755`", 
+      "0.13269600608714896`", "2.2610741184993063`*^-9"},
+     {"2", "1", "15.81`", "219.5603541`", "1365.4216273647376`", 
+      "34.8602743905008`", "0.012689743593552578`", "0.3736200045067978`", 
+      "0.3977184947974862`", "5.421158022619645`*^-8"},
+     {"3", "2", "31.61`", "329.3305525`", "910.3086662449881`", 
+      "32.39082278180872`", "0.020810842866232693`", "0.5165376797218568`", 
+      "0.5498543600639166`", "2.529366302170072`*^-7"},
+     {"4", "3", "52.68`", "439.0887658`", "682.7604788607872`", 
+      "29.84222390399805`", "0.022307165226103987`", "0.4528132031256512`", 
+      "0.4820196547272557`", "5.255143172963867`*^-7"},
+     {"5", "4", "79.02`", "548.8310055`", "546.2381917123669`", 
+      "27.662965159126337`", "0.016647699525923144`", "0.2732468209242825`", 
+      "0.2908712408738987`", "6.192648296664225`*^-7"},
+     {"6", "5", "110.63`", "658.5532782`", "455.22885683510975`", 
+      "26.097279770267278`", "0.00880021245211426`", "0.11748071189613113`", 
+      "0.1250582178134316`", "4.599859561495811`*^-7"},
+     {"7", "6", "147.5`", "768.2515933`", "390.22692385478985`", 
+      "25.201582996215738`", "0.003338601737864373`", "0.0370264998222645`", 
+      "0.03941470906080056`", "2.301609221795765`*^-7"},
+     {"8", "7", "189.63`", "877.9219553`", "341.4796203582313`", 
+      "24.857430607413146`", "0.0009357465733171568`", "0.00886228963849495`",
+       "0.009433907320177874`", "8.220914907431522`*^-8"},
+     {"9", "8", "237.03`", "987.5603822`", "303.56873503992614`", 
+      "24.78102308489041`", "0.0002010957222340341`", "0.00165152818210064`", 
+      "0.0017580517498461314`", "2.1806358425695157`*^-8"},
+     {"10", "9", "289.68`", "1097.1628753`", "273.2433467711228`", 
+      "24.90453404185154`", "0.00003391922551237812`", 
+      "0.00024520443472070844`", "0.00026102012076019415`", 
+      "4.43966184240925`*^-9"},
+     {"11", "10", "347.6`", "1206.7254487`", "248.43468439566357`", 
+      "25.106223662145084`", "4.593333578157742`*^-6", 
+      "0.000029421122845260062`", "0.00003131878526877934`", 
+      "7.087471724381143`*^-10"},
+     {"12", "11", "410.77`", "1316.2441143`", "227.76356812766036`", 
+      "25.655401686434455`", "5.047388799501336`*^-7", 
+      "2.9712186645199024`*^-6", "3.162862268381436`*^-6", 
+      "9.288599609352332`*^-11"},
+     {"13", "12", "479.19`", "1425.7148854`", "210.27518129327095`", 
+      "26.393434456590185`", "4.6911032057227464`*^-8", 
+      "2.5964392651557775`*^-7", "2.763909597758325`*^-7", 
+      "1.031535005734234`*^-11"},
+     {"14", "13", "552.86`", "1535.1337765`", "195.28751213038015`", 
+      "26.554323839172483`", "3.811339132886443`*^-9", 
+      "1.8681975070836863`*^-8", "1.988696246290584`*^-8", 
+      "9.265532882339344`*^-13"},
+     {"15", "14", "631.79`", "1644.4968033`", "182.3004188262383`", 
+      "26.558973640998694`", "2.5625185099488516`*^-10", 
+      "1.0918105424852206`*^-9", "1.1622323224755173`*^-9", 
+      "6.656597763002081`*^-14"},
+     {"16", "15", "715.95`", "1753.799981`", "170.93879532890705`", 
+      "27.179424499209127`", "1.400185534743807`*^-11", 
+      "5.578339232427325`*^-11", "5.938142112918888`*^-11", 
+      "4.125266856239303`*^-15"},
+     {"17", "16", "805.36`", "1863.039359`", "160.91579308389694`", 
+      "27.42982363866107`", "6.725474700414378`*^-13", 
+      "2.4015449147592745`*^-12", "2.556444561761248`*^-12", 
+      "2.128945599277871`*^-16"},
+     {"18", "17", "900.02`", "1972.21087`", "152.00831744731232`", 
+      "27.844455970937595`", "2.729635712734163`*^-14", 
+      "8.931713565909452`*^-14", "9.507809090910612`*^-14", 
+      "9.392947517022847`*^-18"}
+    },
+    AutoDelete->False,
+    GridBoxAlignment->{
+     "Columns" -> {Center, Center, Left, Left, Right, {Left}}},
+    GridBoxBackground->{"Columns" -> {{None}}, "Rows" -> {
+        RGBColor[1., 1., 0.9], 
+        RGBColor[1., 1., 0.9], {
+         GrayLevel[1], 
+         RGBColor[0.8, 0.9, 0.9]}}},
+    GridBoxDividers->{"Columns" -> {
+        RGBColor[0.2, 0.2, 0.2], {
+         RGBColor[0.75, 0.75, 0.75]}, 
+        RGBColor[0.2, 0.2, 0.2]}, "Rows" -> {
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], 
+        RGBColor[0.2, 0.2, 0.2], {False}, 
+        RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxFrame->{
+     "ColumnsIndexed" -> {{{1, -1}, {1, -1}} -> RGBColor[0.2, 0.2, 0.2]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{0.8}}}],
+   "Grid"],
+  StripOnInput->False,
+  FontSize->9]], "Output",
+ ImageSize->{557, 1105},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->142994700]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<C18O\>\"", ",", 
+   SuperscriptBox["10", "14"], ",", "1", ",", 
+   SuperscriptBox["10", "5"], ",", "35", ",", 
+   RowBox[{"TableOutput", "\[Rule]", "False"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->49143521],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "7"}],
+  SequenceForm["Number of Iterations:", 7],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[47]:=",
+ CellID->147952138],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "5.27`", ",", "109.7821734`", ",", 
+     "2730.7935953106207`", ",", "36.86948451414653`", ",", 
+     "0.003738831694971858`", ",", "0.12465571262296755`", ",", 
+     "0.13269600608714896`", ",", "2.2610741184993063`*^-9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "2", ",", "1", ",", "15.81`", ",", "219.5603541`", ",", 
+     "1365.4216273647376`", ",", "34.8602743905008`", ",", 
+     "0.012689743593552578`", ",", "0.3736200045067978`", ",", 
+     "0.3977184947974862`", ",", "5.421158022619645`*^-8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "3", ",", "2", ",", "31.61`", ",", "329.3305525`", ",", 
+     "910.3086662449881`", ",", "32.39082278180872`", ",", 
+     "0.020810842866232693`", ",", "0.5165376797218568`", ",", 
+     "0.5498543600639166`", ",", "2.529366302170072`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "4", ",", "3", ",", "52.68`", ",", "439.0887658`", ",", 
+     "682.7604788607872`", ",", "29.84222390399805`", ",", 
+     "0.022307165226103987`", ",", "0.4528132031256512`", ",", 
+     "0.4820196547272557`", ",", "5.255143172963867`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "5", ",", "4", ",", "79.02`", ",", "548.8310055`", ",", 
+     "546.2381917123669`", ",", "27.662965159126337`", ",", 
+     "0.016647699525923144`", ",", "0.2732468209242825`", ",", 
+     "0.2908712408738987`", ",", "6.192648296664225`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "6", ",", "5", ",", "110.63`", ",", "658.5532782`", ",", 
+     "455.22885683510975`", ",", "26.097279770267278`", ",", 
+     "0.00880021245211426`", ",", "0.11748071189613113`", ",", 
+     "0.1250582178134316`", ",", "4.599859561495811`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "7", ",", "6", ",", "147.5`", ",", "768.2515933`", ",", 
+     "390.22692385478985`", ",", "25.201582996215738`", ",", 
+     "0.003338601737864373`", ",", "0.0370264998222645`", ",", 
+     "0.03941470906080056`", ",", "2.301609221795765`*^-7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "8", ",", "7", ",", "189.63`", ",", "877.9219553`", ",", 
+     "341.4796203582313`", ",", "24.857430607413146`", ",", 
+     "0.0009357465733171568`", ",", "0.00886228963849495`", ",", 
+     "0.009433907320177874`", ",", "8.220914907431522`*^-8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "9", ",", "8", ",", "237.03`", ",", "987.5603822`", ",", 
+     "303.56873503992614`", ",", "24.78102308489041`", ",", 
+     "0.0002010957222340341`", ",", "0.00165152818210064`", ",", 
+     "0.0017580517498461314`", ",", "2.1806358425695157`*^-8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "10", ",", "9", ",", "289.68`", ",", "1097.1628753`", ",", 
+     "273.2433467711228`", ",", "24.90453404185154`", ",", 
+     "0.00003391922551237812`", ",", "0.00024520443472070844`", ",", 
+     "0.00026102012076019415`", ",", "4.43966184240925`*^-9"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "11", ",", "10", ",", "347.6`", ",", "1206.7254487`", ",", 
+     "248.43468439566357`", ",", "25.106223662145084`", ",", 
+     "4.593333578157742`*^-6", ",", "0.000029421122845260062`", ",", 
+     "0.00003131878526877934`", ",", "7.087471724381143`*^-10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "12", ",", "11", ",", "410.77`", ",", "1316.2441143`", ",", 
+     "227.76356812766036`", ",", "25.655401686434455`", ",", 
+     "5.047388799501336`*^-7", ",", "2.9712186645199024`*^-6", ",", 
+     "3.162862268381436`*^-6", ",", "9.288599609352332`*^-11"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "13", ",", "12", ",", "479.19`", ",", "1425.7148854`", ",", 
+     "210.27518129327095`", ",", "26.393434456590185`", ",", 
+     "4.6911032057227464`*^-8", ",", "2.5964392651557775`*^-7", ",", 
+     "2.763909597758325`*^-7", ",", "1.031535005734234`*^-11"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "14", ",", "13", ",", "552.86`", ",", "1535.1337765`", ",", 
+     "195.28751213038015`", ",", "26.554323839172483`", ",", 
+     "3.811339132886443`*^-9", ",", "1.8681975070836863`*^-8", ",", 
+     "1.988696246290584`*^-8", ",", "9.265532882339344`*^-13"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "15", ",", "14", ",", "631.79`", ",", "1644.4968033`", ",", 
+     "182.3004188262383`", ",", "26.558973640998694`", ",", 
+     "2.5625185099488516`*^-10", ",", "1.0918105424852206`*^-9", ",", 
+     "1.1622323224755173`*^-9", ",", "6.656597763002081`*^-14"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "16", ",", "15", ",", "715.95`", ",", "1753.799981`", ",", 
+     "170.93879532890705`", ",", "27.179424499209127`", ",", 
+     "1.400185534743807`*^-11", ",", "5.578339232427325`*^-11", ",", 
+     "5.938142112918888`*^-11", ",", "4.125266856239303`*^-15"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "17", ",", "16", ",", "805.36`", ",", "1863.039359`", ",", 
+     "160.91579308389694`", ",", "27.42982363866107`", ",", 
+     "6.725474700414378`*^-13", ",", "2.4015449147592745`*^-12", ",", 
+     "2.556444561761248`*^-12", ",", "2.128945599277871`*^-16"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "18", ",", "17", ",", "900.02`", ",", "1972.21087`", ",", 
+     "152.00831744731232`", ",", "27.844455970937595`", ",", 
+     "2.729635712734163`*^-14", ",", "8.931713565909452`*^-14", ",", 
+     "9.507809090910612`*^-14", ",", "9.392947517022847`*^-18"}], "}"}]}], 
+  "}"}]], "Output",
+ ImageSize->{526, 713},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->158731496]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["EscapeProbabilityRun",
+    BaseStyle->"Link",
+    ButtonData->"paclet:EscapeProbability/ref/EscapeProbabilityRun"],
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowExcitationTemperture",
+    BaseStyle->"Link",
+    ButtonData->"paclet:EscapeProbability/ref/ShowExcitationTemperture"],
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowLevelPopulation",
+    BaseStyle->"Link",
+    ButtonData->"paclet:EscapeProbability/ref/ShowLevelPopulation"],
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowOpticalDepth",
+    BaseStyle->"Link",
+    ButtonData->"paclet:EscapeProbability/ref/ShowOpticalDepth"],
+   FontFamily->"Verdana"]], "InlineFormula"]
+}], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["TUTORIALS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "TutorialsSection",
+ CellID->250839057],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:EscapeProbability/tutorial/EscapeProbability"]], "ExampleText",
+ CellID->820437650]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"]], "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"TableOutput - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "built" -> "{2011, 1, 14, 16, 54, 54.8123828}", "context" -> 
+    "EscapeProbability`", "keywords" -> {}, "index" -> True, "label" -> 
+    "EscapeProbability Package Paclet Symbol", "language" -> "en", "paclet" -> 
+    "EscapeProbability Package", "status" -> "None", "summary" -> 
+    "TableOutput is an option for EscapeProbabilityRun which specifies \
+whether the output should be as formated table/grid.", "synonyms" -> {}, 
+    "title" -> "TableOutput", "type" -> "Symbol", "uri" -> 
+    "EscapeProbability/ref/TableOutput"}, "LinkTrails" -> "", 
+  "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "8.0 for Microsoft Windows (64-bit) (November 7, 2010)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4600, 126, 461, 13, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->112188499]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 21872, 564}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[604, 21, 76, 1, 70, "SymbolColorBar"],
+Cell[683, 24, 200, 5, 70, "LinkTrail"],
+Cell[886, 31, 3032, 68, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[3943, 103, 54, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[4000, 106, 563, 15, 70, "Usage"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4600, 126, 461, 13, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->112188499],
+Cell[CellGroupData[{
+Cell[5086, 143, 148, 5, 70, "ExampleSection",
+ CellID->600174115],
+Cell[5237, 150, 126, 3, 70, "Input",
+ CellID->911237957],
+Cell[5366, 155, 128, 3, 70, "ExampleText",
+ CellID->134022981],
+Cell[CellGroupData[{
+Cell[5519, 162, 298, 9, 70, "Input",
+ CellID->66307647],
+Cell[5820, 173, 243, 6, 70, "Print",
+ CellID->228909868],
+Cell[6066, 181, 5241, 101, 1131, "Output",
+ CellID->142994700]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11344, 287, 287, 7, 70, "Input",
+ CellID->49143521],
+Cell[11634, 296, 243, 6, 70, "Print",
+ CellID->147952138],
+Cell[11880, 304, 5552, 116, 739, "Output",
+ CellID->158731496]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17493, 427, 417, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[17913, 441, 1216, 38, 70, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19166, 484, 419, 12, 70, "TutorialsSection",
+ CellID->250839057],
+Cell[19588, 498, 173, 4, 70, "ExampleText",
+ CellID->820437650]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19798, 507, 419, 12, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[20220, 521, 166, 3, 70, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[20401, 527, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

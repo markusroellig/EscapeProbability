@@ -1,0 +1,588 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     18185,        578]
+NotebookOptionsPosition[     14302,        450]
+NotebookOutlinePosition[     15943,        496]
+CellTagsIndexPosition[     15858,        491]
+WindowTitle->Geometry - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[" ", "SymbolColorBar",
+ CellMargins->{{Inherited, Inherited}, {-5, 0}}],
+
+Cell[TextData[{
+ ButtonBox["Mathematica",
+  BaseStyle->{"Link", "LinkTrail"},
+  ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"],
+ StyleBox[" > ", "LinkTrailSeparator"]
+}], "LinkTrail"],
+
+Cell[BoxData[GridBox[{
+   {Cell["ESCAPEPROBABILITY PACKAGE PACLET SYMBOL", "PacletNameCell"], Cell[
+    TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"Tutorials \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Escape Probability\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/tutorial/EscapeProbability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"See Also \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"EscapeProbabilityRun\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/EscapeProbabilityRun"], \
+"\<\"ShowEscapeProbability\"\>":>Documentation`HelpLookup[
+       "paclet:EscapeProbability/ref/ShowEscapeProbability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"More About \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"Escape Probability\"\>":>
+       Documentation`HelpLookup[
+       "paclet:EscapeProbability/guide/EscapeProbability"]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox["\<\"URL \[RightGuillemet]\"\>",
+        StripOnInput->False], {"\<\"EscapeProbability/ref/Geometry\"\>":>
+       None, "\<\"Copy Mathematica url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["EscapeProbability/ref/Geometry"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web url\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/mathematica/EscapeProbability/\
+ref/Geometry.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+            "http://reference.wolfram.com/mathematica/", 
+             "EscapeProbability/ref/Geometry", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["Geometry", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData["Geometry"], "InlineFormula"],
+     "\[LineSeparator]Is an options whose setting specifies which escape \
+probability approximation will be applied"
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->479402396],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection",
+ CellID->27927009],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<EscapeProbability`\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->5701611],
+
+Cell["\"Sphere\" assumes an uniform, spherical cloud.", "ExampleText",
+ CellID->10660908],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 0.5}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 3},
+ CellID->388064213],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "1", ",", 
+   SuperscriptBox["10", "4"], ",", "25", ",", 
+   RowBox[{"Geometry", "\[Rule]", "\"\<Sphere\>\""}], ",", 
+   RowBox[{"ShowEscapeProbability", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->21856481],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "10000"}],
+  SequenceForm["Number of Iterations:", 10000],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[8]:=",
+ CellID->782697220],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.9794259072787685`", ",", "0.8886525614674164`", ",", 
+   "0.8674574543669851`", ",", "0.9340393718200234`", ",", 
+   "0.9840692467341319`", ",", "0.9976384144537995`", ",", 
+   "0.9997472966422865`", ",", "0.9999785353162028`", ",", 
+   "0.999998496314654`", ",", "0.9999999142084463`", ",", 
+   "0.9999999960108803`", ",", "0.9999999998507236`", ",", 
+   "0.9999999999954338`", ",", "0.9999999999998829`", ",", 
+   "0.9999999999999977`", ",", "1.`", ",", "1.`"}], "}"}]], "Output",
+ ImageSize->{524, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->22046512]
+}, Open  ]],
+
+Cell["\<\
+Large Velocity Gradient, or \"LVG\", also known as Sobolev approximation, \
+assumes an expanding sphere\
+\>", "ExampleText",
+ CellID->588381087],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 0.5}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 3},
+ CellID->340940634],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "1", ",", 
+   SuperscriptBox["10", "4"], ",", "25", ",", 
+   RowBox[{"Geometry", "\[Rule]", "\"\<LVG\>\""}], ",", 
+   RowBox[{"ShowEscapeProbability", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->56019111],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "10000"}],
+  SequenceForm["Number of Iterations:", 10000],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[9]:=",
+ CellID->1043836790],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.9722514876826285`", ",", "0.8557078588583001`", ",", 
+   "0.8281311965226916`", ",", "0.9120608777680519`", ",", 
+   "0.9785113772182809`", ",", "0.9968148739338019`", ",", 
+   "0.999659673485729`", ",", "0.9999711013153173`", ",", 
+   "0.9999979754834856`", ",", "0.9999998844077369`", ",", 
+   "0.9999999944369107`", ",", "0.9999998937212619`", ",", 
+   "1.0000029662596528`", ",", "1.0000281473322263`", ",", 
+   "1.0084108926281843`", ",", "0.`", ",", "1.0400525746390128`"}], 
+  "}"}]], "Output",
+ ImageSize->{430, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->391460770]
+}, Open  ]],
+
+Cell["\<\
+\"PlaneParallel\" assumes a semi-infinite planeparallel slab of gas.\
+\>", "ExampleText",
+ CellID->216982417],
+
+Cell[" ", "Text",
+ Editable->False,
+ Selectable->False,
+ CellFrame->{{0, 0}, {0, 0.5}},
+ ShowCellBracket->False,
+ CellMargins->{{0, 0}, {1, 1}},
+ CellElementSpacings->{"CellMinHeight"->1},
+ CellFrameMargins->0,
+ CellFrameColor->RGBColor[0, 0, 1],
+ CellSize->{Inherited, 3},
+ CellID->613067229],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "1", ",", 
+   SuperscriptBox["10", "4"], ",", "25", ",", 
+   RowBox[{"Geometry", "\[Rule]", "\"\<PlaneParallel\>\""}], ",", 
+   RowBox[{"ShowEscapeProbability", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->635546937],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "10000"}],
+  SequenceForm["Number of Iterations:", 10000],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[10]:=",
+ CellID->23786706],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.9126762133590336`", ",", "0.6573854408976277`", ",", 
+   "0.5975568355620202`", ",", "0.748658685990776`", ",", 
+   "0.930163581821868`", ",", "0.9895952926498027`", ",", 
+   "0.9988987854448279`", ",", "0.9999068378792616`", ",", 
+   "0.9999934699524786`", ",", "0.9999996273271784`", ",", 
+   "0.9999999829182504`", ",", "0.9999999888895721`", ",", 
+   "1.0000007026821347`", ",", "0.999998749906505`", ",", 
+   "0.9986573220650193`", ",", "1.0420373503890534`", ",", "0.`"}], 
+  "}"}]], "Output",
+ ImageSize->{439, 56},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->18196197]
+}, Open  ]],
+
+Cell["\"Turbulent\" assumes a turbulent medium.", "ExampleText",
+ CellID->327822773],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EscapeProbabilityRun", "[", 
+  RowBox[{"\"\<CO\>\"", ",", 
+   SuperscriptBox["10", "15"], ",", "1", ",", 
+   SuperscriptBox["10", "4"], ",", "25", ",", 
+   RowBox[{"Geometry", "\[Rule]", "\"\<Turbulent\>\""}], ",", 
+   RowBox[{"ShowEscapeProbability", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->199926511],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Number of Iterations:\"\>", "\[InvisibleSpace]", "10000"}],
+  SequenceForm["Number of Iterations:", 10000],
+  Editable->False]], "Print",
+ CellLabel->"During evaluation of In[11]:=",
+ CellID->28168995],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.9794259072787685`", ",", "0.8886525614674164`", ",", 
+   "0.8674574543669851`", ",", "0.9340393718200234`", ",", 
+   "0.9840692467341319`", ",", "0.9976384144537995`", ",", 
+   "0.9997472966422865`", ",", "0.9999785353162028`", ",", 
+   "0.999998496314654`", ",", "0.9999999142084463`", ",", 
+   "0.9999999960108803`", ",", "0.9999999998507236`", ",", 
+   "0.9999999999954338`", ",", "0.9999999999998829`", ",", 
+   "0.9999999999999977`", ",", "1.`", ",", "1.`"}], "}"}]], "Output",
+ ImageSize->{524, 37},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->265639247]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["SEE ALSO",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "SeeAlsoSection",
+ CellID->1255426704],
+
+Cell[TextData[{
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["EscapeProbabilityRun",
+    BaseStyle->"Link",
+    ButtonData->"paclet:EscapeProbability/ref/EscapeProbabilityRun"],
+   FontFamily->"Verdana"]], "InlineFormula"],
+ "\[NonBreakingSpace]",
+ StyleBox["\[MediumSpace]\[FilledVerySmallSquare]\[MediumSpace]", 
+  "InlineSeparator"],
+ " ",
+ Cell[BoxData[
+  StyleBox[
+   ButtonBox["ShowEscapeProbability",
+    BaseStyle->"Link",
+    ButtonData->"paclet:EscapeProbability/ref/ShowEscapeProbability"],
+   FontFamily->"Verdana"]], "InlineFormula"]
+}], "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["TUTORIALS",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "TutorialsSection",
+ CellID->250839057],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:EscapeProbability/tutorial/EscapeProbability"]], "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["MORE ABOUT",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "MoreAboutSection",
+ CellID->38303248],
+
+Cell[TextData[ButtonBox["Escape Probability",
+ BaseStyle->"Link",
+ ButtonData->"paclet:EscapeProbability/guide/EscapeProbability"]], "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Geometry - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "built" -> "{2011, 1, 14, 16, 54, 22.1459255}", "context" -> 
+    "EscapeProbability`", "keywords" -> {}, "index" -> True, "label" -> 
+    "EscapeProbability Package Paclet Symbol", "language" -> "en", "paclet" -> 
+    "EscapeProbability Package", "status" -> "None", "summary" -> 
+    "Geometry Is an options whose setting specifies which escape probability \
+approximation will be applied", "synonyms" -> {}, "title" -> "Geometry", 
+    "type" -> "Symbol", "uri" -> "EscapeProbability/ref/Geometry"}, 
+  "LinkTrails" -> "", "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> "8.0 for Microsoft Windows (64-bit) (November 7, 2010)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[4590, 128, 461, 13, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->479402396]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 15715, 484}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[601, 21, 76, 1, 70, "SymbolColorBar"],
+Cell[680, 24, 200, 5, 70, "LinkTrail"],
+Cell[883, 31, 3216, 75, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4124, 110, 51, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[4178, 113, 375, 10, 70, "Usage"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4590, 128, 461, 13, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->479402396],
+Cell[CellGroupData[{
+Cell[5076, 145, 147, 5, 70, "ExampleSection",
+ CellID->27927009],
+Cell[5226, 152, 124, 3, 70, "Input",
+ CellID->5701611],
+Cell[5353, 157, 89, 1, 70, "ExampleText",
+ CellID->10660908],
+Cell[5445, 160, 293, 10, 70, "Text",
+ CellID->388064213],
+Cell[CellGroupData[{
+Cell[5763, 174, 354, 8, 70, "Input",
+ CellID->21856481],
+Cell[6120, 184, 250, 6, 70, "Print",
+ CellID->782697220],
+Cell[6373, 192, 657, 15, 63, "Output",
+ CellID->22046512]
+}, Open  ]],
+Cell[7045, 210, 154, 4, 70, "ExampleText",
+ CellID->588381087],
+Cell[7202, 216, 293, 10, 70, "Text",
+ CellID->340940634],
+Cell[CellGroupData[{
+Cell[7520, 230, 351, 8, 70, "Input",
+ CellID->56019111],
+Cell[7874, 240, 251, 6, 70, "Print",
+ CellID->1043836790],
+Cell[8128, 248, 677, 16, 82, "Output",
+ CellID->391460770]
+}, Open  ]],
+Cell[8820, 267, 119, 3, 70, "ExampleText",
+ CellID->216982417],
+Cell[8942, 272, 293, 10, 70, "Text",
+ CellID->613067229],
+Cell[CellGroupData[{
+Cell[9260, 286, 362, 8, 70, "Input",
+ CellID->635546937],
+Cell[9625, 296, 250, 6, 70, "Print",
+ CellID->23786706],
+Cell[9878, 304, 674, 16, 82, "Output",
+ CellID->18196197]
+}, Open  ]],
+Cell[10567, 323, 84, 1, 70, "ExampleText",
+ CellID->327822773],
+Cell[CellGroupData[{
+Cell[10676, 328, 358, 8, 70, "Input",
+ CellID->199926511],
+Cell[11037, 338, 250, 6, 70, "Print",
+ CellID->28168995],
+Cell[11290, 346, 658, 15, 63, "Output",
+ CellID->265639247]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12009, 368, 417, 12, 70, "SeeAlsoSection",
+ CellID->1255426704],
+Cell[12429, 382, 576, 18, 70, "SeeAlso",
+ CellID->929782353]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13042, 405, 419, 12, 70, "TutorialsSection",
+ CellID->250839057],
+Cell[13464, 419, 171, 4, 70, "Tutorials",
+ CellID->341631938]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13672, 428, 419, 12, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[14094, 442, 166, 3, 70, "MoreAbout",
+ CellID->1665078683]
+}, Open  ]],
+Cell[14275, 448, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
