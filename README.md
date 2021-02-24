@@ -18,7 +18,7 @@ Let's calculate, what CO intensities would be expected from a molecular cloud wi
 
 The command to perform the calculations is EscapeProbabilityRun. The result is shown below. The output is given in tabular form.
 
-<img style="float: right;" src="https://github.com/Markusroellig/EscapeProbability/blob/master/EP1.jpg">
+<img style="float: right;" src="https://github.com/markusroellig/EscapeProbability/blob/main/EP1.jpg">
  
 
 You can see, that we expect the 115 GHz line to have a line strength of 31 mK in the line center. The total, line-integrated flux will be 0.166 K km/s. With this information we could now estimate how long a given radio telescope would have to observe the cloud in order to achieve a sufficient signal to noise ratio to detect this line.
