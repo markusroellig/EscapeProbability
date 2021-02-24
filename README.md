@@ -11,8 +11,8 @@ Below we give an example for a typical radiative transfer calculation which can 
 
 Let's calculate, what CO intensities would be expected from a molecular cloud with the following parameters:
 
- * gas density (in this case number density of H2, since CO collidides dominantly with H2): 1×104 cm-3
- * CO column density (column density is the product of density times length, i.e. counting all CO molecules along a line of sight): 1×1014 cm-2
+ * gas density (in this case number density of H2, since CO collidides dominantly with H2): 1×10^4 cm^-3
+ * CO column density (column density is the product of density times length, i.e. counting all CO molecules along a line of sight): 1×10^14 cm-2
  * kinetic gas temperature: 50 K (which is relatively warm for a molecular cloud)
  * FWHM (Full Width Half Maximum) Doppler line width of the emission lines (the particles are moving and hence subject to Doppler shifts in frequency): 5 km/s
 
